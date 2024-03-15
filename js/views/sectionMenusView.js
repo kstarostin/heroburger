@@ -47,7 +47,7 @@ class SectionMenusView extends SectionItemsView {
         </div>
         <div class="item-actions">
           <div class="item-save">
-            <a href="#" class="btn btn-save btn-save-active btn-square">
+            <a href="#" class="btn btn-save btn-square">
               <i class="icon ph-fill ph-heart"></i>
             </a>
           </div>
@@ -68,9 +68,7 @@ class SectionMenusView extends SectionItemsView {
           <li class="item-attribute">
             <i class="icon ph ph-hamburger"></i>
             <span>
-              ${item.ingredients
-                .map((ingredient) => ingredient.toLowerCase())
-                .join(", ")}
+              ${this._buildIngredientsAttributeText(item.ingredients)}
             </span>
           </li>
           ${this.#generateFingerfoodAttributeMarkup(item)}

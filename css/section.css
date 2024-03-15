@@ -8,10 +8,20 @@ section {
   margin: 0 auto 4.8rem auto;
 
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  align-items: end;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
   justify-content: start;
   gap: 9.6rem;
+}
+
+.section-intro > *:nth-child(2) {
+  justify-self: end;
+}
+
+.heading-primary {
+  font-size: 12.8rem;
+  text-transform: uppercase;
+  color: #feb451;
 }
 
 .section-content {
@@ -21,7 +31,7 @@ section {
 }
 
 .section-intro-reverse {
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 2fr 3fr;
 }
 
 .section-title .heading-secondary {

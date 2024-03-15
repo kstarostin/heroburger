@@ -102,14 +102,23 @@ export default class SectionItemsView extends View {
           <li class="item-attribute">
             <i class="icon ph ph-list-bullets"></i>
             <span>
-              ${ingredients
-                .map((ingredient) => ingredient.toLowerCase())
-                .join(", ")}
+              ${this._buildIngredientsAttributeText(ingredients)}
             </span>
           </li>
         </ul>
       `;
     }
     return "";
+  }
+
+  _buildIngredientsAttributeText(ingredients) {
+    return ingredients
+      .map((ingredient, index) => {
+        if (index !== 0) {
+          return ingredient.toLowerCase();
+        }
+        return ingredient[0].toUpperCase() + ingredient.slice(1).toLowerCase();
+      })
+      .join(", ");
   }
 }
