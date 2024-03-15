@@ -1,0 +1,273 @@
+section {
+  padding: 9.6rem 0;
+}
+
+.section-intro {
+  max-width: 180rem;
+  padding: 0 3.2rem;
+  margin: 0 auto 4.8rem auto;
+
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: end;
+  justify-content: start;
+  gap: 9.6rem;
+}
+
+.section-content {
+  max-width: 130rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.section-intro-reverse {
+  grid-template-columns: 3fr 2fr;
+}
+
+.section-title .heading-secondary {
+  font-size: 4.4rem;
+}
+
+.section-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 3.2rem;
+}
+
+.emphasize {
+  color: #932f32;
+  font-weight: 700;
+}
+
+.item {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-new::after {
+  content: "New";
+  position: absolute;
+
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #ffd43b;
+  padding: 0.8rem 8rem;
+  transform: rotate(45deg);
+}
+
+.grid-2-cols .item-new::after {
+  top: 3%;
+  right: -11%;
+}
+
+.grid-3-cols .item-new::after {
+  top: 3%;
+  right: -18%;
+}
+
+/* .item:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+} */
+
+.item-img-container {
+  position: relative;
+}
+
+.item-img-container .item-img {
+  display: block;
+}
+
+.item-img-container .item-info-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.item-info-link:link,
+.item-info-link:visited {
+  color: #fff;
+  font-size: 2.4rem;
+  text-decoration: none;
+}
+
+.item-info-link:hover,
+.item-info-link:active {
+  color: #e5a249;
+}
+
+.item-img {
+  width: 100%;
+}
+
+.item-text {
+  padding: 1.2rem 3.2rem;
+}
+
+/* TAGS */
+.item-tags {
+  margin-bottom: 1.6rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 700;
+  position: relative;
+}
+
+.tag-menu {
+  background-color: #9c36b5;
+}
+
+.tag-chicken {
+  background-color: #fcc419;
+}
+
+.tag-beef {
+  background-color: #932f32;
+}
+
+.tag-vegan {
+  background-color: #277c38;
+}
+
+.tag-spicy {
+  background-color: #c92a2a;
+}
+
+.item-tags .tag:not(:first-child) {
+  transform: skew(-10deg);
+}
+
+.item-tags .tag:not(:first-child) span {
+  display: block;
+  transform: skew(10deg);
+}
+
+.item-tags .tag:first-child {
+  padding-right: 0.4rem;
+  margin-right: 0.3rem;
+}
+
+.item-tags .tag:first-child::after {
+  content: "";
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: inherit;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0.75rem;
+  margin-right: -0.3rem;
+  transform: skew(-10deg);
+  z-index: -1;
+}
+
+.item-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+  line-height: 1.6;
+}
+
+.grid-3-cols .item-title {
+  font-size: 2rem;
+}
+
+.item-description {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.item-attributes {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.item-attribute {
+  font-size: 2rem;
+  line-height: 1.6;
+
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 1.2rem;
+}
+
+.item-attribute .icon {
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #feb451;
+  justify-self: center;
+}
+
+.item-actions {
+  justify-self: end;
+  padding: 0 3.2rem 2.4rem 3.2rem;
+  margin-bottom: 0;
+
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 2.4rem;
+}
+
+.item-save .btn {
+  font-size: 2.4rem;
+}
+
+.item-add .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.btn:link .icon,
+.btn:visited .icon {
+  font-weight: 600;
+}
+
+.btn-save:link,
+.btn-save:visited {
+  color: #fecb85;
+  box-shadow: inset 0 0 0 3px #fecb85;
+}
+
+.btn-save:hover,
+.btn-save:active {
+  color: #932f32;
+  box-shadow: inset 0 0 0 3px #932f32;
+}
+
+.btn-save-active:link,
+.btn-save-active:visited {
+  color: #d24347;
+  box-shadow: inset 0 0 0 3px #d24347;
+}
+
+.btn-save-active:hover,
+.btn-save-active:active {
+  color: #932f32;
+  box-shadow: inset 0 0 0 3px #932f32;
+}

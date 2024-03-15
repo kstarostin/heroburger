@@ -1,0 +1,24 @@
+{
+  "name": "heroburger",
+  "version": "1.0.0",
+  "description": "Burger web-shop showcase",
+  "default": "index.html",
+  "scripts": {
+    "clean-dist": "rm -rf dist && mkdir dist",
+    "copy-img": "cp -vR ./img ./dist",
+    "copy-files": "npm run copy-img",
+    "init": "npm run clean-dist && npm run copy-files",
+    "start": "npm run init && parcel index.html",
+    "build": "npm run init && parcel build index.html"
+  },
+  "author": "Konstantin Starostin",
+  "license": "ICS",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.12.0",
+    "@parcel/transformer-webmanifest": "^2.12.0",
+    "parcel": "2.12.0"
+  },
+  "dependencies": {
+    "core-js": "^3.36.0"
+  }
+}

@@ -1,0 +1,58 @@
+.section-hero {
+  /* background-color: #feb451; */
+  padding: 9.6rem 0;
+  height: 100vh; /* viewport height */
+  position: relative;
+  top: -9.6rem;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(34, 34, 34, 0.9),
+      rgba(34, 34, 34, 0.2)
+    ),
+    url(../img/hero/hero-2688.webp);
+  background-size: cover;
+  color: #fff;
+}
+
+.hero {
+  max-width: 160rem;
+  margin: 12.8rem auto;
+  padding: 0 3.2rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9.6rem;
+  align-items: center;
+}
+
+.hero .heading-primary {
+  color: #feb451;
+  font-size: 9.8rem;
+  text-transform: uppercase;
+  margin-bottom: 6.4rem;
+}
+
+.hero .heading-secondary {
+  color: #ede8ea;
+  font-size: 3rem;
+  margin-bottom: 2.4rem;
+}
+
+.hero .heading-tertiary {
+  color: #ff922b;
+  font-size: 6.2rem;
+  margin-bottom: 4.8rem;
+}
+
+.hero-description {
+  color: #ede8ea;
+  font-size: 2.4rem;
+  line-height: 1.6;
+  margin-bottom: 3.2rem;
+}
+
+.hero-name {
+  color: #d24347;
+  font-weight: 700;
+}
