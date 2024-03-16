@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/hero.css" />
     <link rel="stylesheet" href="css/section.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 
     <script
       type="module"
@@ -37,7 +38,7 @@
   </head>
   <body>
     <header class="header">
-      <a href="/">
+      <a class="header-logo-link" href="#">
         <img
           class="logo"
           alt="Hero Burger logo"
@@ -62,7 +63,7 @@
     </header>
 
     <main>
-      <section class="section-hero">
+      <section id="hero" class="section-hero">
         <div class="hero">
           <div class="hero-text-box">
             <h1 id="hero-month" class="heading-primary">January</h1>
@@ -234,5 +235,18 @@
         </div>
       </div>
     </footer>
+
+    <div id="modal">
+      <div class="modal hidden">
+        <button class="close-modal">
+          <i class="ph ph-x"></i>
+        </button>
+
+        <div class="modal-content">
+          <!-- Filled by controller -->
+        </div>
+      </div>
+      <div class="overlay hidden"></div>
+    </div>
   </body>
 </html>

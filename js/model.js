@@ -118,3 +118,14 @@ export const getDrinkItemList = function () {
     };
   });
 };
+
+export const getItemList = function () {
+  return [
+    ...getMenuItemList(),
+    ...getBurgersItemList(),
+    ...getFingerfoodItemList(),
+    ...getSaladItemList(),
+    ...getDessertItemList(),
+    ...getDrinkItemList(),
+  ];
+};

@@ -4,6 +4,24 @@ import { truncate, formatPrice } from "../helpers.js";
 export default class SectionItemsView extends View {
   _parentElement;
 
+  // addHandlerRenderInfoModal(handler) {
+  //   this._parentElement.querySelectorAll(".item").forEach((item) => {
+  //     const itemId = item.id;
+
+  //     const modal = document.querySelector(".modal");
+  //     const overlay = document.querySelector(".overlay");
+
+  //     [
+  //       item.querySelector(".item-info-link"),
+  //       item.querySelector(".link"),
+  //     ].forEach((link) => {
+  //       link.addEventListener("click", function () {
+  //         handler(itemId, modal, overlay);
+  //       });
+  //     });
+  //   });
+  // }
+
   _generateMarkup() {
     return this._data
       .map((item) => {
@@ -32,14 +50,14 @@ export default class SectionItemsView extends View {
                 alt="Picture of ${item.name} menu item"
               />
             </picture>
-            <a class="item-info-link" href="#">
+            <a class="item-info-link" data-item-id="${item.id}" href="#">
               <i class="ph ph-info"></i>
             </a>
           </div>
           <div class="item-text">
             ${this._generateTagsMarkup(item.tags)}
             <p class="item-title">${item.name}</p>
-            ${this._generateDescriptionMarkup(item.description)}
+            ${this._generateDescriptionMarkup(item)}
             ${this._generateAttributesMarkup(item.ingredients)}
           </div>
         </div>
@@ -82,15 +100,15 @@ export default class SectionItemsView extends View {
     `;
   }
 
-  _generateDescriptionMarkup(description) {
-    let truncatedDescription = description;
-    if (description.length > 40) {
-      truncatedDescription = truncate(description, 40);
+  _generateDescriptionMarkup(item) {
+    let truncatedDescription = item.description;
+    if (item.description.length > 40) {
+      truncatedDescription = truncate(item.description, 40);
     }
     return `
     <p class="item-description">
       ${truncatedDescription}
-      <a class="link" href="#">more</a>
+      <a class="link" href="#" data-item-id="${item.id}">more</a>
     </p>
     `;
   }

@@ -41,7 +41,7 @@ class SectionMenusView extends SectionItemsView {
           <div class="item-text">
             ${this._generateTagsMarkup(item.tags)}
             <p class="item-title">${item.name}</p>
-            ${this._generateDescriptionMarkup(item.description)}
+            ${this._generateDescriptionMarkup(item)}
             ${this._generateAttributesMarkup(item)}
           </div>
         </div>

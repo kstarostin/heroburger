@@ -101,6 +101,13 @@ section {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .item-info-link:link,
@@ -108,11 +115,13 @@ section {
   color: #fff;
   font-size: 2.4rem;
   text-decoration: none;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .item-info-link:hover,
 .item-info-link:active {
   color: #e5a249;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .item-img {
