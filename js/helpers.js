@@ -9,6 +9,13 @@ export const formatPrice = function (price) {
   }).format(price);
 };
 
+export const formatWeightGramm = function (weight) {
+  return new Intl.NumberFormat("en-EN", {
+    style: "unit",
+    unit: "gram",
+  }).format(weight);
+};
+
 export const joinCommaSeparated = function (items) {
   return items
     .map((item, index) => {

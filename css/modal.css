@@ -57,7 +57,7 @@ body {
 }
 
 .modal-content {
-  height: 95vh;
+  max-height: 95vh;
   overflow-y: auto;
 }
 
@@ -125,8 +125,4 @@ body {
 
 .modal-nutritions-table thead th:nth-child(2) {
   width: 30%;
-}
-
-.modal-nutritions-table tbody tr:nth-child(odd) {
-  /* background-color: #f8f9fa; */
 }
