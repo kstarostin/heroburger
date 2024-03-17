@@ -1,5 +1,5 @@
 import SectionItemsView from "./sectionItemsView.js";
-import { formatPrice } from "../helpers.js";
+import { formatPrice, joinCommaSeparated } from "../helpers.js";
 
 class SectionMenusView extends SectionItemsView {
   _parentElement = document
@@ -68,7 +68,7 @@ class SectionMenusView extends SectionItemsView {
           <li class="item-attribute">
             <i class="icon ph ph-hamburger"></i>
             <span>
-              ${this._buildIngredientsAttributeText(item.ingredients)}
+              ${joinCommaSeparated(item.ingredients)}
             </span>
           </li>
           ${this.#generateFingerfoodAttributeMarkup(item)}

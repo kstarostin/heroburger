@@ -50,6 +50,8 @@ export const getBurgersItemList = function () {
       new: burger.new,
       tags: burger.tags,
       image: burger.image,
+      weightGramm: burger.weight,
+      nutrientsPortion: burger.nutrients_per_portion,
     };
   });
 };
@@ -66,6 +68,8 @@ export const getFingerfoodItemList = function () {
       new: item.new,
       tags: item.tags,
       image: item.image,
+      weightGramm: item.weight,
+      nutrientsPortion: item.nutrients_per_portion,
     };
   });
 };
@@ -83,6 +87,8 @@ export const getSaladItemList = function () {
       new: salad.new,
       tags: salad.tags,
       image: salad.image,
+      weightGramm: salad.weight,
+      nutrientsPortion: salad.nutrients_per_portion,
     };
   });
 };
@@ -99,6 +105,8 @@ export const getDessertItemList = function () {
       new: dessert.new,
       tags: dessert.tags,
       image: dessert.image,
+      weightGramm: dessert.weight,
+      nutrientsPortion: dessert.nutrients_per_portion,
     };
   });
 };
@@ -115,6 +123,8 @@ export const getDrinkItemList = function () {
       new: drink.new,
       tags: drink.tags,
       image: drink.image,
+      weightGramm: drink.weight,
+      nutrientsPortion: drink.nutrients_per_portion,
     };
   });
 };

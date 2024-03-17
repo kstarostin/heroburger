@@ -75,9 +75,9 @@ const controlModalOpen = function (modal, overlay) {
 };
 
 const controlItemInfoModal = function (itemId, modal, overlay) {
-  console.log("here");
   controlModalOpen(modal, overlay);
   const item = model.getItemList().filter((item) => item.id === itemId)[0];
+  console.log(item);
   itemInfoModalView.render(item);
 };
 

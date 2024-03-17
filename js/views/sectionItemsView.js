@@ -1,5 +1,5 @@
 import View from "./View.js";
-import { truncate, formatPrice } from "../helpers.js";
+import { truncate, formatPrice, joinCommaSeparated } from "../helpers.js";
 
 export default class SectionItemsView extends View {
   _parentElement;
@@ -120,23 +120,12 @@ export default class SectionItemsView extends View {
           <li class="item-attribute">
             <i class="icon ph ph-list-bullets"></i>
             <span>
-              ${this._buildIngredientsAttributeText(ingredients)}
+              ${joinCommaSeparated(ingredients)}
             </span>
           </li>
         </ul>
       `;
     }
     return "";
-  }
-
-  _buildIngredientsAttributeText(ingredients) {
-    return ingredients
-      .map((ingredient, index) => {
-        if (index !== 0) {
-          return ingredient.toLowerCase();
-        }
-        return ingredient[0].toUpperCase() + ingredient.slice(1).toLowerCase();
-      })
-      .join(", ");
   }
 }

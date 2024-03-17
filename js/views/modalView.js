@@ -3,7 +3,7 @@ import View from "./View.js";
 export default class ModalView extends View {
   _parentElement = document.querySelector(".modal-content");
 
-  _modal = document.querySelector(".modal");
+  _modal = document.querySelector(".modal-body");
   _overlay = document.querySelector(".overlay");
 
   addHandlerCloseModal(handler) {
