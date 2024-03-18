@@ -2,7 +2,26 @@ import { data } from "./data.js";
 
 export const state = {
   cart: {},
-  bookmarks: [],
+  saved: [],
+};
+
+export const saveItem = function (item) {
+  state.saved.push(item.id);
+  item.saved = true;
+
+  persistSavedItems();
+};
+
+export const unsaveItem = function (item) {
+  const index = state.saved.findIndex((id) => id === item.id);
+  state.saved.splice(index, 1);
+  item.saved = false;
+
+  persistSavedItems();
+};
+
+const persistSavedItems = function () {
+  localStorage.setItem("saved", JSON.stringify(state.saved));
 };
 
 export const getMenus = function () {
@@ -21,6 +40,7 @@ export const getMenus = function () {
       ingredients: burger.ingredients,
       price: burger.menuPrice,
       new: burger.new,
+      saved: state.saved.some((id) => menu.id === id),
       tags: [...menu.tags, ...burger.tags],
       image: burger.image,
       secondPosition: _mapPositionItems(menu.second_position),
@@ -31,7 +51,7 @@ export const getMenus = function () {
   });
 };
 
-export const getAllItems = function () {
+export const getAllSingleItems = function () {
   const { items } = data;
   return items.map((item) => {
     // map item data to item model
@@ -44,6 +64,7 @@ export const getAllItems = function () {
       price: item.price,
       menuPrice: item.menu_price,
       new: item.new,
+      saved: state.saved.some((id) => item.id === id),
       tags: item.tags,
       image: item.image,
       weightGramm: item.weight,
@@ -53,27 +74,27 @@ export const getAllItems = function () {
 };
 
 export const getBurgers = function () {
-  return getAllItems().filter((item) => item.type === "burger");
+  return getAllSingleItems().filter((item) => item.type === "burger");
 };
 
 export const getFingerfood = function () {
-  return getAllItems().filter((item) => item.type === "fingerfood");
+  return getAllSingleItems().filter((item) => item.type === "fingerfood");
 };
 
 export const getSalads = function () {
-  return getAllItems().filter((item) => item.type === "salad");
+  return getAllSingleItems().filter((item) => item.type === "salad");
 };
 
 export const getDesserts = function () {
-  return getAllItems().filter((item) => item.type === "dessert");
+  return getAllSingleItems().filter((item) => item.type === "dessert");
 };
 
 export const getDrinks = function () {
-  return getAllItems().filter((item) => item.type === "drink");
+  return getAllSingleItems().filter((item) => item.type === "drink");
 };
 
 export const getItemList = function () {
-  return [...getMenus(), ...getAllItems()];
+  return [...getMenus(), ...getAllSingleItems()];
 };
 
 const _mapPositionItems = function (positionItemIds) {
@@ -86,9 +107,17 @@ const _mapPositionItems = function (positionItemIds) {
 };
 
 const _getItemById = function (id) {
-  return getAllItems().find((item) => item.id === id);
+  return getAllSingleItems().find((item) => item.id === id);
 };
 
 const _getBurgerById = function (id) {
   return getBurgers().find((item) => item.id === id);
 };
+
+const initState = function () {
+  const storage = localStorage.getItem("saved");
+  if (storage) {
+    state.saved = JSON.parse(storage);
+  }
+};
+initState();

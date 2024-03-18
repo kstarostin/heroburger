@@ -158,8 +158,7 @@ body {
   transition: all 0.3s;
 }
 
-.btn-primary:link,
-.btn-primary:visited {
+.btn-primary {
   background-color: #feb451;
   color: #4c3618;
 }
@@ -170,7 +169,7 @@ body {
   color: #333;
 }
 
-.btn-square:link {
+.btn-square {
   padding: 1.4rem;
   min-width: 5.2rem;
 

@@ -253,22 +253,20 @@ section {
   gap: 2.4rem;
 }
 
-.item-save .btn {
+.item-actions .btn-save {
   font-size: 2.4rem;
 }
 
-.item-add .btn {
+.item-actions .btn-primary {
   width: 100%;
   text-align: center;
 }
 
-.btn:link .icon,
-.btn:visited .icon {
+.btn .icon {
   font-weight: 600;
 }
 
-.btn-save:link,
-.btn-save:visited {
+.btn-save {
   color: #fecb85;
   box-shadow: inset 0 0 0 3px #fecb85;
 }
@@ -279,8 +277,7 @@ section {
   box-shadow: inset 0 0 0 3px #932f32;
 }
 
-.btn-save-active:link,
-.btn-save-active:visited {
+.btn-save-active {
   color: #d24347;
   box-shadow: inset 0 0 0 3px #d24347;
 }

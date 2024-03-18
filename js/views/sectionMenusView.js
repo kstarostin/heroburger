@@ -9,6 +9,7 @@ class SectionMenusView extends SectionItemsView {
   _parentElement = document
     .querySelector("#menus")
     .querySelector(".section-content");
+  _itemType = "menu";
 
   _generateMarkup() {
     return this._data
@@ -50,18 +51,16 @@ class SectionMenusView extends SectionItemsView {
           </div>
         </div>
         <div class="item-actions">
-          <div class="item-save">
-            <a href="#" class="btn btn-save btn-square">
-              <i class="icon ph-fill ph-heart"></i>
-            </a>
-          </div>
-          <div class="item-add">
-            <a href="#" class="btn btn-primary">
-              <span>From ${formatPrice(
-                this.#calculateMinimalMenuPrice(item)
-              )}</span>
-            </a>
-          </div>
+          <btn class="btn btn-save ${
+            item.saved ? "btn-save-active" : ""
+          } btn-square">
+            <i class="icon ph-fill ph-heart"></i>
+          </btn>
+          <btn class="btn btn-primary">
+            <span>From ${formatPrice(
+              this.#calculateMinimalMenuPrice(item)
+            )}</span>
+          </btn>
         </div>
       </div>
     `;

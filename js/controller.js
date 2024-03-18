@@ -88,13 +88,42 @@ const controlItemInfoModal = function (itemId, modal, overlay) {
   itemInfoModalView.render(item);
 };
 
+const controlSaveItem = function (view, item) {
+  // save/unsave item
+  if (
+    model.state.saved.length === 0 ||
+    !model.state.saved.some((id) => item.id === id)
+  ) {
+    model.saveItem(item);
+  } else {
+    model.unsaveItem(item);
+  }
+
+  // update view
+  view.update([...model.getMenus(), ...model.getAllSingleItems()]);
+
+  // render saved view
+  // savedView.render(model.state.saved);
+};
+
 const init = function () {
   sectionMenusView.render(model.getMenus());
+  sectionMenusView.addHandlerSave(controlSaveItem);
+
   sectionBurgersView.render(model.getBurgers());
+  sectionBurgersView.addHandlerSave(controlSaveItem);
+
   sectionFingerfoodView.render(model.getFingerfood());
+  sectionFingerfoodView.addHandlerSave(controlSaveItem);
+
   sectionSaladsView.render(model.getSalads());
+  sectionSaladsView.addHandlerSave(controlSaveItem);
+
   sectionDessertsView.render(model.getDesserts());
+  sectionDessertsView.addHandlerSave(controlSaveItem);
+
   sectionDrinksView.render(model.getDrinks());
+  sectionDrinksView.addHandlerSave(controlSaveItem);
 
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
   headerNavLinkView.addHandlerMobileNav(controlMobileNavToggle);

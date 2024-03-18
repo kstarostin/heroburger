@@ -3,27 +3,26 @@ import { truncate, formatPrice, joinCommaSeparated } from "../helpers.js";
 
 export default class SectionItemsView extends View {
   _parentElement;
+  _itemType;
 
-  // addHandlerRenderInfoModal(handler) {
-  //   this._parentElement.querySelectorAll(".item").forEach((item) => {
-  //     const itemId = item.id;
-
-  //     const modal = document.querySelector(".modal");
-  //     const overlay = document.querySelector(".overlay");
-
-  //     [
-  //       item.querySelector(".item-info-link"),
-  //       item.querySelector(".link"),
-  //     ].forEach((link) => {
-  //       link.addEventListener("click", function () {
-  //         handler(itemId, modal, overlay);
-  //       });
-  //     });
-  //   });
-  // }
+  addHandlerSave(handler) {
+    this._parentElement.addEventListener(
+      "click",
+      function (e) {
+        const btn = e.target.closest(".btn-save");
+        const item = e.target.closest(".item");
+        if (!btn || !item) {
+          return;
+        }
+        handler(this, item);
+      }.bind(this),
+      false
+    );
+  }
 
   _generateMarkup() {
     return this._data
+      .filter((item) => item.type === this._itemType)
       .map((item) => {
         return this._generateItemMarkup(item);
       })
@@ -62,16 +61,14 @@ export default class SectionItemsView extends View {
           </div>
         </div>
         <div class="item-actions">
-          <div class="item-save">
-            <a href="#" class="btn btn-save btn-square">
-              <i class="icon ph-fill ph-heart"></i>
-            </a>
-          </div>
-          <div class="item-add">
-            <a href="#" class="btn btn-primary">
-              <span>${formatPrice(item.price)}</span>
-            </a>
-          </div>
+          <btn class="btn btn-save ${
+            item.saved ? "btn-save-active" : ""
+          } btn-square">
+            <i class="icon ph-fill ph-heart"></i>
+          </btn>
+          <btn class="btn btn-primary">
+            <span>${formatPrice(item.price)}</span>
+          </btn>
         </div>
       </div>
     `;
