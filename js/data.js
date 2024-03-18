@@ -1208,7 +1208,7 @@ export const data = {
     {
       id: "beer",
       type: "drink",
-      name: "Berr",
+      name: "Beer",
       description: "Unwind with the Brewed Resilience Beverage!",
       ingredients: [],
       price: 5.59,
