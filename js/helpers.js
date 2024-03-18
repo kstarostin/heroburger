@@ -26,3 +26,11 @@ export const joinCommaSeparated = function (items) {
     })
     .join(", ");
 };
+
+export const extractMinimalItemPrice = function (items) {
+  if (!items || items.length === 0) {
+    return 0;
+  }
+  const allPrices = items.map((positionItem) => positionItem.menuPrice);
+  return +Math.min(...allPrices);
+};

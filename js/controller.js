@@ -82,12 +82,12 @@ const controlItemInfoModal = function (itemId, modal, overlay) {
 };
 
 const init = function () {
-  sectionMenusView.render(model.getMenuItemList());
-  sectionBurgersView.render(model.getBurgersItemList());
-  sectionFingerfoodView.render(model.getFingerfoodItemList());
-  sectionSaladsView.render(model.getSaladItemList());
-  sectionDessertsView.render(model.getDessertItemList());
-  sectionDrinksView.render(model.getDrinkItemList());
+  sectionMenusView.render(model.getMenus());
+  sectionBurgersView.render(model.getBurgers());
+  sectionFingerfoodView.render(model.getFingerfood());
+  sectionSaladsView.render(model.getSalads());
+  sectionDessertsView.render(model.getDesserts());
+  sectionDrinksView.render(model.getDrinks());
 
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
   sectionHeroView.addHandlerNavigateToItems(controlNavLinks);

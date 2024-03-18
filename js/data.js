@@ -3,167 +3,117 @@ export const data = {
     {
       id: "chickenator-team",
       name: "Team Mighty Chickenator",
-      price: 13.95,
-      burger_included: true,
       burger_id: "chickenator",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "protector-team",
       name: "Team Legendary Hamburger Protector",
-      price: 15.95,
       burger_included: true,
       burger_id: "protector",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "vigilante-team",
       name: "Team Incredible Vegan Vigilante",
-      price: 13.95,
       burger_included: true,
       burger_id: "vigilante",
-      fingerfood_included: false,
-      fingerfood_id: "",
-      salad_included: true,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["harvest"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "defender-team",
       name: "Team Classic Cheese Defender",
-      price: 14.95,
       burger_included: true,
       burger_id: "defender",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "titan-team",
       name: "Team Epic Angus Titan",
-      price: 16.95,
       burger_included: true,
       burger_id: "titan",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "fighter-team",
       name: "Team Supreme Chicken Fighter",
-      price: 14.55,
       burger_included: true,
       burger_id: "fighter",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "burgerman-team",
       name: "Team Amazing Burger-Man",
-      price: 14.95,
       burger_included: true,
       burger_id: "burgerman",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "bringer-team",
       name: "Team Fiery BBQ Bringer",
-      price: 15.95,
       burger_included: true,
       burger_id: "bringer",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "knight-team",
       name: "Team Supreme Baconator Knight",
-      price: 14.95,
       burger_included: true,
       burger_id: "knight",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
     {
       id: "avenger-team",
       name: "Team Infernal Chili Avenger",
-      price: 15.55,
       burger_included: true,
       burger_id: "avenger",
-      fingerfood_included: true,
-      fingerfood_id: "",
-      salad_included: false,
-      salad_id: "",
-      dessert_included: false,
-      dessert_id: "",
-      drink_included: true,
-      drink_id: "",
+      second_position: ["pal", "master", "companion", "nugget", "renegate"],
+      third_position: ["water", "soda", "juice", "beer", "milkshake"],
+      fourth_position: [],
+      fifth_position: [],
       tags: ["menu"],
     },
   ],
-  burgers: [
+  items: [
     {
       id: "chickenator",
+      type: "burger",
       name: "The Mighty Chickenator",
       description:
         "Embark on an adventure fit for a superhero with our legendary Hero Burgers! Crafted from the finest ingredients and bursting with flavor, each burger is a bold testament to culinary greatness, guaranteed to satisfy even the mightiest of appetites. Join us in the quest for savory victory—try our Hero Burgers today!",
@@ -176,6 +126,7 @@ export const data = {
         "Sesam bun",
       ],
       price: 9.95,
+      menu_price: 8.95,
       new: false,
       tags: ["chicken"],
       image: {
@@ -209,6 +160,7 @@ export const data = {
     },
     {
       id: "protector",
+      type: "burger",
       name: "The Legendary Hamburger Protector",
       description:
         "Behold the Legendary Hamburger Protector, a towering masterpiece that stands as a beacon of savory delight. Crafted from premium beef, nestled between fluffy brioche buns, and adorned with a symphony of fresh toppings, this burger is a symbol of taste and justice, ensuring every bite is an epic adventure!",
@@ -223,6 +175,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 10.95,
+      menu_price: 9.95,
       new: false,
       tags: ["beef"],
       image: {
@@ -256,6 +209,7 @@ export const data = {
     },
     {
       id: "vigilante",
+      type: "burger",
       name: "The Incredible Vegan Vigilante",
       description:
         "Unleash your inner hero with the Incredible Vegan Vigilante, a plant-powered burger that champions flavor and compassion. This burger fights for justice on your plate, proving that saving the world can be deliciously cruelty-free! Btw, haven't you heard yet? It's VEGAN!",
@@ -270,6 +224,7 @@ export const data = {
         "Sesam bun",
       ],
       price: 11.95,
+      menu_price: 10.95,
       new: false,
       tags: ["vegan"],
       image: {
@@ -303,6 +258,7 @@ export const data = {
     },
     {
       id: "defender",
+      type: "burger",
       name: "The Classic Cheese Defender",
       description:
         "Brace yourself for the ultimate comfort food experience with the Classic Cheese Defender—a timeless masterpiece that pays homage to the iconic cheeseburger. Sink your teeth into juicy beef, layered with melted cheese and crisp lettuce, all hugged by soft brioche buns — a savory shield against hunger's onslaught!",
@@ -316,6 +272,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 10.95,
+      menu_price: 9.95,
       new: false,
       tags: ["beef"],
       image: {
@@ -349,6 +306,7 @@ export const data = {
     },
     {
       id: "titan",
+      type: "burger",
       name: "The Epic Angus Titan",
       description:
         "Prepare for a taste sensation like no other with the Epic Angus Titan - a burger of monumental proportions, forged from the finest Angus beef. With each bite, savor the rich, smoky flavor of premium beef, elevated by a symphony of fresh toppings - a true titan among burgers, destined for greatness!",
@@ -362,6 +320,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 12.95,
+      menu_price: 11.95,
       new: false,
       tags: ["beef"],
       image: {
@@ -395,6 +354,7 @@ export const data = {
     },
     {
       id: "fighter",
+      type: "burger",
       name: "The Supreme Chicken Fighter",
       description:
         "Join the battle against blandness with the Supreme Chicken Fighter, a grilled chicken burger that reigns supreme in flavor and satisfaction. Sink your teeth into tender, juicy chicken breast, grilled to perfection and nestled between soft ciabatta buns, ready to conquer any hunger with its savory charm!",
@@ -407,6 +367,7 @@ export const data = {
         "Ciabatta bun",
       ],
       price: 10.55,
+      menu_price: 9.55,
       new: false,
       tags: ["chicken"],
       image: {
@@ -440,6 +401,7 @@ export const data = {
     },
     {
       id: "burgerman",
+      type: "burger",
       name: "The Amazing Burger-Man",
       description:
         "Step into the culinary metropolis with the Amazing Burger-Man—a towering tribute to the iconic New Yorker. Featuring layers of premium beef, melted cheese, and a medley of fresh toppings, this burger swings into action to save your taste buds from boredom with each heroic bite!",
@@ -454,6 +416,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 10.89,
+      menu_price: 9.89,
       new: false,
       tags: ["beef"],
       image: {
@@ -487,6 +450,7 @@ export const data = {
     },
     {
       id: "bringer",
+      type: "burger",
       name: "The Fiery BBQ Bringer",
       description:
         "Ignite your taste buds with the Fiery BBQ Bringer, a burger that brings the heat and the flavor in equal measure. Featuring succulent beef, smothered in tangy BBQ sauce, and crowned with crispy onions, this burger is a fiery force to be reckoned with—a delicious explosion of taste that'll leave you craving more!",
@@ -499,6 +463,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 11.85,
+      menu_price: 10.85,
       new: true,
       tags: ["beef", "spicy"],
       image: {
@@ -532,6 +497,7 @@ export const data = {
     },
     {
       id: "knight",
+      type: "burger",
       name: "The Supreme Baconator Knight",
       description:
         "Embark on a flavor quest with the Supreme Baconator Knight, a burger fit for a hero of legendary proportions. Featuring juicy beef, crispy bacon, creamy ranch dressing, and fresh veggies, this burger wields its savory sword with unmatched culinary prowess—an epic feast fit for kings!",
@@ -544,6 +510,7 @@ export const data = {
         "Brioche bun",
       ],
       price: 10.95,
+      menu_price: 9.95,
       new: false,
       tags: ["beef"],
       image: {
@@ -577,6 +544,7 @@ export const data = {
     },
     {
       id: "avenger",
+      type: "burger",
       name: "The Infernal Chili Avenger",
       description:
         "Brace yourself for a flavor inferno with the Infernal Chili Avenger, a burger that ignites your taste buds with its fiery chili cheese goodness. Featuring smoky beef, spicy chili, melted cheese, and all the fixings, this burger delivers a flavor explosion that'll leave you feeling like a culinary superhero!",
@@ -589,6 +557,7 @@ export const data = {
         "Sesam bun",
       ],
       price: 11.85,
+      menu_price: 10.85,
       new: false,
       tags: ["beef", "spicy"],
       image: {
@@ -620,14 +589,15 @@ export const data = {
         sodium: 0.4,
       },
     },
-  ],
-  fingerfood: [
     {
       id: "pal",
+      type: "fingerfood",
       name: "Crispy Potato Pal",
       description:
         "Stand tall with the Crispy Potato Pal, a companion of unparalleled crunch and satisfaction. These golden fries, fried to perfection, accompany your meal like a loyal ally, ready to add a burst of flavor and texture to every heroic bite!",
+      ingredients: [],
       price: 4.89,
+      menu_price: 3.89,
       new: false,
       tags: [],
       image: {
@@ -661,10 +631,13 @@ export const data = {
     },
     {
       id: "master",
+      type: "fingerfood",
       name: "Winged Master",
       description:
         "Take flight with the Winged Master, a sidekick that soars above the rest with its bold flavors and irresistible crunch. These succulent chicken wings, seasoned to perfection and coated in tangy sauce, are the ultimate wingman for any mealtime adventure!",
+      ingredients: [],
       price: 6.85,
+      menu_price: 5.85,
       new: false,
       tags: [],
       image: {
@@ -698,10 +671,13 @@ export const data = {
     },
     {
       id: "companion",
+      type: "fingerfood",
       name: "Nugget Companion",
       description:
         "Join forces with the Nugget Companion, a sidekick that brings a touch of whimsy and flavor to every meal. These crispy chicken nuggets, tender and delicious, stand by your side like a loyal friend, ready to add a dose of fun and satisfaction to your culinary escapades!",
+      ingredients: [],
       price: 5.89,
+      menu_price: 4.89,
       new: false,
       tags: [],
       image: {
@@ -735,10 +711,13 @@ export const data = {
     },
     {
       id: "nugget",
+      type: "fingerfood",
       name: "Cruelty-Free Nugget",
       description:
         "Embrace compassion with the Cruelty-Free Nugget, a companion that champions flavor and kindness in equal measure. These vegan nuggets, crafted from wholesome ingredients and bursting with savory goodness, stand as a testament to the power of plant-based eating—a delicious ally in your quest for culinary greatness!",
+      ingredients: [],
       price: 6.89,
+      menu_price: 5.89,
       new: false,
       tags: ["vegan"],
       image: {
@@ -772,10 +751,13 @@ export const data = {
     },
     {
       id: "renegate",
+      type: "fingerfood",
       name: "Ringed Renegade",
       description:
         "Prepare for a culinary revolution with the Ringed Renegade, a sidekick that defies convention and delights the senses. These crispy onion rings, golden and irresistible, add a touch of rebellion to any meal, standing as a symbol of flavor and fun in a world of ordinary sides!",
+      ingredients: [],
       price: 4.55,
+      menu_price: 3.55,
       new: false,
       tags: [],
       image: {
@@ -807,10 +789,9 @@ export const data = {
         sodium: 0.4,
       },
     },
-  ],
-  salads: [
     {
       id: "harvest",
+      type: "salad",
       name: "Plant-Powered Harvest",
       description:
         "A vegan salad packed with nutrient-rich vegetables to fortify your body and mind.",
@@ -823,6 +804,7 @@ export const data = {
         "Balsamic dressing",
       ],
       price: 4.89,
+      menu_price: 3.89,
       new: false,
       tags: ["vegan"],
       image: {
@@ -856,6 +838,7 @@ export const data = {
     },
     {
       id: "caesar",
+      type: "salad",
       name: "Caesar's Conqueror Crisp",
       description:
         "A Caesar salad with a heroic twist, featuring crisp romaine lettuce, tangy Caesar dressing, and savory toppings fit for a conqueror.",
@@ -867,6 +850,7 @@ export const data = {
         "Caesar dressing",
       ],
       price: 5.65,
+      menu_price: 4.65,
       new: false,
       tags: [],
       image: {
@@ -900,6 +884,7 @@ export const data = {
     },
     {
       id: "stamina",
+      type: "salad",
       name: "Chicken Stamina Salad",
       description:
         "A chicken salad fit for a champion, featuring tender chicken breast, crisp vegetables, and a dressing that reigns supreme.",
@@ -911,6 +896,7 @@ export const data = {
         "Olive oil",
       ],
       price: 5.95,
+      menu_price: 4.95,
       new: false,
       tags: [],
       image: {
@@ -942,14 +928,15 @@ export const data = {
         sodium: 0.2,
       },
     },
-  ],
-  desserts: [
     {
       id: "bolt",
+      type: "dessert",
       name: "Fudgy Power Bolt",
       description:
         "Indulge in the Fudgy Power Bolt, a brownie bursting with chocolaty goodness that fuels you with the energy to conquer any challenge with its rich and decadent flavor!",
+      ingredients: [],
       price: 4.89,
+      menu_price: 3.89,
       new: false,
       tags: [],
       image: {
@@ -983,10 +970,13 @@ export const data = {
     },
     {
       id: "guardian",
+      type: "dessert",
       name: "Creamy Fortress Guardian",
       description:
         "Delight in the Creamy Fortress Guardian, a cheesecake masterpiece that fortifies your spirit with its velvety texture and rich flavors, granting you the strength to defend against any adversity!",
+      ingredients: [],
       price: 5.38,
+      menu_price: 4.38,
       new: false,
       tags: [],
       image: {
@@ -1020,10 +1010,13 @@ export const data = {
     },
     {
       id: "dynamo",
+      type: "dessert",
       name: "Choco-Chip Dynamo",
       description:
         "Energize yourself with the Choco-Chip Dynamo, a chocolate cookie packed with sweet surprises and crunchy goodness, unleashing a burst of energy that propels you to superhero heights with every bite!",
+      ingredients: [],
       price: 2.89,
+      menu_price: 1.89,
       new: false,
       tags: [],
       image: {
@@ -1057,10 +1050,13 @@ export const data = {
     },
     {
       id: "burst",
+      type: "dessert",
       name: "Mighty Berry Burst",
       description:
         "Fuel your adventures with the Mighty Berry Burst, a muffin loaded with juicy berries and wholesome ingredients, empowering you with a burst of vitality and flavor that propels you forward on your heroic journey!",
+      ingredients: [],
       price: 4.89,
+      menu_price: 3.89,
       new: false,
       tags: [],
       image: {
@@ -1092,13 +1088,14 @@ export const data = {
         sodium: 0.2,
       },
     },
-  ],
-  drinks: [
     {
       id: "water",
+      type: "drink",
       name: "Sparkling water",
       description: "Rejuvenate with the Bubbly Vitality Elixir!",
+      ingredients: [],
       price: 2.59,
+      menu_price: 1.59,
       new: false,
       tags: [],
       image: {
@@ -1132,9 +1129,12 @@ export const data = {
     },
     {
       id: "soda",
+      type: "drink",
       name: "Soda",
       description: "Energize yourself with the Fizzy Power Surge!",
+      ingredients: [],
       price: 3.55,
+      menu_price: 2.55,
       new: false,
       tags: [],
       image: {
@@ -1168,9 +1168,12 @@ export const data = {
     },
     {
       id: "juice",
+      type: "drink",
       name: "Juice",
       description: "Revitalize with the Fruit-Fueled Dynamo!",
+      ingredients: [],
       price: 3.89,
+      menu_price: 2.89,
       new: false,
       tags: [],
       image: {
@@ -1204,9 +1207,12 @@ export const data = {
     },
     {
       id: "beer",
+      type: "drink",
       name: "Berr",
       description: "Unwind with the Brewed Resilience Beverage!",
+      ingredients: [],
       price: 5.59,
+      menu_price: 4.59,
       new: false,
       tags: [],
       image: {
@@ -1240,9 +1246,12 @@ export const data = {
     },
     {
       id: "milkshake",
+      type: "drink",
       name: "Milkshake",
       description: "Indulge in the Creamy Power Potion!",
+      ingredients: [],
       price: 4.99,
+      menu_price: 3.99,
       new: false,
       tags: [],
       image: {

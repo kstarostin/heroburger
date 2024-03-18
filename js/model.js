@@ -5,66 +5,44 @@ export const state = {
   bookmarks: [],
 };
 
-export const getMenuItemList = function () {
+export const getMenus = function () {
   const { menus } = data;
   return menus.map((menu) => {
     // find corresponding burger for menu item
-    const burger = getBurgersItemList().filter((item) => {
-      return item.id === menu.burger_id;
-    })[0];
+    const burger = _getBurgerById(menu.burger_id);
     if (!burger) {
       return {};
     }
-    // map data to item
+    // map rest data to item
     return {
       id: menu.id,
       name: menu.name,
       description: burger.description,
       ingredients: burger.ingredients,
-      price: menu.price,
+      price: burger.menuPrice,
       new: burger.new,
       tags: [...menu.tags, ...burger.tags],
       image: burger.image,
-      fingerfoodIncluded: menu.fingerfood_included,
-      fingerfoodId: menu.fingerfood_id,
-      saladIncluded: menu.salad_included,
-      saladId: menu.salad_id,
-      dessertIncluded: menu.dessert_included,
-      dessertId: menu.dessert_id,
-      drinkIncluded: menu.drink_included,
-      drinkId: menu.drink_id,
+      secondPosition: _mapPositionItems(menu.second_position),
+      thirdPosition: _mapPositionItems(menu.third_position),
+      fourthPosition: _mapPositionItems(menu.fourth_position),
+      fifthPosition: _mapPositionItems(menu.fifth_position),
     };
   });
 };
 
-export const getBurgersItemList = function () {
-  const { burgers } = data;
-  return burgers.map((burger) => {
-    // map data to item
-    return {
-      id: burger.id,
-      name: burger.name,
-      description: burger.description,
-      ingredients: burger.ingredients,
-      price: burger.price,
-      new: burger.new,
-      tags: burger.tags,
-      image: burger.image,
-      weightGramm: burger.weight,
-      nutrientsPortion: burger.nutrients_per_portion,
-    };
-  });
-};
-
-export const getFingerfoodItemList = function () {
-  const { fingerfood } = data;
-  return fingerfood.map((item) => {
-    // map data to item
+export const getAllItems = function () {
+  const { items } = data;
+  return items.map((item) => {
+    // map item data to item model
     return {
       id: item.id,
+      type: item.type,
       name: item.name,
       description: item.description,
+      ingredients: item.ingredients,
       price: item.price,
+      menuPrice: item.menu_price,
       new: item.new,
       tags: item.tags,
       image: item.image,
@@ -74,68 +52,43 @@ export const getFingerfoodItemList = function () {
   });
 };
 
-export const getSaladItemList = function () {
-  const { salads } = data;
-  return salads.map((salad) => {
-    // map data to item
-    return {
-      id: salad.id,
-      name: salad.name,
-      description: salad.description,
-      ingredients: salad.ingredients,
-      price: salad.price,
-      new: salad.new,
-      tags: salad.tags,
-      image: salad.image,
-      weightGramm: salad.weight,
-      nutrientsPortion: salad.nutrients_per_portion,
-    };
-  });
+export const getBurgers = function () {
+  return getAllItems().filter((item) => item.type === "burger");
 };
 
-export const getDessertItemList = function () {
-  const { desserts } = data;
-  return desserts.map((dessert) => {
-    // map data to item
-    return {
-      id: dessert.id,
-      name: dessert.name,
-      description: dessert.description,
-      price: dessert.price,
-      new: dessert.new,
-      tags: dessert.tags,
-      image: dessert.image,
-      weightGramm: dessert.weight,
-      nutrientsPortion: dessert.nutrients_per_portion,
-    };
-  });
+export const getFingerfood = function () {
+  return getAllItems().filter((item) => item.type === "fingerfood");
 };
 
-export const getDrinkItemList = function () {
-  const { drinks } = data;
-  return drinks.map((drink) => {
-    // map data to item
-    return {
-      id: drink.id,
-      name: drink.name,
-      description: drink.description,
-      price: drink.price,
-      new: drink.new,
-      tags: drink.tags,
-      image: drink.image,
-      weightGramm: drink.weight,
-      nutrientsPortion: drink.nutrients_per_portion,
-    };
-  });
+export const getSalads = function () {
+  return getAllItems().filter((item) => item.type === "salad");
+};
+
+export const getDesserts = function () {
+  return getAllItems().filter((item) => item.type === "dessert");
+};
+
+export const getDrinks = function () {
+  return getAllItems().filter((item) => item.type === "drink");
 };
 
 export const getItemList = function () {
-  return [
-    ...getMenuItemList(),
-    ...getBurgersItemList(),
-    ...getFingerfoodItemList(),
-    ...getSaladItemList(),
-    ...getDessertItemList(),
-    ...getDrinkItemList(),
-  ];
+  return [...getMenus(), ...getAllItems()];
+};
+
+const _mapPositionItems = function (positionItemIds) {
+  if (!positionItemIds && positionItemIds.length === 0) {
+    return [];
+  }
+  return positionItemIds.map((id) => {
+    return _getItemById(id);
+  });
+};
+
+const _getItemById = function (id) {
+  return getAllItems().find((item) => item.id === id);
+};
+
+const _getBurgerById = function (id) {
+  return getBurgers().find((item) => item.id === id);
 };

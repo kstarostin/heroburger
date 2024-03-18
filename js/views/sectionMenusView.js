@@ -1,5 +1,9 @@
 import SectionItemsView from "./sectionItemsView.js";
-import { formatPrice, joinCommaSeparated } from "../helpers.js";
+import {
+  formatPrice,
+  joinCommaSeparated,
+  extractMinimalItemPrice,
+} from "../helpers.js";
 
 class SectionMenusView extends SectionItemsView {
   _parentElement = document
@@ -53,7 +57,9 @@ class SectionMenusView extends SectionItemsView {
           </div>
           <div class="item-add">
             <a href="#" class="btn btn-primary">
-              <span>${formatPrice(item.price)}</span>
+              <span>From ${formatPrice(
+                this.#calculateMinimalMenuPrice(item)
+              )}</span>
             </a>
           </div>
         </div>
@@ -71,66 +77,68 @@ class SectionMenusView extends SectionItemsView {
               ${joinCommaSeparated(item.ingredients)}
             </span>
           </li>
-          ${this.#generateFingerfoodAttributeMarkup(item)}
-          ${this.#generateSaladAttributeMarkup(item)}
-          ${this.#generateDessertAttributeMarkup(item)}
-          ${this.#generateDrinkAttributeMarkup(item)}
+          ${this.#generatePositionMarkup(item.secondPosition)}
+          ${this.#generatePositionMarkup(item.thirdPosition)}
+          ${this.#generatePositionMarkup(item.fourthPosition)}
+          ${this.#generatePositionMarkup(item.fifthPosition)}
         </ul>
       `;
     }
     return "";
   }
 
-  #generateFingerfoodAttributeMarkup(item) {
-    if (!item.fingerfoodIncluded) {
+  #generatePositionMarkup(positionItems) {
+    if (!positionItems || positionItems.length === 0) {
       return "";
     }
-    // todo refer fingerfood item data
+    const uniqueTypes = this.#extractUniquePositionsTypes(positionItems);
+    const iconName = this.#getIconNameForItemType(uniqueTypes[0]);
+    const positionName = this.#getPositionNameForItemType(uniqueTypes[0]);
     return `
-    <li class="item-attribute">
-      <i class="icon ph ph-popcorn"></i>
-      <span>Sidekick Fingerfood</span>
-    </li>
+      <li class="item-attribute">
+        <i class="icon ph ${iconName}"></i>
+        <span>${positionName}</span>
+      </li>
     `;
   }
 
-  #generateSaladAttributeMarkup(item) {
-    if (!item.saladIncluded) {
-      return "";
-    }
-    // todo refer salad item data
-    return `
-    <li class="item-attribute">
-      <i class="icon ph ph-carrot"></i>
-      <span>Salad Booster</span>
-    </li>
-    `;
+  #extractUniquePositionsTypes(positionItems) {
+    const allTypes = positionItems.map((positionItem) => positionItem.type);
+    return allTypes.filter(function (type, index) {
+      return allTypes.indexOf(type) === index;
+    });
   }
 
-  #generateDessertAttributeMarkup(item) {
-    if (!item.dessertIncluded) {
-      return "";
-    }
-    // todo refer dessert item data
-    return `
-    <li class="item-attribute">
-      <i class="icon ph ph-cookie"></i>
-      <span>Dessert Power-Up</span>
-    </li>
-    `;
+  #getIconNameForItemType(itemType) {
+    const typeIconMap = new Map();
+    typeIconMap.set("burger", "ph-hamburger");
+    typeIconMap.set("fingerfood", "ph-popcorn");
+    typeIconMap.set("salad", "ph-carrot");
+    typeIconMap.set("dessert", "ph-cookie");
+    typeIconMap.set("drink", "ph-beer-bottle");
+
+    return typeIconMap.get(itemType);
   }
 
-  #generateDrinkAttributeMarkup(item) {
-    if (!item.drinkIncluded) {
-      return "";
-    }
-    // todo refer drink item data
-    return `
-    <li class="item-attribute">
-      <i class="icon ph ph-beer-bottle"></i>
-      <span>Drink Energizer</span>
-    </li>
-    `;
+  #getPositionNameForItemType(itemType) {
+    const typeNameMap = new Map();
+    typeNameMap.set("burger", "Hero Burger");
+    typeNameMap.set("fingerfood", "Sidekick Fingerfood");
+    typeNameMap.set("salad", "Salad");
+    typeNameMap.set("dessert", "Dessert");
+    typeNameMap.set("drink", "Drink");
+
+    return typeNameMap.get(itemType);
+  }
+
+  #calculateMinimalMenuPrice(item) {
+    return (
+      item.price +
+      extractMinimalItemPrice(item.secondPosition) +
+      extractMinimalItemPrice(item.thirdPosition) +
+      extractMinimalItemPrice(item.fourthPosition) +
+      extractMinimalItemPrice(item.fifthPosition)
+    );
   }
 }
 
