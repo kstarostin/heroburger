@@ -11,6 +11,7 @@
       rgba(34, 34, 34, 0.2)
     ),
     url(../img/hero/hero-2688.webp);
+  background-position: center center;
   background-size: cover;
   color: #fff;
 }
@@ -55,4 +56,67 @@
 .hero-name {
   color: #d24347;
   font-weight: 700;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+/* 1rem = 1em = 16px */
+
+/************************************/
+/* BELOW 1920 px (Full HD desktops) */
+/************************************/
+@media (max-width: 120em) {
+  .hero {
+    max-width: 140rem;
+    gap: 4.8rem;
+  }
+}
+
+/***********************/
+/* BELOW 1600 px (HD+) */
+/***********************/
+@media (max-width: 100em) {
+}
+
+/************************************/
+/* BELOW 1344 px (Smaller desktops) */
+/************************************/
+@media (max-width: 84em) {
+  .hero {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+/*************************************/
+/* BELOW 1200 px (Landscape tablets) */
+/*************************************/
+@media (max-width: 75em) {
+}
+
+/***********************************/
+/* BELOW 944 px (Portrait tablets) */
+/***********************************/
+@media (max-width: 59em) {
+  .hero {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+/*********************************/
+/* BELOW 704px (Smaller tablets) */
+/*********************************/
+@media (max-width: 44em) {
+  .section-hero {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(34, 34, 34, 0.9),
+        rgba(34, 34, 34, 0.6)
+      ),
+      url(../img/hero/hero-2688.webp);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
 }

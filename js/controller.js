@@ -37,7 +37,7 @@ window.onload = () => {
   heroMonthElement.textContent = currentMonth;
 };
 
-const controlNavLinks = function (link, event) {
+const controlNavLinks = function (headerEl, link, event) {
   event.preventDefault();
   const href = link.getAttribute("href");
 
@@ -59,9 +59,16 @@ const controlNavLinks = function (link, event) {
     });
   }
   // close mobile nav
-  // if (link.classList.contains("main-nav-link")) {
-  //   headerEl.classList.toggle("nav-open");
-  // }
+  if (
+    link.classList.contains("main-nav-link") ||
+    link.classList.contains("btn-header-action")
+  ) {
+    controlMobileNavToggle(headerEl);
+  }
+};
+
+const controlMobileNavToggle = function (headerEl) {
+  headerEl.classList.toggle("nav-open");
 };
 
 const controlModalClose = function (modal, overlay) {
@@ -90,6 +97,7 @@ const init = function () {
   sectionDrinksView.render(model.getDrinks());
 
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
+  headerNavLinkView.addHandlerMobileNav(controlMobileNavToggle);
   sectionHeroView.addHandlerNavigateToItems(controlNavLinks);
 
   itemInfoModalView.addHandlerRender(controlItemInfoModal);

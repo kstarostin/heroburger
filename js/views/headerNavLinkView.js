@@ -9,10 +9,26 @@ export class HeaderNavLinkView extends View {
       this._parentElement.querySelector(".header-logo-link"),
     ];
     linksToHandle.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        handler(link, e);
-      });
+      link.addEventListener(
+        "click",
+        function (e) {
+          handler(this._parentElement, link, e);
+        }.bind(this),
+        false
+      );
     });
+  }
+
+  addHandlerMobileNav(handler) {
+    const btnNavElement = document.querySelector(".btn-mobile-nav");
+
+    btnNavElement.addEventListener(
+      "click",
+      function () {
+        handler(this._parentElement);
+      }.bind(this),
+      false
+    );
   }
 }
 

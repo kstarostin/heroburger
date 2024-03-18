@@ -34,8 +34,8 @@ Secondary: #d24347
 - Accents:
 - Greys:
 #767676 (lightest grey allowed on #fff)
-#555
 #333
+#1e1e20
 
 --- 05 SHADOWS
 
@@ -194,4 +194,41 @@ body {
 .link:active {
   color: #932f32;
   /* border-bottom: 1px solid transparent; */
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+/* 1rem = 1em = 16px */
+
+/************************************/
+/* BELOW 1920 px (Full HD desktops) */
+/************************************/
+@media (max-width: 120em) {
+}
+
+/***********************/
+/* BELOW 1600 px (HD+) */
+/***********************/
+@media (max-width: 100em) {
+  html {
+    /* 9px / 16px */
+    font-size: 56.25%;
+  }
+}
+
+/************************************/
+/* BELOW 1344 px (Smaller desktops) */
+/************************************/
+@media (max-width: 84em) {
+}
+
+/*************************************/
+/* BELOW 1200 px (Landscape tablets) */
+/*************************************/
+@media (max-width: 75em) {
+  html {
+    /* 8px / 16px */
+    font-size: 50%;
+  }
 }
