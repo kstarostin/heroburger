@@ -1,0 +1,25 @@
+.side-panel-body {
+  margin: 0.4rem 0.4rem 0 0;
+  position: fixed;
+  right: 0;
+  top: 9.6rem;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+
+  max-width: 25vw;
+  min-width: 20vw;
+
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  transition: all 0.5s 0.2s;
+}
+
+.side-panel-list {
+  list-style: none;
+}
+
+.side-panel-list-item {
+  padding: 2.4rem;
+  font-size: 2rem;
+}

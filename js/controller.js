@@ -1,4 +1,5 @@
 import * as model from "./model.js";
+import sectionHeroView from "./views/sectionHeroView.js";
 import sectionMenusView from "./views/sectionMenusView.js";
 import sectionBurgersView from "./views/sectionBurgersView.js";
 import sectionFingerfoodView from "./views/sectionFingerfoodView.js";
@@ -6,11 +7,11 @@ import sectionSaladsView from "./views/sectionSaladsView.js";
 import sectionDessertsView from "./views/sectionDessertsView.js";
 import sectionDrinksView from "./views/sectionDrinksView.js";
 import headerNavLinkView from "./views/headerNavLinkView.js";
-import sectionHeroView from "./views/sectionHeroView.js";
 import itemInfoModalView from "./views/itemInfoModalView.js";
+import savedItemsView from "./views/savedItemsView.js";
+import miniCartView from "./views/miniCartView.js";
 
 const sectionHeroElement = document.querySelector(".section-hero");
-const heroMonthElement = document.querySelector("#hero-month");
 
 // Sticky navigation
 const observer = new IntersectionObserver(
@@ -31,13 +32,36 @@ const observer = new IntersectionObserver(
 );
 observer.observe(sectionHeroElement);
 
-// Set current month in the hero header
-window.onload = () => {
+const controlSectionHeroRender = function () {
   const currentMonth = new Date().toLocaleString("en", { month: "long" });
-  heroMonthElement.textContent = currentMonth;
+  sectionHeroView.render(currentMonth);
 };
 
-const controlNavLinks = function (headerEl, link, event) {
+const controlSectionMenusRender = function () {
+  sectionMenusView.render(model.getMenus());
+};
+
+const controlSectionBurgersRender = function () {
+  sectionBurgersView.render(model.getBurgers());
+};
+
+const controlSectionFingerfoodRender = function () {
+  sectionFingerfoodView.render(model.getFingerfood());
+};
+
+const controlSectionSaladsRender = function () {
+  sectionSaladsView.render(model.getSalads());
+};
+
+const controlSectionDessertsRender = function () {
+  sectionDessertsView.render(model.getDesserts());
+};
+
+const controlSectionDrinksRender = function () {
+  sectionDrinksView.render(model.getDrinks());
+};
+
+const controlNavLinks = function (link, headerEl, event) {
   event.preventDefault();
   const href = link.getAttribute("href");
 
@@ -60,8 +84,9 @@ const controlNavLinks = function (headerEl, link, event) {
   }
   // close mobile nav
   if (
-    link.classList.contains("main-nav-link") ||
-    link.classList.contains("btn-header-action")
+    headerEl &&
+    (link.classList.contains("main-nav-link") ||
+      link.classList.contains("btn-header-action"))
   ) {
     controlMobileNavToggle(headerEl);
   }
@@ -101,35 +126,67 @@ const controlSaveItem = function (view, item) {
 
   // update view
   view.update([...model.getMenus(), ...model.getAllSingleItems()]);
+};
 
-  // render saved view
-  // savedView.render(model.state.saved);
+const controlOpenSavedItemsPanel = function () {
+  savedItemsView.render(model.getSavedItems());
+};
+
+const controlCloseSavedItemsPanel = function () {
+  savedItemsView.hide();
+};
+
+const controlOpenMiniCartPanel = function () {
+  miniCartView.render(["cart item 1", "cart item 2"]);
+};
+
+const controlCloseMiniCartPanel = function () {
+  miniCartView.hide();
 };
 
 const init = function () {
-  sectionMenusView.render(model.getMenus());
-  sectionMenusView.addHandlerSave(controlSaveItem);
-
-  sectionBurgersView.render(model.getBurgers());
-  sectionBurgersView.addHandlerSave(controlSaveItem);
-
-  sectionFingerfoodView.render(model.getFingerfood());
-  sectionFingerfoodView.addHandlerSave(controlSaveItem);
-
-  sectionSaladsView.render(model.getSalads());
-  sectionSaladsView.addHandlerSave(controlSaveItem);
-
-  sectionDessertsView.render(model.getDesserts());
-  sectionDessertsView.addHandlerSave(controlSaveItem);
-
-  sectionDrinksView.render(model.getDrinks());
-  sectionDrinksView.addHandlerSave(controlSaveItem);
-
+  // Header view
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
   headerNavLinkView.addHandlerMobileNav(controlMobileNavToggle);
+
+  // Hero view
+  sectionHeroView.addHandlerRender(controlSectionHeroRender);
   sectionHeroView.addHandlerNavigateToItems(controlNavLinks);
 
+  // Menus section view
+  sectionMenusView.addHandlerRender(controlSectionMenusRender);
+  sectionMenusView.addHandlerSave(controlSaveItem);
+
+  // Burgers section view
+  sectionBurgersView.addHandlerRender(controlSectionBurgersRender);
+  sectionBurgersView.addHandlerSave(controlSaveItem);
+
+  // Fingerfood section view
+  sectionFingerfoodView.addHandlerRender(controlSectionFingerfoodRender);
+  sectionFingerfoodView.addHandlerSave(controlSaveItem);
+
+  // Salads section view
+  sectionSaladsView.addHandlerRender(controlSectionSaladsRender);
+  sectionSaladsView.addHandlerSave(controlSaveItem);
+
+  // Desserts section view
+  sectionDessertsView.addHandlerRender(controlSectionDessertsRender);
+  sectionDessertsView.addHandlerSave(controlSaveItem);
+
+  // Drinks section view
+  sectionDrinksView.addHandlerRender(controlSectionDrinksRender);
+  sectionDrinksView.addHandlerSave(controlSaveItem);
+
+  // Modal view
   itemInfoModalView.addHandlerRender(controlItemInfoModal);
   itemInfoModalView.addHandlerCloseModal(controlModalClose);
+
+  // Saved items panel view
+  savedItemsView.addHandlerRender(controlOpenSavedItemsPanel);
+  savedItemsView.addHandlerClose(controlCloseSavedItemsPanel);
+
+  // Cart panel view
+  miniCartView.addHandlerRender(controlOpenMiniCartPanel);
+  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 };
 init();

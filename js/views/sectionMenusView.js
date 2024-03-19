@@ -13,6 +13,7 @@ class SectionMenusView extends SectionItemsView {
 
   _generateMarkup() {
     return this._data
+      .filter((item) => item.type === this._itemType)
       .map((item) => {
         return this._generateItemMarkup(item);
       })
@@ -90,9 +91,15 @@ class SectionMenusView extends SectionItemsView {
     if (!positionItems || positionItems.length === 0) {
       return "";
     }
-    const uniqueTypes = this.#extractUniquePositionsTypes(positionItems);
-    const iconName = this.#getIconNameForItemType(uniqueTypes[0]);
-    const positionName = this.#getPositionNameForItemType(uniqueTypes[0]);
+    const type =
+      positionItems.length === 1
+        ? positionItems[0].type
+        : this.#extractUniquePositionsTypes(positionItems)[0];
+    const iconName = this.#getIconNameForItemType(type);
+    const positionName =
+      positionItems.length === 1
+        ? positionItems[0].name
+        : this.#getPositionNameForItemType(type);
     return `
       <li class="item-attribute">
         <i class="icon ph ${iconName}"></i>

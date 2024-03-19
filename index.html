@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/section.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/panel.css" />
 
     <script
       type="module"
@@ -62,16 +63,21 @@
           </ul>
         </nav>
         <div class="header-actions">
-          <button class="btn-header btn-header-action">
+          <button class="btn-header btn-header-panel-saved">
             <i class="ph-fill ph-heart"> </i>
           </button>
-          <button class="btn-header btn-header-action">
+          <button class="btn-header btn-header-panel-cart">
             <i class="ph-fill ph-shopping-cart-simple"></i>
           </button>
           <button class="btn-header btn-mobile-nav">
             <i class="ph ph-list icon-mobile-open"></i>
             <i class="ph ph-x icon-mobile-close"></i>
           </button>
+        </div>
+        <div class="side-panel">
+          <div class="side-panel-body hidden">
+            <!-- Filled by controller -->
+          </div>
         </div>
       </div>
     </header>
@@ -80,7 +86,9 @@
       <section id="hero" class="section-hero">
         <div class="hero">
           <div class="hero-text-box">
-            <h1 id="hero-month" class="heading-primary">January</h1>
+            <h1 id="hero-month" class="heading-primary">
+              <!-- Filled by controller -->
+            </h1>
             <h2 class="heading-secondary">
               Introducing Hero Burger of this month
             </h2>

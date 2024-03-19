@@ -12,7 +12,7 @@ export class HeaderNavLinkView extends View {
       link.addEventListener(
         "click",
         function (e) {
-          handler(this._parentElement, link, e);
+          handler(link, this._parentElement, e);
         }.bind(this),
         false
       );

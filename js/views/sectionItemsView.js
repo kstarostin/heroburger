@@ -5,6 +5,10 @@ export default class SectionItemsView extends View {
   _parentElement;
   _itemType;
 
+  addHandlerRender(handler) {
+    window.addEventListener("load", handler);
+  }
+
   addHandlerSave(handler) {
     this._parentElement.addEventListener(
       "click",

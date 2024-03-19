@@ -35,6 +35,7 @@ export const getMenus = function () {
     // map rest data to item
     return {
       id: menu.id,
+      type: "menu",
       name: menu.name,
       description: burger.description,
       ingredients: burger.ingredients,
@@ -97,16 +98,24 @@ export const getItemList = function () {
   return [...getMenus(), ...getAllSingleItems()];
 };
 
+export const getSavedItems = function () {
+  return state.saved.map((id) => _getItemById(id));
+};
+
 const _mapPositionItems = function (positionItemIds) {
   if (!positionItemIds && positionItemIds.length === 0) {
     return [];
   }
   return positionItemIds.map((id) => {
-    return _getItemById(id);
+    return _getSingleItemById(id);
   });
 };
 
 const _getItemById = function (id) {
+  return getItemList().find((item) => item.id === id);
+};
+
+const _getSingleItemById = function (id) {
   return getAllSingleItems().find((item) => item.id === id);
 };
 
