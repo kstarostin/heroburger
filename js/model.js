@@ -99,7 +99,11 @@ export const getItemList = function () {
 };
 
 export const getSavedItems = function () {
-  return state.saved.map((id) => _getItemById(id));
+  return state.saved.map((id) => getItemById(id));
+};
+
+export const getItemById = function (id) {
+  return getItemList().find((item) => item.id === id);
 };
 
 const _mapPositionItems = function (positionItemIds) {
@@ -109,10 +113,6 @@ const _mapPositionItems = function (positionItemIds) {
   return positionItemIds.map((id) => {
     return _getSingleItemById(id);
   });
-};
-
-const _getItemById = function (id) {
-  return getItemList().find((item) => item.id === id);
 };
 
 const _getSingleItemById = function (id) {

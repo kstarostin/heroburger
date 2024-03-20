@@ -11,6 +11,15 @@ import itemInfoModalView from "./views/itemInfoModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
 
+const sectionItemsViewList = [
+  sectionMenusView,
+  sectionBurgersView,
+  sectionFingerfoodView,
+  sectionSaladsView,
+  sectionDessertsView,
+  sectionDrinksView,
+];
+
 const sectionHeroElement = document.querySelector(".section-hero");
 
 // Sticky navigation
@@ -74,13 +83,7 @@ const controlNavLinks = function (link, headerEl, event) {
   }
   // scroll to other sections
   if (href !== "#" && href.startsWith("#")) {
-    const sectionEl = document.querySelector(href);
-    if (!sectionEl) {
-      return;
-    }
-    sectionEl.scrollIntoView({
-      behavior: "smooth",
-    });
+    scrollToElement(href);
   }
   // close mobile nav
   if (
@@ -90,6 +93,16 @@ const controlNavLinks = function (link, headerEl, event) {
   ) {
     controlMobileNavToggle(headerEl);
   }
+};
+
+const scrollToElement = function (id) {
+  const sectionEl = document.querySelector(id);
+  if (!sectionEl) {
+    return;
+  }
+  sectionEl.scrollIntoView({
+    behavior: "smooth",
+  });
 };
 
 const controlMobileNavToggle = function (headerEl) {
@@ -130,18 +143,48 @@ const controlSaveItem = function (view, item) {
 
 const controlOpenSavedItemsPanel = function () {
   savedItemsView.render(model.getSavedItems());
+
+  savedItemsView.addHandlerNavigateItem(controlNavigateSavedItem);
+  savedItemsView.addHandlerRemoveItem(controlRemoveSavedItem);
 };
 
 const controlCloseSavedItemsPanel = function () {
   savedItemsView.hide();
 };
 
+const controlNavigateSavedItem = function (id) {
+  // close panel
+  controlCloseSavedItemsPanel();
+  // scroll to the item
+  scrollToElement(`#${id}`);
+};
+
+const controlRemoveSavedItem = function (id) {
+  // load item
+  const item = model.getItemById(id);
+  // remove item from saved list
+  model.unsaveItem(item);
+  // re-render saved items panel
+  controlOpenSavedItemsPanel();
+  // update sections view
+  getSectionItemsViewByType(item.type).update([
+    ...model.getMenus(),
+    ...model.getAllSingleItems(),
+  ]);
+};
+
 const controlOpenMiniCartPanel = function () {
   miniCartView.render(["cart item 1", "cart item 2"]);
+
+  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 };
 
 const controlCloseMiniCartPanel = function () {
   miniCartView.hide();
+};
+
+const getSectionItemsViewByType = function (type) {
+  return sectionItemsViewList.find((view) => view._itemType === type);
 };
 
 const init = function () {
@@ -187,6 +230,5 @@ const init = function () {
 
   // Cart panel view
   miniCartView.addHandlerRender(controlOpenMiniCartPanel);
-  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 };
 init();

@@ -10,6 +10,14 @@ class MiniCartView extends SidePanelView {
       </li>
     `;
   }
+
+  _generatePanelActions() {
+    return `
+      <div class="side-panel-actions">
+        <button class="btn btn-primary">Checkout</button>
+      </div>
+    `;
+  }
 }
 
 export default new MiniCartView();
