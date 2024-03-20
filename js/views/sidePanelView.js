@@ -41,23 +41,35 @@ export default class SidePanelView extends View {
   }
 
   _generateMarkup() {
-    if (!this._data || this._data.length === 0) {
-      return this.#generateEmptyListMarkup();
-    }
+    const items = this._extractItems(this._data);
     return `
       <div class="side-panel-body hidden">
         <div class="side-panel-content">
-          <ul class="side-panel-list">
-            ${this._data.map((item) => this._generateItemMarkup(item)).join("")}
-          </ul>
-          ${this._generatePanelActions()}
+          ${this.#generateListMarkup(items)}
+          ${this._generatePanelBottomMarkup(this._data)}
+          ${this._generatePanelActions(this._data)}
         </div>
       </div>
     `;
   }
 
-  _generatePanelActions() {
+  _generatePanelBottomMarkup(data) {
     return "";
+  }
+
+  _generatePanelActions(data) {
+    return "";
+  }
+
+  #generateListMarkup(items) {
+    if (items.length === 0) {
+      return this.#generateEmptyListMarkup();
+    }
+    return `
+      <ul class="side-panel-list">
+        ${items.map((item) => this._generateItemMarkup(item)).join("")}
+      </ul>
+    `;
   }
 
   #getSidePanelBody() {
@@ -66,18 +78,15 @@ export default class SidePanelView extends View {
 
   #generateEmptyListMarkup() {
     return `
-      <div class="side-panel-body hidden">
-        <div class="side-panel-content">
-          <ul class="side-panel-list">
-            <li class="side-panel-list-item">
-              <div class="side-panel-list-item-content">
-                <p class="side-panel-item-text">No items</p>
-              </div>
-            </li>
-          </ul>
-          ${this._generatePanelActions()}
-        </div>
-      </div>
+      <ul class="side-panel-list">
+        <li class="side-panel-list-item">
+          <div class="side-panel-list-item-content">
+            <div class="side-panel-item-textbox">
+              <p class="side-panel-item-textbox-entry">No items</p>
+            </div>
+          </div>
+        </li>
+      </ul>
     `;
   }
 }

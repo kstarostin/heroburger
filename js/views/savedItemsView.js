@@ -30,6 +30,10 @@ class SavedItemsView extends SidePanelView {
     });
   }
 
+  _extractItems(data) {
+    return data ? data : [];
+  }
+
   _generateItemMarkup(item) {
     return `
       <li class="side-panel-list-item">
@@ -49,7 +53,9 @@ class SavedItemsView extends SidePanelView {
               alt="Picture of ${item.name} in saved items list"
             />
           </picture>
-          <p class="side-panel-item-text">${item.name}</p>
+          <div class="side-panel-item-textbox">
+            <p class="side-panel-item-textbox-entry">${item.name}</p>
+          </div>
         </div>
         <button class="btn btn-panel-remove" data-item-id="${item.id}">
           <i class="icon ph ph-trash-simple"></i>

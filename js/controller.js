@@ -131,19 +131,24 @@ const controlItemInfoModal = function (itemId, modal, overlay) {
   itemInfoModalView.render(item);
 };
 
-const controlSaveItem = function (view, item) {
+const controlSaveItem = function (view, itemId) {
   // save/unsave item
   if (
     model.state.saved.length === 0 ||
-    !model.state.saved.some((id) => item.id === id)
+    !model.state.saved.some((id) => itemId === id)
   ) {
-    model.saveItem(item);
+    model.saveItem(itemId);
   } else {
-    model.unsaveItem(item);
+    model.unsaveItem(itemId);
   }
 
   // update view
   view.update([...model.getMenus(), ...model.getAllSingleItems()]);
+};
+
+const controlAddToCart = function (itemId) {
+  const item = model.getItemById(itemId);
+  model.addToCart(item);
 };
 
 const controlOpenSavedItemsPanel = function () {
@@ -168,7 +173,7 @@ const controlRemoveSavedItem = function (id) {
   // load item
   const item = model.getItemById(id);
   // remove item from saved list
-  model.unsaveItem(item);
+  model.unsaveItem(item.id);
   // re-render saved items panel
   controlOpenSavedItemsPanel();
   // update sections view
@@ -179,13 +184,20 @@ const controlRemoveSavedItem = function (id) {
 };
 
 const controlOpenMiniCartPanel = function () {
-  miniCartView.render(["cart item 1", "cart item 2"]);
+  miniCartView.render(model.getCart());
 
-  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
+  miniCartView.addHandlerRemoveCartEntry(controlRemoveCartEntry);
 };
 
 const controlCloseMiniCartPanel = function () {
   miniCartView.hide();
+};
+
+const controlRemoveCartEntry = function (entryNumber) {
+  // remove entry from the state
+  model.removeCartEntry(entryNumber);
+  // re-render cart panel
+  controlOpenMiniCartPanel();
 };
 
 const getSectionItemsViewByType = function (type) {
@@ -208,22 +220,27 @@ const init = function () {
   // Burgers section view
   sectionBurgersView.addHandlerRender(controlSectionBurgersRender);
   sectionBurgersView.addHandlerSave(controlSaveItem);
+  sectionBurgersView.addHandlerAddToCart(controlAddToCart);
 
   // Fingerfood section view
   sectionFingerfoodView.addHandlerRender(controlSectionFingerfoodRender);
   sectionFingerfoodView.addHandlerSave(controlSaveItem);
+  sectionFingerfoodView.addHandlerAddToCart(controlAddToCart);
 
   // Salads section view
   sectionSaladsView.addHandlerRender(controlSectionSaladsRender);
   sectionSaladsView.addHandlerSave(controlSaveItem);
+  sectionSaladsView.addHandlerAddToCart(controlAddToCart);
 
   // Desserts section view
   sectionDessertsView.addHandlerRender(controlSectionDessertsRender);
   sectionDessertsView.addHandlerSave(controlSaveItem);
+  sectionDessertsView.addHandlerAddToCart(controlAddToCart);
 
   // Drinks section view
   sectionDrinksView.addHandlerRender(controlSectionDrinksRender);
   sectionDrinksView.addHandlerSave(controlSaveItem);
+  sectionDrinksView.addHandlerAddToCart(controlAddToCart);
 
   // Modal view
   itemInfoModalView.addHandlerRender(controlItemInfoModal);
@@ -235,5 +252,6 @@ const init = function () {
 
   // Cart panel view
   miniCartView.addHandlerRender(controlOpenMiniCartPanel);
+  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 };
 init();

@@ -18,10 +18,21 @@ export default class SectionItemsView extends View {
         if (!btn || !item) {
           return;
         }
-        handler(this, item);
+        handler(this, item.id);
       }.bind(this),
       false
     );
+  }
+
+  addHandlerAddToCart(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn-primary");
+      const item = e.target.closest(".item");
+      if (!btn || !item) {
+        return;
+      }
+      handler(item.id);
+    });
   }
 
   _generateMarkup() {

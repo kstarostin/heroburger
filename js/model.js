@@ -1,20 +1,70 @@
 import { data } from "./data.js";
 
 export const state = {
-  cart: {},
+  cart: {
+    entries: [],
+    totalPrice: 0,
+  },
   saved: [],
 };
 
-export const saveItem = function (item) {
-  state.saved.push(item.id);
+export const addToCart = function (item) {
+  const cart = state.cart;
+
+  const cartEntry = createCartEntry(item, cart.entries.length);
+  cart.entries.push(cartEntry);
+  cart.totalPrice = calculateCartTotalPrice(cart);
+
+  state.cart = cart;
+  persistCart();
+};
+
+export const removeCartEntry = function (entryNumber) {
+  const cart = state.cart;
+
+  const index = cart.entries.findIndex(
+    (entry) => entry.entryNumber === +entryNumber
+  );
+  cart.entries.splice(index, 1);
+
+  cart.totalPrice = calculateCartTotalPrice(cart);
+
+  persistCart();
+};
+
+const createCartEntry = function (item, entryNumber) {
+  return {
+    entryNumber: entryNumber,
+    item: item,
+    price: item.price,
+  };
+};
+
+const calculateCartTotalPrice = function (cart) {
+  const total = cart.entries
+    .map((entry) => entry.price)
+    .reduce((partialSum, a) => partialSum + a, 0);
+  return total;
+};
+
+const persistCart = function () {
+  localStorage.setItem("cart", JSON.stringify(state.cart));
+};
+
+export const saveItem = function (itemId) {
+  state.saved.push(itemId);
+
+  const item = getItemById(itemId);
   item.saved = true;
 
   persistSavedItems();
 };
 
-export const unsaveItem = function (item) {
-  const index = state.saved.findIndex((id) => id === item.id);
+export const unsaveItem = function (itemId) {
+  const index = state.saved.findIndex((id) => id === itemId);
   state.saved.splice(index, 1);
+
+  const item = getItemById(itemId);
   item.saved = false;
 
   persistSavedItems();
@@ -102,6 +152,10 @@ export const getSavedItems = function () {
   return state.saved.map((id) => getItemById(id));
 };
 
+export const getCart = function () {
+  return state.cart;
+};
+
 export const getItemById = function (id) {
   return getItemList().find((item) => item.id === id);
 };
@@ -124,9 +178,13 @@ const _getBurgerById = function (id) {
 };
 
 const initState = function () {
-  const storage = localStorage.getItem("saved");
-  if (storage) {
-    state.saved = JSON.parse(storage);
+  const saved = localStorage.getItem("saved");
+  if (saved) {
+    state.saved = JSON.parse(saved);
+  }
+  const cart = localStorage.getItem("cart");
+  if (cart) {
+    state.cart = JSON.parse(cart);
   }
 };
 initState();
