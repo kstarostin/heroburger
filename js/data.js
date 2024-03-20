@@ -131,8 +131,8 @@ export const data = {
       tags: ["chicken"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-mighty-chickenator-256-c.jpg",
+          webp: "/img/burgers/256/the-mighty-chickenator-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-mighty-chickenator-700-c.jpg",
@@ -180,8 +180,8 @@ export const data = {
       tags: ["beef"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-legendary-hamburger-protector-256-c.jpg",
+          webp: "/img/burgers/256/the-legendary-hamburger-protector-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-legendary-hamburger-protector-700-c.jpg",
@@ -229,8 +229,8 @@ export const data = {
       tags: ["vegan"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-incredible-vegan-vigilante-256-c.jpg",
+          webp: "/img/burgers/256/the-incredible-vegan-vigilante-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-incredible-vegan-vigilante-700-c.jpg",
@@ -277,8 +277,8 @@ export const data = {
       tags: ["beef"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-classic-cheese-defender-256-c.jpg",
+          webp: "/img/burgers/256/the-classic-cheese-defender-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-classic-cheese-defender-700-c.jpg",
@@ -325,8 +325,8 @@ export const data = {
       tags: ["beef"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-epic-angus-titan-256-c.jpg",
+          webp: "/img/burgers/256/the-epic-angus-titan-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-epic-angus-titan-700-c.jpg",
@@ -372,8 +372,8 @@ export const data = {
       tags: ["chicken"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-supreme-chicken-fighter-256-c.jpg",
+          webp: "/img/burgers/256/the-supreme-chicken-fighter-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-supreme-chicken-fighter-700-c.jpg",
@@ -421,8 +421,8 @@ export const data = {
       tags: ["beef"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-amazing-burger-man-256-c.jpg",
+          webp: "/img/burgers/256/the-amazing-burger-man-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-amazing-burger-man-700-c.jpg",
@@ -468,8 +468,8 @@ export const data = {
       tags: ["beef", "spicy"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-fiery-bbq-bringer-256-c.jpg",
+          webp: "/img/burgers/256/the-fiery-bbq-bringer-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-fiery-bbq-bringer-700-c.jpg",
@@ -515,8 +515,8 @@ export const data = {
       tags: ["beef"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-supreme-baconator-knight-256-c.jpg",
+          webp: "/img/burgers/256/the-supreme-baconator-knight-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-supreme-baconator-knight-700-c.jpg",
@@ -562,8 +562,8 @@ export const data = {
       tags: ["beef", "spicy"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/burgers/256/the-infernal-chili-avenger-256-c.jpg",
+          webp: "/img/burgers/256/the-infernal-chili-avenger-256.webp",
         },
         medium: {
           jpg: "/img/burgers/700/the-infernal-chili-avenger-700-c.jpg",
@@ -602,8 +602,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/fingerfood/256/crispy-potato-pal-256-c.jpg",
+          webp: "/img/fingerfood/256/crispy-potato-pal-256.webp",
         },
         medium: {
           jpg: "/img/fingerfood/700/crispy-potato-pal-700-c.jpg",
@@ -642,8 +642,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/fingerfood/256/winged-master-256-c.jpg",
+          webp: "/img/fingerfood/256/winged-master-256.webp",
         },
         medium: {
           jpg: "/img/fingerfood/700/winged-master-700-c.jpg",
@@ -682,8 +682,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/fingerfood/256/nugget-companion-256-c.jpg",
+          webp: "/img/fingerfood/256/nugget-companion-256.webp",
         },
         medium: {
           jpg: "/img/fingerfood/700/nugget-companion-700-c.jpg",
@@ -722,8 +722,8 @@ export const data = {
       tags: ["vegan"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/fingerfood/256/cruelty-free-nugget-256-c.jpg",
+          webp: "/img/fingerfood/256/cruelty-free-nugget-256.webp",
         },
         medium: {
           jpg: "/img/fingerfood/700/cruelty-free-nugget-700-c.jpg",
@@ -762,8 +762,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/fingerfood/256/ringed-renegate-256-c.jpg",
+          webp: "/img/fingerfood/256/ringed-renegate-256.webp",
         },
         medium: {
           jpg: "/img/fingerfood/700/ringed-renegate-700-c.jpg",
@@ -809,8 +809,8 @@ export const data = {
       tags: ["vegan"],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/salads/256/plant-powered-harvest-256-c.jpg",
+          webp: "/img/salads/256/plant-powered-harvest-256.webp",
         },
         medium: {
           jpg: "/img/salads/700/plant-powered-harvest-700-c.jpg",
@@ -855,8 +855,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/salads/256/caesars-conqueror-crisp-256-c.jpg",
+          webp: "/img/salads/256/caesars-conqueror-crisp-256.webp",
         },
         medium: {
           jpg: "/img/salads/700/caesars-conqueror-crisp-700-c.jpg",
@@ -901,8 +901,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/salads/256/chicken-stamina-salad-256-c.jpg",
+          webp: "/img/salads/256/chicken-stamina-salad-256.webp",
         },
         medium: {
           jpg: "/img/salads/700/chicken-stamina-salad-700-c.jpg",
@@ -941,8 +941,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/desserts/256/the-fudgy-power-bolt-256-c.jpg",
+          webp: "/img/desserts/256/the-fudgy-power-bolt-256.webp",
         },
         medium: {
           jpg: "/img/desserts/700/the-fudgy-power-bolt-700-c.jpg",
@@ -981,8 +981,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/desserts/256/the-creamy-fortress-guardian-256-c.jpg",
+          webp: "/img/desserts/256/the-creamy-fortress-guardian-256.webp",
         },
         medium: {
           jpg: "/img/desserts/700/the-creamy-fortress-guardian-700-c.jpg",
@@ -1021,8 +1021,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/desserts/256/the-choco-chip-dynamo-256-c.jpg",
+          webp: "/img/desserts/256/the-choco-chip-dynamo-256.webp",
         },
         medium: {
           jpg: "/img/desserts/700/the-choco-chip-dynamo-700-c.jpg",
@@ -1061,8 +1061,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/desserts/256/the-mighty-berry-burst-256-c.jpg",
+          webp: "/img/desserts/256/the-mighty-berry-burst-256.webp",
         },
         medium: {
           jpg: "/img/desserts/700/the-mighty-berry-burst-700-c.jpg",
@@ -1100,8 +1100,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/drinks/256/sparkling-water-256-c.jpg",
+          webp: "/img/drinks/256/sparkling-water-256.webp",
         },
         medium: {
           jpg: "/img/drinks/700/sparkling-water-700-c.jpg",
@@ -1139,8 +1139,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/drinks/256/soda-256-c.jpg",
+          webp: "/img/drinks/256/soda-256.webp",
         },
         medium: {
           jpg: "/img/drinks/700/soda-700-c.jpg",
@@ -1178,8 +1178,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/drinks/256/juice-256-c.jpg",
+          webp: "/img/drinks/256/juice-256.webp",
         },
         medium: {
           jpg: "/img/drinks/700/juice-700-c.jpg",
@@ -1217,8 +1217,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/drinks/256/beer-256-c.jpg",
+          webp: "/img/drinks/256/beer-256.webp",
         },
         medium: {
           jpg: "/img/drinks/700/beer-700-c.jpg",
@@ -1256,8 +1256,8 @@ export const data = {
       tags: [],
       image: {
         small: {
-          jpg: "",
-          webp: "",
+          jpg: "/img/drinks/256/milkshake-256-c.jpg",
+          webp: "/img/drinks/256/milkshake-256.webp",
         },
         medium: {
           jpg: "/img/drinks/700/milkshake-700-c.jpg",

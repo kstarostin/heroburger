@@ -36,15 +36,15 @@ class SavedItemsView extends SidePanelView {
         <div class="side-panel-list-item-content side-panel-list-item-nav-link" data-item-id="${item.id}">
           <picture>
             <source
-              srcset="${item.image.medium.webp}"
+              srcset="${item.image.small.webp}"
               type="image/webp"
             />
             <source
-              srcset="${item.image.medium.jpg}"
+              srcset="${item.image.small.jpg}"
               type="image/jpg"
             />
             <img
-              src="${item.image.medium.webp}"
+              src="${item.image.small.webp}"
               class="side-panel-item-img"
               alt="Picture of ${item.name} in saved items list"
             />
