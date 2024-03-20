@@ -17,7 +17,6 @@ class SavedItemsView extends SidePanelView {
       .querySelectorAll(".side-panel-list-item-nav-link")
       .forEach((item) => {
         item.addEventListener("click", function (e) {
-          console.log(e);
           handler(item.dataset.itemId);
         });
       });
@@ -57,15 +56,6 @@ class SavedItemsView extends SidePanelView {
         </button>
       </li>
     `;
-  }
-
-  _registerEventHandlers() {
-    // navigate to item
-    // remove item
-  }
-
-  _callHandler(handler) {
-    handler();
   }
 }
 

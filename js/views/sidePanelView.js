@@ -14,11 +14,11 @@ export default class SidePanelView extends View {
     document.body.addEventListener(
       "click",
       function (e) {
-        console.log(this.#getSidePanelBody());
         if (
           (!e.target.closest(".btn-header-panel") ||
             !e.target.closest(".btn-header-panel") === this._actionBtn) &&
-          !e.target.closest(".side-panel-body")
+          !e.target.closest(".side-panel-body") &&
+          this.#getSidePanelBody()
         ) {
           handler();
         }
@@ -33,12 +33,10 @@ export default class SidePanelView extends View {
   }
 
   show() {
-    console.log("show");
     this.#getSidePanelBody().classList.remove("hidden");
   }
 
   hide() {
-    console.log("hide");
     this.#getSidePanelBody().classList.add("hidden");
   }
 

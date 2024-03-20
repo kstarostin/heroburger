@@ -100,7 +100,12 @@ const scrollToElement = function (id) {
   if (!sectionEl) {
     return;
   }
-  sectionEl.scrollIntoView({
+  const headerOffset = 96;
+  const position = sectionEl.getBoundingClientRect().top;
+  const offsetPosition = position + window.scrollY - headerOffset;
+
+  window.scrollTo({
+    top: offsetPosition,
     behavior: "smooth",
   });
 };
