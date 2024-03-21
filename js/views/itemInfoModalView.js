@@ -2,35 +2,6 @@ import ModalView from "./modalView.js";
 import { joinCommaSeparated, formatWeightGramm } from "../helpers.js";
 
 class ItemInfoModalView extends ModalView {
-  addHandlerRender(handler) {
-    window.addEventListener(
-      "load",
-      function () {
-        this.#collectItemsToListen().forEach((item) => {
-          this.#collectLinksToListen(item).forEach((link) => {
-            link.addEventListener(
-              "click",
-              function (e) {
-                e.preventDefault();
-                handler(item.id, this._modal, this._overlay);
-              }.bind(this),
-              false
-            );
-          });
-        });
-      }.bind(this),
-      false
-    );
-  }
-
-  #collectItemsToListen() {
-    return [...document.querySelectorAll(".item")];
-  }
-
-  #collectLinksToListen(item) {
-    return [item.querySelector(".item-info-link"), item.querySelector(".link")];
-  }
-
   _generateMarkup() {
     return `
       ${this.#generateImageMarkup(this._data.image, this._data.name)}

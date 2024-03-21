@@ -35,6 +35,18 @@ export default class SectionItemsView extends View {
     });
   }
 
+  addHandlerOpenModalInfo(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const link = e.target.closest(".item-info-modal-link");
+      const item = e.target.closest(".item");
+      if (!link || !item) {
+        return;
+      }
+      e.preventDefault();
+      handler(item.id);
+    });
+  }
+
   _generateMarkup() {
     return this._data
       .filter((item) => item.type === this._itemType)
@@ -64,7 +76,9 @@ export default class SectionItemsView extends View {
                 alt="Picture of ${item.name} menu item"
               />
             </picture>
-            <a class="item-info-link" data-item-id="${item.id}" href="#">
+            <a class="item-info-link item-info-modal-link" data-item-id="${
+              item.id
+            }" href="#">
               <i class="ph ph-info"></i>
             </a>
           </div>
@@ -120,7 +134,7 @@ export default class SectionItemsView extends View {
     return `
     <p class="item-description">
       ${truncatedDescription}
-      <a class="link" href="#" data-item-id="${item.id}">more</a>
+      <a class="link item-info-modal-link" href="#" data-item-id="${item.id}">more</a>
     </p>
     `;
   }

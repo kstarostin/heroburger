@@ -46,28 +46,28 @@ const controlSectionHeroRender = function () {
   sectionHeroView.render(currentMonth);
 };
 
-const controlSectionMenusRender = function () {
-  sectionMenusView.render(model.getMenus());
+const controlSectionMenusRender = async function () {
+  sectionMenusView.render(await model.getMenus());
 };
 
-const controlSectionBurgersRender = function () {
-  sectionBurgersView.render(model.getBurgers());
+const controlSectionBurgersRender = async function () {
+  sectionBurgersView.render(await model.getBurgers());
 };
 
-const controlSectionFingerfoodRender = function () {
-  sectionFingerfoodView.render(model.getFingerfood());
+const controlSectionFingerfoodRender = async function () {
+  sectionFingerfoodView.render(await model.getFingerfood());
 };
 
-const controlSectionSaladsRender = function () {
-  sectionSaladsView.render(model.getSalads());
+const controlSectionSaladsRender = async function () {
+  sectionSaladsView.render(await model.getSalads());
 };
 
-const controlSectionDessertsRender = function () {
-  sectionDessertsView.render(model.getDesserts());
+const controlSectionDessertsRender = async function () {
+  sectionDessertsView.render(await model.getDesserts());
 };
 
-const controlSectionDrinksRender = function () {
-  sectionDrinksView.render(model.getDrinks());
+const controlSectionDrinksRender = async function () {
+  sectionDrinksView.render(await model.getDrinks());
 };
 
 const controlNavLinks = function (link, headerEl, event) {
@@ -119,40 +119,35 @@ const controlModalClose = function (modal, overlay) {
   overlay.classList.add("hidden");
 };
 
-const controlModalOpen = function (modal, overlay) {
-  modal.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-};
-
-const controlItemInfoModal = function (itemId, modal, overlay) {
-  controlModalOpen(modal, overlay);
-  const item = model.getItemList().filter((item) => item.id === itemId)[0];
+const controlItemInfoModal = async function (itemId) {
+  itemInfoModalView.open();
+  const item = await model.getItemById(itemId);
   console.log(item);
   itemInfoModalView.render(item);
 };
 
-const controlSaveItem = function (view, itemId) {
+const controlSaveItem = async function (view, itemId) {
   // save/unsave item
   if (
     model.state.saved.length === 0 ||
     !model.state.saved.some((id) => itemId === id)
   ) {
-    model.saveItem(itemId);
+    await model.saveItem(itemId);
   } else {
-    model.unsaveItem(itemId);
+    await model.unsaveItem(itemId);
   }
 
   // update view
-  view.update([...model.getMenus(), ...model.getAllSingleItems()]);
+  view.update(await model.getItemList());
 };
 
-const controlAddToCart = function (itemId) {
-  const item = model.getItemById(itemId);
+const controlAddToCart = async function (itemId) {
+  const item = await model.getItemById(itemId);
   model.addToCart(item);
 };
 
-const controlOpenSavedItemsPanel = function () {
-  savedItemsView.render(model.getSavedItems());
+const controlOpenSavedItemsPanel = async function () {
+  savedItemsView.render(await model.getSavedItems());
 
   savedItemsView.addHandlerNavigateItem(controlNavigateSavedItem);
   savedItemsView.addHandlerRemoveItem(controlRemoveSavedItem);
@@ -169,18 +164,15 @@ const controlNavigateSavedItem = function (id) {
   scrollToElement(`#${id}`);
 };
 
-const controlRemoveSavedItem = function (id) {
+const controlRemoveSavedItem = async function (id) {
   // load item
-  const item = model.getItemById(id);
+  const item = await model.getItemById(id);
   // remove item from saved list
-  model.unsaveItem(item.id);
+  await model.unsaveItem(item.id);
   // re-render saved items panel
   controlOpenSavedItemsPanel();
   // update sections view
-  getSectionItemsViewByType(item.type).update([
-    ...model.getMenus(),
-    ...model.getAllSingleItems(),
-  ]);
+  getSectionItemsViewByType(item.type).update(await model.getItemList());
 };
 
 const controlOpenMiniCartPanel = function () {
@@ -216,34 +208,40 @@ const init = function () {
   // Menus section view
   sectionMenusView.addHandlerRender(controlSectionMenusRender);
   sectionMenusView.addHandlerSave(controlSaveItem);
+  sectionMenusView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Burgers section view
   sectionBurgersView.addHandlerRender(controlSectionBurgersRender);
   sectionBurgersView.addHandlerSave(controlSaveItem);
   sectionBurgersView.addHandlerAddToCart(controlAddToCart);
+  sectionBurgersView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Fingerfood section view
   sectionFingerfoodView.addHandlerRender(controlSectionFingerfoodRender);
   sectionFingerfoodView.addHandlerSave(controlSaveItem);
   sectionFingerfoodView.addHandlerAddToCart(controlAddToCart);
+  sectionFingerfoodView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Salads section view
   sectionSaladsView.addHandlerRender(controlSectionSaladsRender);
   sectionSaladsView.addHandlerSave(controlSaveItem);
   sectionSaladsView.addHandlerAddToCart(controlAddToCart);
+  sectionSaladsView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Desserts section view
   sectionDessertsView.addHandlerRender(controlSectionDessertsRender);
   sectionDessertsView.addHandlerSave(controlSaveItem);
   sectionDessertsView.addHandlerAddToCart(controlAddToCart);
+  sectionDessertsView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Drinks section view
   sectionDrinksView.addHandlerRender(controlSectionDrinksRender);
   sectionDrinksView.addHandlerSave(controlSaveItem);
   sectionDrinksView.addHandlerAddToCart(controlAddToCart);
+  sectionDrinksView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Modal view
-  itemInfoModalView.addHandlerRender(controlItemInfoModal);
+  //itemInfoModalView.addHandlerRender(controlItemInfoModal);
   itemInfoModalView.addHandlerCloseModal(controlModalClose);
 
   // Saved items panel view

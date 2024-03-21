@@ -19,4 +19,9 @@ export default class ModalView extends View {
       );
     });
   }
+
+  open() {
+    this._modal.classList.remove("hidden");
+    this._overlay.classList.remove("hidden");
+  }
 }
