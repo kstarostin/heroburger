@@ -8,6 +8,7 @@ import sectionDessertsView from "./views/sectionDessertsView.js";
 import sectionDrinksView from "./views/sectionDrinksView.js";
 import headerNavLinkView from "./views/headerNavLinkView.js";
 import itemInfoModalView from "./views/itemInfoModalView.js";
+import checkoutModalView from "./views/checkoutModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
 
@@ -121,7 +122,6 @@ const controlModalClose = function () {
 const controlItemInfoModal = async function (itemId) {
   const item = await model.getItemById(itemId);
   itemInfoModalView.open();
-  console.log(item);
   itemInfoModalView.render(item);
 };
 
@@ -180,6 +180,7 @@ const controlOpenMiniCartPanel = function () {
   miniCartView.render(model.getCart());
 
   miniCartView.addHandlerRemoveCartEntry(controlRemoveCartEntry);
+  miniCartView.addHandlerCheckoutModal(controlCheckoutModal);
 };
 
 const controlCloseMiniCartPanel = function () {
@@ -191,6 +192,12 @@ const controlRemoveCartEntry = function (entryNumber) {
   model.removeCartEntry(entryNumber);
   // re-render cart panel
   controlOpenMiniCartPanel();
+};
+
+const controlCheckoutModal = function () {
+  miniCartView.hide();
+  checkoutModalView.open();
+  checkoutModalView.render(model.getCart());
 };
 
 const getSectionItemsViewByType = function (type) {

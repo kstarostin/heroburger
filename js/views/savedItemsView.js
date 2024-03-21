@@ -36,7 +36,7 @@ class SavedItemsView extends SidePanelView {
 
   _generateItemMarkup(item) {
     return `
-      <li class="side-panel-list-item">
+      <li class="side-panel-list-item small">
         <div class="side-panel-list-item-content side-panel-list-item-nav-link" data-item-id="${item.id}">
           <picture>
             <source

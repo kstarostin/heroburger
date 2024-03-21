@@ -7,6 +7,14 @@ export const state = {
     totalPrice: 0,
     deliveryCost: 0,
     totalCost: 0,
+    deliveryAddress: {
+      name: "",
+      phone: "",
+      street: "",
+      apartment: "",
+      zip: "",
+      town: "",
+    },
   },
   saved: [],
 };

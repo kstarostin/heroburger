@@ -13,6 +13,14 @@ class MiniCartView extends SidePanelView {
     });
   }
 
+  addHandlerCheckoutModal(handler) {
+    document
+      .querySelector(".btn-checkout")
+      .addEventListener("click", function () {
+        handler();
+      });
+  }
+
   _extractItems(data) {
     return data.entries;
   }
@@ -39,9 +47,9 @@ class MiniCartView extends SidePanelView {
           </picture>
           <div class="side-panel-item-textbox">
             <p class="side-panel-item-textbox-entry">${item.name}</p>
-            <p class="side-panel-item-textbox-entry">${formatPrice(
-              entry.price
-            )}</p>
+            <p class="side-panel-item-textbox-entry">
+              ${formatPrice(entry.price)}
+            </p>
           </div>
         </div>
         <button class="btn btn-panel-remove" data-entry-number="${
@@ -67,7 +75,7 @@ class MiniCartView extends SidePanelView {
           <span>Delivery cost*:</span>
           <span>${formatPrice(cart.deliveryCost)}</span>
         </p>
-        <p class="side-panel-price-text">
+        <p class="side-panel-price-text total">
           <span>Total cost:</span>
           <span>${formatPrice(cart.totalCost)}</span>
         </p>
@@ -86,7 +94,7 @@ class MiniCartView extends SidePanelView {
     }
     return `
       <div class="side-panel-actions">
-        <button class="btn btn-primary">Checkout</button>
+        <button class="btn btn-primary btn-checkout">Checkout</button>
       </div>
     `;
   }

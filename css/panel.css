@@ -29,14 +29,17 @@
 
 .side-panel-list-item {
   font-size: 2rem;
-  height: 6rem;
   transition: all 0.3s;
 
   display: grid;
   grid-template-columns: 1fr 4.8rem;
 }
 
-.side-panel-list-item.large {
+.side-panel-list-item.small {
+  height: 6rem;
+}
+
+.side-panel-list-item.normal {
   height: 10rem;
 }
 
@@ -106,9 +109,8 @@
 }
 
 .side-panel-textbox {
-  padding: 4.8rem 2.4rem 2.4rem 2.4rem;
+  padding: 3.2rem 2.4rem 2.4rem 2.4rem;
   font-size: 2.4rem;
-  font-weight: 500;
 
   display: flex;
   flex-direction: column;
@@ -121,6 +123,11 @@
   grid-template-columns: auto 8rem;
   justify-items: end;
   gap: 2.4rem;
+}
+
+.side-panel-price-text.total {
+  margin-top: 1.2rem;
+  font-weight: 600;
 }
 
 .side-panel-disclaimer {
