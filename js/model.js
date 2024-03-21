@@ -1,9 +1,12 @@
 import * as api from "./api.js";
+import { CART_DELIVERY_COST, CART_FREE_DELIVERY_THRESHOLD } from "./config.js";
 
 export const state = {
   cart: {
     entries: [],
     totalPrice: 0,
+    deliveryCost: 0,
+    totalCost: 0,
   },
   saved: [],
 };
@@ -13,7 +16,11 @@ export const addToCart = function (item) {
 
   const cartEntry = createCartEntry(item, cart.entries.length);
   cart.entries.push(cartEntry);
+
   cart.totalPrice = calculateCartTotalPrice(cart);
+  cart.deliveryCost =
+    cart.totalPrice >= CART_FREE_DELIVERY_THRESHOLD ? 0 : CART_DELIVERY_COST;
+  cart.totalCost = cart.totalPrice + cart.deliveryCost;
 
   state.cart = cart;
   persistCart();
@@ -28,6 +35,9 @@ export const removeCartEntry = function (entryNumber) {
   cart.entries.splice(index, 1);
 
   cart.totalPrice = calculateCartTotalPrice(cart);
+  cart.deliveryCost =
+    cart.totalPrice >= CART_FREE_DELIVERY_THRESHOLD ? 0 : CART_DELIVERY_COST;
+  cart.totalCost = cart.totalPrice + cart.deliveryCost;
 
   persistCart();
 };

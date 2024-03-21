@@ -1,5 +1,6 @@
 import SidePanelView from "./sidePanelView.js";
 import { formatPrice } from "../helpers.js";
+import { CART_FREE_DELIVERY_THRESHOLD } from "../config.js";
 
 class MiniCartView extends SidePanelView {
   _actionBtn = document.querySelector(".btn-header-panel-cart");
@@ -57,9 +58,25 @@ class MiniCartView extends SidePanelView {
       return "";
     }
     return `
-      <p class="side-panel-text">Total price: ${formatPrice(
-        cart.totalPrice
-      )}</p>
+      <div class="side-panel-textbox">
+        <p class="side-panel-price-text">
+          <span>Total price:</span>
+          <span>${formatPrice(cart.totalPrice)}</span>
+        </p>
+        <p class="side-panel-price-text">
+          <span>Delivery cost*:</span>
+          <span>${formatPrice(cart.deliveryCost)}</span>
+        </p>
+        <p class="side-panel-price-text">
+          <span>Total cost:</span>
+          <span>${formatPrice(cart.totalCost)}</span>
+        </p>
+        <p class="side-panel-disclaimer">
+          *Free delivery for a total price of more than ${formatPrice(
+            CART_FREE_DELIVERY_THRESHOLD
+          )}
+        </p>
+      </div>
     `;
   }
 

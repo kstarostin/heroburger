@@ -1,0 +1,2 @@
+export const CART_DELIVERY_COST = 5;
+export const CART_FREE_DELIVERY_THRESHOLD = 25;

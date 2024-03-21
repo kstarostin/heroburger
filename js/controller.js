@@ -143,6 +143,8 @@ const controlSaveItem = async function (view, itemId) {
 const controlAddToCart = async function (itemId) {
   const item = await model.getItemById(itemId);
   model.addToCart(item);
+  // render cart panel
+  controlOpenMiniCartPanel();
 };
 
 const controlOpenSavedItemsPanel = async function () {

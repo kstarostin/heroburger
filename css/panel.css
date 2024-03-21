@@ -105,13 +105,28 @@
   background-color: #e5a249;
 }
 
-.side-panel-text {
+.side-panel-textbox {
   padding: 4.8rem 2.4rem 2.4rem 2.4rem;
   font-size: 2.4rem;
   font-weight: 500;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: end;
+  gap: 1.2rem;
+}
+
+.side-panel-price-text {
+  display: grid;
+  grid-template-columns: auto 8rem;
+  justify-items: end;
+  gap: 2.4rem;
+}
+
+.side-panel-disclaimer {
+  margin-top: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .side-panel-actions {
