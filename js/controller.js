@@ -114,14 +114,13 @@ const controlMobileNavToggle = function (headerEl) {
   headerEl.classList.toggle("nav-open");
 };
 
-const controlModalClose = function (modal, overlay) {
-  modal.classList.add("hidden");
-  overlay.classList.add("hidden");
+const controlModalClose = function () {
+  itemInfoModalView.close();
 };
 
 const controlItemInfoModal = async function (itemId) {
-  itemInfoModalView.open();
   const item = await model.getItemById(itemId);
+  itemInfoModalView.open();
   console.log(item);
   itemInfoModalView.render(item);
 };
@@ -241,7 +240,6 @@ const init = function () {
   sectionDrinksView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Modal view
-  //itemInfoModalView.addHandlerRender(controlItemInfoModal);
   itemInfoModalView.addHandlerCloseModal(controlModalClose);
 
   // Saved items panel view

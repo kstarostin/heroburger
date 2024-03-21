@@ -10,18 +10,19 @@ export default class ModalView extends View {
     const modalCloseBtn = this._modal.querySelector(".close-modal");
 
     [modalCloseBtn, this._overlay].forEach((element) => {
-      element.addEventListener(
-        "click",
-        function () {
-          handler(this._modal, this._overlay);
-        }.bind(this),
-        false
-      );
+      element.addEventListener("click", function () {
+        handler();
+      });
     });
   }
 
   open() {
     this._modal.classList.remove("hidden");
     this._overlay.classList.remove("hidden");
+  }
+
+  close() {
+    this._modal.classList.add("hidden");
+    this._overlay.classList.add("hidden");
   }
 }

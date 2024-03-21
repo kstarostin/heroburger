@@ -40,7 +40,7 @@ class SectionMenusView extends SectionItemsView {
                 alt="Picture of ${item.name} item"
               />
             </picture>
-            <a class="item-info-link" href="#">
+            <a class="item-info-link item-info-modal-link" href="#">
               <i class="ph ph-info"></i>
             </a>
           </div>
