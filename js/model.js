@@ -6,13 +6,13 @@ export const state = {
   saved: [],
 };
 
-export const createCart = function () {
+export const createCart = function (deliveryAddress) {
   const cart = {
     entries: [],
     totalPrice: 0,
     deliveryCost: 0,
     totalCost: 0,
-    deliveryAddress: createAddress(),
+    deliveryAddress: deliveryAddress ? deliveryAddress : createAddress(),
   };
   state.cart = cart;
   _persistCart();
@@ -27,6 +27,7 @@ export const createAddress = function (addressData) {
     apartment: addressData ? addressData.apartment : "",
     zip: addressData ? addressData.zip : "",
     town: addressData ? addressData.town : "",
+    saved: addressData && addressData.saved ? true : false,
   };
 };
 

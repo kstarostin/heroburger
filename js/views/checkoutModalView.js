@@ -1,5 +1,13 @@
 import ModalView from "./modalView.js";
 import { formatPrice } from "../helpers.js";
+import {
+  FORM_PATTERN_NAME,
+  FORM_PATTERN_PHONE,
+  FORM_PATTERN_STREET,
+  FORM_PATTERN_APARTMENT,
+  FORM_PATTERN_ZIP,
+  FORM_PATTERN_TOWN,
+} from "../config.js";
 
 class CheckoutModalView extends ModalView {
   addHandlerPlaceOrder(handler) {
@@ -20,79 +28,108 @@ class CheckoutModalView extends ModalView {
       <form class="modal-checkout-form">
         <section class="modal-checkout-section">
           <h2 class="modal-checkout-section-title">Delivery Address</h2>
-          <div class="modal-checkout-section-content checkout-address">
-            <div>
-              <label for="name" class="mandatory">Name*</label>
-              <input
-                id="name"
-                placeholder="John Smith"
-                value="${deliveryAddress.name}"
-                required name="name"
-                type="text"
-                autocomplete="off"
-              />
+          <div class="modal-checkout-section-content">
+            <div class="checkout-address-grid">
+              <div class="modal-checkout-text-input-group">
+                <label for="name" class="mandatory">Name*</label>
+                <input
+                  id="name"
+                  class="modal-checkout-text-input"
+                  placeholder="John Smith"
+                  value="${deliveryAddress.name}"
+                  name="name"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  pattern="${FORM_PATTERN_NAME}"
+                />
+              </div>
+              <div class="modal-checkout-text-input-group">
+                <label for="phone" class="mandatory">Phone*</label>
+                <input
+                  id="phone"
+                  class="modal-checkout-text-input"
+                  placeholder="555-123-4567"
+                  value="${deliveryAddress.phone}"
+                  name="phone"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  pattern="${FORM_PATTERN_PHONE}"
+                />
+              </div>
+              <div class="modal-checkout-text-input-group">
+                <label for="street" class="mandatory">Street*</label>
+                <input
+                  id="street"
+                  class="modal-checkout-text-input"
+                  placeholder="8850 Santa Monica Blvd"
+                  value="${deliveryAddress.street}"
+                  name="street"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  pattern="${FORM_PATTERN_STREET}"
+                />
+              </div>
+              <div class="modal-checkout-text-input-group">
+                <label for="apartment">Apartment, suite, etc.</label>
+                <input
+                  id="apartment"
+                  class="modal-checkout-text-input"
+                  placeholder="12-a"
+                  value="${deliveryAddress.apartment}"
+                  name="apartment"
+                  type="text"
+                  autocomplete="off"
+                  pattern="${FORM_PATTERN_APARTMENT}"
+                />
+              </div>
+              <div class="modal-checkout-text-input-group">
+                <label for="zip" class="mandatory">Postcode*</label>
+                <input
+                  id="zip"
+                  class="modal-checkout-text-input"
+                  placeholder="90069"
+                  value="${deliveryAddress.zip}"
+                  name="zip"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  pattern="${FORM_PATTERN_ZIP}"
+                />
+              </div>
+              <div class="modal-checkout-text-input-group">
+                <label for="town" class="mandatory">Town*</label>
+                <input
+                  id="town"
+                  class="modal-checkout-text-input"
+                  placeholder="West Hollywood"
+                  value="${deliveryAddress.town}"
+                  name="town"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  pattern="${FORM_PATTERN_TOWN}"
+                />
+              </div>
+              <div class="modal-checkout-checkbox-input-group">
+                <input
+                  id="saved"
+                  name="saved"
+                  type="checkbox"
+                  ${deliveryAddress.saved ? "checked" : ""}
+                />
+                <label for="saved">Save for future orders</label>
+              </div>
             </div>
-            <div>
-              <label for="phone" class="mandatory">Phone*</label>
-              <input
-                id="phone"
-                placeholder="555-123-4567"
-                value="${deliveryAddress.phone}"
-                required name="phone"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
-            <div>
-              <label for="street" class="mandatory">Street*</label>
-              <input
-                id="street"
-                placeholder="Santa Monica Blvd, 8850"
-                value="${deliveryAddress.street}"
-                required name="street"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
-            <div>
-              <label for="apartment">Apartment, suite, etc.</label>
-              <input
-                id="apartment"
-                placeholder="12"
-                value="${deliveryAddress.apartment}"
-                required name="apartment"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
-            <div>
-              <label for="zip" class="mandatory">Postcode*</label>
-              <input
-                id="zip"
-                placeholder="90069"
-                value="${deliveryAddress.zip}"
-                required name="zip"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
-            <div>
-              <label for="town" class="mandatory">Town*</label>
-              <input
-                id="town"
-                placeholder="West Hollywood"
-                value="${deliveryAddress.town}"
-                required name="town"
-                type="text"
-                autocomplete="off"
-              />
-            </div>
+            <p class="modal-checkout-disclaimer">*Required fields</p>
           </div>
         </section>
 
         <section class="modal-checkout-section">
           <h2 class="modal-checkout-section-title">Order Details</h2>
-          <div class="modal-checkout-section-content checkout-summary">
+          <div class="modal-checkout-section-content">
             ${this.#generateEntryListMarkup(cart.entries)}
             ${this.#generateTotalsMarkup(cart)}
           </div>

@@ -184,7 +184,6 @@ body {
   color: #d24347;
   font-weight: 500;
   text-decoration: none;
-  /* border-bottom: 1px solid currentColor; */
   padding-bottom: 2px;
   transition: all 0.3s;
 }
@@ -192,7 +191,40 @@ body {
 .link:hover,
 .link:active {
   color: #932f32;
-  /* border-bottom: 1px solid transparent; */
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #feb451;
+  border-radius: 3px;
+  transform: translateY(-0.075rem);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]:focus {
+  outline: none !important;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem #feb451;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
 
 /*****************/

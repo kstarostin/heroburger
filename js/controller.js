@@ -203,6 +203,7 @@ const controlCheckoutModal = function () {
 };
 
 const controlPlaceOrder = async function (addressData) {
+  console.log(addressData);
   // close checkout modal
   checkoutModalView.close();
 
@@ -221,7 +222,9 @@ const controlPlaceOrder = async function (addressData) {
   orderPlacedModalView.render(order);
 
   // create new empty cart
-  model.createCart();
+  model.createCart(
+    cart.deliveryAddress.saved ? cart.deliveryAddress : undefined
+  );
 };
 
 const getSectionItemsViewByType = function (type) {
