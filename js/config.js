@@ -1,2 +1,4 @@
 export const CART_DELIVERY_COST = 5;
 export const CART_FREE_DELIVERY_THRESHOLD = 25;
+export const MIN_DELIVERY_TIME_MINUTES = 15;
+export const MAX_DELIVERY_TIME_MINUTES = 60;

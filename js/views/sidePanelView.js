@@ -79,7 +79,7 @@ export default class SidePanelView extends View {
   #generateEmptyListMarkup() {
     return `
       <ul class="side-panel-list">
-        <li class="side-panel-list-item">
+        <li class="side-panel-list-item small">
           <div class="side-panel-list-item-content">
             <div class="side-panel-item-textbox">
               <p class="side-panel-item-textbox-entry">No items</p>

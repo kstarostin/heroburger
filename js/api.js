@@ -1,4 +1,8 @@
 import { data } from "./data.js";
+import {
+  MIN_DELIVERY_TIME_MINUTES,
+  MAX_DELIVERY_TIME_MINUTES,
+} from "./config.js";
 
 // **********************
 // API request functions:
@@ -36,6 +40,20 @@ export const getItemById = async function (id) {
   await _sleep(100);
   // execute request
   return _getAllItemsFromData().find((item) => item.id === id);
+};
+
+export const getDeliveryTime = async function (deliveryAddress) {
+  // imitate response time
+  await _sleep(200);
+  // execute request
+  return _getDeliveryTime();
+};
+
+export const placeOrder = async function (cart) {
+  // imitate response time
+  await _sleep(500);
+  // return order
+  return cart;
 };
 
 // ***********************************
@@ -106,4 +124,10 @@ const _mapPositionItems = function (positionItemIds) {
 
 const _getSingleItemById = function (id) {
   return _getAllSingleItemsFromData().find((item) => item.id === id);
+};
+
+const _getDeliveryTime = function () {
+  const minCeiled = Math.ceil(MIN_DELIVERY_TIME_MINUTES);
+  const maxFloored = Math.floor(MAX_DELIVERY_TIME_MINUTES);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 };

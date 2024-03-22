@@ -9,6 +9,7 @@ import sectionDrinksView from "./views/sectionDrinksView.js";
 import headerNavLinkView from "./views/headerNavLinkView.js";
 import itemInfoModalView from "./views/itemInfoModalView.js";
 import checkoutModalView from "./views/checkoutModalView.js";
+import orderPlacedModalView from "./views/orderPlacedModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
 
@@ -198,6 +199,29 @@ const controlCheckoutModal = function () {
   miniCartView.hide();
   checkoutModalView.open();
   checkoutModalView.render(model.getCart());
+  checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
+};
+
+const controlPlaceOrder = async function (addressData) {
+  // close checkout modal
+  checkoutModalView.close();
+
+  // populate submitted address
+  const cart = model.getCart();
+  cart.deliveryAddress = model.createAddress(addressData);
+  cart.deliveryTime = await model.calculateDeliveryTimeMinutes(
+    cart.deliveryAddress
+  );
+
+  // place order
+  const order = await model.placeOrder(cart);
+
+  // show order placed modal
+  orderPlacedModalView.open();
+  orderPlacedModalView.render(order);
+
+  // create new empty cart
+  model.createCart();
 };
 
 const getSectionItemsViewByType = function (type) {

@@ -70,6 +70,7 @@
 .side-panel-item-img {
   width: 7rem;
   height: 6rem;
+  display: block;
   object-fit: cover;
 }
 
@@ -147,12 +148,6 @@
 /* MEDIA QUERIES */
 /*****************/
 /* 1rem = 1em = 16px */
-
-/************************************/
-/* BELOW 1920 px (Full HD desktops) */
-/************************************/
-@media (max-width: 120em) {
-}
 
 /***********************/
 /* BELOW 1600 px (HD+) */

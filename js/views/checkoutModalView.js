@@ -2,10 +2,20 @@ import ModalView from "./modalView.js";
 import { formatPrice } from "../helpers.js";
 
 class CheckoutModalView extends ModalView {
+  addHandlerPlaceOrder(handler) {
+    document
+      .querySelector(".modal-checkout-form")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const dataArr = [...new FormData(this)];
+        const data = Object.fromEntries(dataArr);
+        handler(data);
+      });
+  }
+
   _generateMarkup() {
     const cart = this._data;
     const deliveryAddress = cart.deliveryAddress;
-    console.log(cart);
     return `
       <form class="modal-checkout-form">
         <section class="modal-checkout-section">

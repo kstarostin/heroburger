@@ -2,27 +2,38 @@ import * as api from "./api.js";
 import { CART_DELIVERY_COST, CART_FREE_DELIVERY_THRESHOLD } from "./config.js";
 
 export const state = {
-  cart: {
+  cart: {},
+  saved: [],
+};
+
+export const createCart = function () {
+  const cart = {
     entries: [],
     totalPrice: 0,
     deliveryCost: 0,
     totalCost: 0,
-    deliveryAddress: {
-      name: "",
-      phone: "",
-      street: "",
-      apartment: "",
-      zip: "",
-      town: "",
-    },
-  },
-  saved: [],
+    deliveryAddress: createAddress(),
+  };
+  state.cart = cart;
+  _persistCart();
+  return cart;
+};
+
+export const createAddress = function (addressData) {
+  return {
+    name: addressData ? addressData.name : "",
+    phone: addressData ? addressData.phone : "",
+    street: addressData ? addressData.street : "",
+    apartment: addressData ? addressData.apartment : "",
+    zip: addressData ? addressData.zip : "",
+    town: addressData ? addressData.town : "",
+  };
 };
 
 export const addToCart = function (item) {
   const cart = state.cart;
 
-  const cartEntry = createCartEntry(item, cart.entries.length);
+  const cartEntry = _createCartEntry(item, cart.entries.length);
   cart.entries.push(cartEntry);
 
   cart.totalPrice = calculateCartTotalPrice(cart);
@@ -31,7 +42,7 @@ export const addToCart = function (item) {
   cart.totalCost = cart.totalPrice + cart.deliveryCost;
 
   state.cart = cart;
-  persistCart();
+  _persistCart();
 };
 
 export const removeCartEntry = function (entryNumber) {
@@ -47,15 +58,25 @@ export const removeCartEntry = function (entryNumber) {
     cart.totalPrice >= CART_FREE_DELIVERY_THRESHOLD ? 0 : CART_DELIVERY_COST;
   cart.totalCost = cart.totalPrice + cart.deliveryCost;
 
-  persistCart();
+  _persistCart();
 };
 
-const createCartEntry = function (item, entryNumber) {
-  return {
-    entryNumber: entryNumber,
-    item: item,
-    price: item.price,
-  };
+export const calculateDeliveryTimeMinutes = async function (deliveryAddress) {
+  try {
+    return await api.getDeliveryTime(deliveryAddress);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+  return -1;
+};
+
+export const placeOrder = async function (cart) {
+  try {
+    return await api.placeOrder(cart);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+  return {};
 };
 
 const calculateCartTotalPrice = function (cart) {
@@ -63,10 +84,6 @@ const calculateCartTotalPrice = function (cart) {
     .map((entry) => entry.price)
     .reduce((partialSum, a) => partialSum + a, 0);
   return total;
-};
-
-const persistCart = function () {
-  localStorage.setItem("cart", JSON.stringify(state.cart));
 };
 
 export const saveItem = async function (itemId) {
@@ -78,7 +95,7 @@ export const saveItem = async function (itemId) {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
-  persistSavedItems();
+  _persistSavedItems();
 };
 
 export const unsaveItem = async function (itemId) {
@@ -91,11 +108,7 @@ export const unsaveItem = async function (itemId) {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
-  persistSavedItems();
-};
-
-const persistSavedItems = function () {
-  localStorage.setItem("saved", JSON.stringify(state.saved));
+  _persistSavedItems();
 };
 
 export const getMenus = async function () {
@@ -183,14 +196,28 @@ const _updateItemSavedState = function (item) {
   return item;
 };
 
+const _createCartEntry = function (item, entryNumber) {
+  return {
+    entryNumber: entryNumber,
+    item: item,
+    price: item.price,
+  };
+};
+
+const _persistCart = function () {
+  localStorage.setItem("cart", JSON.stringify(state.cart));
+};
+
+const _persistSavedItems = function () {
+  localStorage.setItem("saved", JSON.stringify(state.saved));
+};
+
 const initState = function () {
   const saved = localStorage.getItem("saved");
   if (saved) {
     state.saved = JSON.parse(saved);
   }
   const cart = localStorage.getItem("cart");
-  if (cart) {
-    state.cart = JSON.parse(cart);
-  }
+  state.cart = cart ? JSON.parse(cart) : createCart();
 };
 initState();

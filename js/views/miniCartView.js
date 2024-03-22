@@ -16,7 +16,7 @@ class MiniCartView extends SidePanelView {
   addHandlerCheckoutModal(handler) {
     document
       .querySelector(".btn-checkout")
-      .addEventListener("click", function () {
+      ?.addEventListener("click", function () {
         handler();
       });
   }
