@@ -5,7 +5,7 @@
   top: 9.6rem;
   z-index: 3;
   background-color: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1.6rem 2.4rem rgba(0, 0, 0, 0.05);
 
   border-radius: 5px;
   overflow: hidden;
@@ -22,6 +22,7 @@
 
 .side-panel-headerbox {
   padding: 1.6rem;
+  margin-bottom: 1.2rem;
 
   display: flex;
   flex-direction: column;
@@ -36,6 +37,7 @@
   background-color: #fff8ee;
   padding: 1.8rem;
   border-radius: 50%;
+  box-shadow: 0 0.4rem 2.4rem rgba(0, 0, 0, 0.05);
 }
 
 .side-panel-header-icon i {
@@ -44,6 +46,7 @@
 
 .side-panel-list {
   list-style: none;
+  box-shadow: 0 0.4rem 2.4rem rgba(0, 0, 0, 0.05);
 
   display: flex;
   flex-direction: column;
@@ -132,7 +135,7 @@
 }
 
 .side-panel-textbox {
-  padding: 3.2rem 2.4rem 2.4rem 2.4rem;
+  padding: 4.8rem 2.4rem 2.4rem 2.4rem;
 
   display: flex;
   flex-direction: column;
@@ -154,7 +157,7 @@
 }
 
 .side-panel-disclaimer {
-  margin-top: 2.4rem;
+  margin-top: 1.6rem;
   font-size: 1.6rem;
   font-weight: 400;
   align-self: end;

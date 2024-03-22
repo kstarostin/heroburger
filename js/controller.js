@@ -1,5 +1,4 @@
 import * as model from "./model.js";
-import * as validator from "./validator.js";
 import sectionHeroView from "./views/sectionHeroView.js";
 import sectionMenusView from "./views/sectionMenusView.js";
 import sectionBurgersView from "./views/sectionBurgersView.js";
@@ -213,7 +212,7 @@ const controlPlaceOrder = async function (addressData) {
   cart.deliveryAddress = deliveryAddress;
 
   // validate address
-  const invalidFields = validator.validateDeliveryAddress(deliveryAddress);
+  const invalidFields = await model.validateDeliveryAddress(deliveryAddress);
   if (invalidFields && invalidFields.length > 0) {
     checkoutModalView.open();
     checkoutModalView.render({ cart: cart, invalidFields: invalidFields });

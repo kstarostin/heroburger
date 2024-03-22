@@ -151,7 +151,7 @@ class CheckoutModalView extends ModalView {
         <section class="modal-checkout-section">
           <div class="modal-checkout-section-content checkout-actions">
             <button class="btn btn-primary btn-place-order">
-              <span>Order</span>
+              <span>Place order</span>
             </button>
           </div>
         </section>

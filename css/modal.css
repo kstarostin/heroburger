@@ -298,10 +298,10 @@ body {
 /* ORDER PLACED */
 /****************/
 .modal-order-placed-title {
+  margin: 2.4rem 0;
   font-size: 4.4rem;
-  color: #333;
+  color: #feb451;
   font-weight: 700;
-  margin-bottom: 2.4rem;
   line-height: 1.6;
   text-align: center;
 }
@@ -314,8 +314,8 @@ body {
 }
 
 .modal-order-placed-time {
-  color: #e5a249;
-  font-weight: 500;
+  color: #d24347;
+  font-weight: 600;
 }
 
 .modal-order-placed-picture {
@@ -327,6 +327,10 @@ body {
 .modal-order-placed-picture i {
   font-size: 15rem;
   color: #fecb85;
+
+  background-color: #fff8ee;
+  padding: 1.8rem;
+  border-radius: 50%;
 }
 
 /*****************/

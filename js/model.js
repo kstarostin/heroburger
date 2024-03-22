@@ -62,6 +62,15 @@ export const removeCartEntry = function (entryNumber) {
   _persistCart();
 };
 
+export const validateDeliveryAddress = async function (deliveryAddress) {
+  try {
+    return await api.validateDeliveryAddress(deliveryAddress);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+  return [];
+};
+
 export const calculateDeliveryTimeMinutes = async function (deliveryAddress) {
   try {
     return await api.getDeliveryTime(deliveryAddress);
