@@ -22,8 +22,10 @@ class CheckoutModalView extends ModalView {
   }
 
   _generateMarkup() {
-    const cart = this._data;
+    const cart = this._data.cart;
     const deliveryAddress = cart.deliveryAddress;
+    const invalidFields = this._data.invalidFields;
+    console.log(invalidFields);
     return `
       <form class="modal-checkout-form">
         <section class="modal-checkout-section">
@@ -34,7 +36,9 @@ class CheckoutModalView extends ModalView {
                 <label for="name" class="mandatory">Name*</label>
                 <input
                   id="name"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("name") ? "invalid" : ""
+                  }"
                   placeholder="John Smith"
                   value="${deliveryAddress.name}"
                   name="name"
@@ -48,7 +52,9 @@ class CheckoutModalView extends ModalView {
                 <label for="phone" class="mandatory">Phone*</label>
                 <input
                   id="phone"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("phone") ? "invalid" : ""
+                  }"
                   placeholder="555-123-4567"
                   value="${deliveryAddress.phone}"
                   name="phone"
@@ -62,7 +68,9 @@ class CheckoutModalView extends ModalView {
                 <label for="street" class="mandatory">Street*</label>
                 <input
                   id="street"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("street") ? "invalid" : ""
+                  }"
                   placeholder="8850 Santa Monica Blvd"
                   value="${deliveryAddress.street}"
                   name="street"
@@ -76,7 +84,9 @@ class CheckoutModalView extends ModalView {
                 <label for="apartment">Apartment, suite, etc.</label>
                 <input
                   id="apartment"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("apartment") ? "invalid" : ""
+                  }"
                   placeholder="12-a"
                   value="${deliveryAddress.apartment}"
                   name="apartment"
@@ -89,7 +99,9 @@ class CheckoutModalView extends ModalView {
                 <label for="zip" class="mandatory">Postcode*</label>
                 <input
                   id="zip"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("zip") ? "invalid" : ""
+                  }"
                   placeholder="90069"
                   value="${deliveryAddress.zip}"
                   name="zip"
@@ -103,7 +115,9 @@ class CheckoutModalView extends ModalView {
                 <label for="town" class="mandatory">Town*</label>
                 <input
                   id="town"
-                  class="modal-checkout-text-input"
+                  class="modal-checkout-text-input ${
+                    invalidFields.includes("town") ? "invalid" : ""
+                  }"
                   placeholder="West Hollywood"
                   value="${deliveryAddress.town}"
                   name="town"

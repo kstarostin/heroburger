@@ -1,4 +1,5 @@
 import * as model from "./model.js";
+import * as validator from "./validator.js";
 import sectionHeroView from "./views/sectionHeroView.js";
 import sectionMenusView from "./views/sectionMenusView.js";
 import sectionBurgersView from "./views/sectionBurgersView.js";
@@ -198,21 +199,30 @@ const controlRemoveCartEntry = function (entryNumber) {
 const controlCheckoutModal = function () {
   miniCartView.hide();
   checkoutModalView.open();
-  checkoutModalView.render(model.getCart());
+  checkoutModalView.render({ cart: model.getCart(), invalidFields: [] });
   checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
 };
 
 const controlPlaceOrder = async function (addressData) {
-  console.log(addressData);
   // close checkout modal
   checkoutModalView.close();
 
   // populate submitted address
   const cart = model.getCart();
-  cart.deliveryAddress = model.createAddress(addressData);
-  cart.deliveryTime = await model.calculateDeliveryTimeMinutes(
-    cart.deliveryAddress
-  );
+  const deliveryAddress = model.createAddress(addressData);
+  cart.deliveryAddress = deliveryAddress;
+
+  // validate address
+  const invalidFields = validator.validateDeliveryAddress(deliveryAddress);
+  if (invalidFields && invalidFields.length > 0) {
+    checkoutModalView.open();
+    checkoutModalView.render({ cart: cart, invalidFields: invalidFields });
+    checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
+    return;
+  }
+
+  // calculate delivery time
+  cart.deliveryTime = await model.calculateDeliveryTimeMinutes(deliveryAddress);
 
   // place order
   const order = await model.placeOrder(cart);

@@ -29,10 +29,13 @@ Large: 1.8
 
 Secondary: #d24347
 - Tints:
-- Shades: #932f32
+- Shades:
+#932f32
+#501111
 
 - Accents:
 - Greys:
+#aaa
 #767676 (lightest grey allowed on #fff)
 #333
 #1e1e20
