@@ -25,7 +25,6 @@ class CheckoutModalView extends ModalView {
     const cart = this._data.cart;
     const deliveryAddress = cart.deliveryAddress;
     const invalidFields = this._data.invalidFields;
-    console.log(invalidFields);
     return `
       <form class="modal-checkout-form">
         <section class="modal-checkout-section">

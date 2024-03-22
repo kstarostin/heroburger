@@ -25,6 +25,16 @@ class MiniCartView extends SidePanelView {
     return data.entries;
   }
 
+  _generatePanelHeader() {
+    return `
+      <div class="side-panel-headerbox">
+        <div class="side-panel-header-icon">
+          <i class="ph ph-shopping-cart-simple"></i>
+        </div>
+      </div>
+    `;
+  }
+
   _generateItemMarkup(entry) {
     const item = entry.item;
     return `
@@ -95,6 +105,16 @@ class MiniCartView extends SidePanelView {
     return `
       <div class="side-panel-actions">
         <button class="btn btn-primary btn-checkout">Checkout</button>
+      </div>
+    `;
+  }
+
+  _generateEmptyListMarkup() {
+    return `
+      <div class="side-panel-textbox">
+        <p class="side-panel-empty-text">
+          Add your <span class="side-panel-text-emphasize cart">Hero</span> meal!
+        </p>
       </div>
     `;
   }

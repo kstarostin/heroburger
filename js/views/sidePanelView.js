@@ -45,12 +45,17 @@ export default class SidePanelView extends View {
     return `
       <div class="side-panel-body hidden">
         <div class="side-panel-content">
+          ${this._generatePanelHeader()}
           ${this.#generateListMarkup(items)}
           ${this._generatePanelBottomMarkup(this._data)}
           ${this._generatePanelActions(this._data)}
         </div>
       </div>
     `;
+  }
+
+  _generatePanelHeader() {
+    return "";
   }
 
   _generatePanelBottomMarkup(data) {
@@ -63,7 +68,7 @@ export default class SidePanelView extends View {
 
   #generateListMarkup(items) {
     if (items.length === 0) {
-      return this.#generateEmptyListMarkup();
+      return this._generateEmptyListMarkup();
     }
     return `
       <ul class="side-panel-list">
@@ -74,19 +79,5 @@ export default class SidePanelView extends View {
 
   #getSidePanelBody() {
     return this._parentElement.querySelector(".side-panel-body");
-  }
-
-  #generateEmptyListMarkup() {
-    return `
-      <ul class="side-panel-list">
-        <li class="side-panel-list-item small">
-          <div class="side-panel-list-item-content">
-            <div class="side-panel-item-textbox">
-              <p class="side-panel-item-textbox-entry">No items</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    `;
   }
 }

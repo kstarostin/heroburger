@@ -15,9 +15,31 @@
 
 .side-panel-content {
   max-width: 25vw;
-  min-width: 20vw;
+  min-width: 15vw;
   max-height: calc(95vh - 9.6rem);
   overflow-y: auto;
+}
+
+.side-panel-headerbox {
+  padding: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.side-panel-header-icon {
+  font-size: 7.4rem;
+  color: #fecb85;
+  align-self: center;
+
+  background-color: #fff8ee;
+  padding: 1.8rem;
+  border-radius: 50%;
+}
+
+.side-panel-header-icon i {
+  display: block;
 }
 
 .side-panel-list {
@@ -111,15 +133,15 @@
 
 .side-panel-textbox {
   padding: 3.2rem 2.4rem 2.4rem 2.4rem;
-  font-size: 2.4rem;
 
   display: flex;
   flex-direction: column;
-  align-items: end;
   gap: 1.2rem;
 }
 
 .side-panel-price-text {
+  font-size: 2.4rem;
+
   display: grid;
   grid-template-columns: auto 8rem;
   justify-items: end;
@@ -135,6 +157,7 @@
   margin-top: 2.4rem;
   font-size: 1.6rem;
   font-weight: 400;
+  align-self: end;
 }
 
 .side-panel-actions {
@@ -142,6 +165,23 @@
 
   display: flex;
   justify-content: center;
+}
+
+.side-panel-empty-text {
+  font-size: 2.4rem;
+  align-self: center;
+}
+
+.side-panel-text-emphasize {
+  font-weight: 600;
+}
+
+.side-panel-text-emphasize.saved {
+  color: #feb451;
+}
+
+.side-panel-text-emphasize.cart {
+  color: #d24347;
 }
 
 /*****************/
