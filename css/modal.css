@@ -175,8 +175,12 @@ body {
   padding: 6rem;
 }
 
+.modal-configurator-header-input {
+  display: none;
+}
+
 .modal-configurator-section-item-list {
-  list-style: none;
+  border: none;
 
   display: grid;
 }
@@ -186,9 +190,14 @@ body {
   gap: 3.2rem;
 }
 
+.modal-configurator-section-item-list input {
+  display: none;
+}
+
 .modal-configurator-section-item {
   box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  cursor: pointer;
 
   display: grid;
 }
@@ -203,6 +212,12 @@ body {
   border-radius: 5px;
   grid-template-columns: 12.8rem auto;
   gap: 3.2rem;
+}
+
+.modal-configurator-section-item.selected
+  .modal-configurator-item-textbox-right {
+  background-color: #feb451;
+  color: #fff;
 }
 
 .modal-configurator-img {
@@ -225,11 +240,11 @@ body {
 }
 
 .modal-configurator-item-textbox.medium {
-  grid-template-columns: auto 12.8rem;
+  grid-template-columns: auto 8.5rem;
 }
 
 .modal-configurator-item-textbox.small {
-  grid-template-columns: auto 8rem;
+  grid-template-columns: auto 6.8rem;
 }
 
 .modal-configurator-item-textbox-left {
@@ -238,13 +253,13 @@ body {
 }
 
 .modal-configurator-item-textbox-left.medium {
-  margin: 2.4rem 1.2rem;
+  padding: 2.4rem 1.2rem;
 
   gap: 2.4rem;
 }
 
 .modal-configurator-item-textbox-left.small {
-  margin: 1.6rem 0.8rem;
+  padding: 1.6rem 0.8rem;
 
   gap: 1.6rem;
 }
@@ -254,15 +269,14 @@ body {
 }
 
 .modal-configurator-item-textbox-right.medium {
-  margin: 2.4rem 1.2rem;
+  padding: 2.4rem 1.2rem;
 }
 
 .modal-configurator-item-textbox-right.small {
-  margin: 1.6rem 0.8rem;
+  padding: 1.6rem 0.8rem;
 }
 
 .modal-configurator-item-title {
-  color: #333;
   font-weight: 600;
 }
 

@@ -154,7 +154,52 @@ const controlConfigureMenu = async function (itemId) {
   console.log(menuItem);
 
   menuConfiguratorModalView.open();
-  menuConfiguratorModalView.render(menuItem);
+  menuConfiguratorModalView.render({
+    menuId: itemId,
+    firstPosition: menuItem.firstPosition,
+    secondPosition: menuItem.secondPosition,
+    thirdPosition: menuItem.thirdPosition,
+    fourthPosition: menuItem.fourthPosition,
+    fifthPosition: menuItem.fifthPosition,
+  });
+  menuConfiguratorModalView.addListenerSelectPositionItem();
+  menuConfiguratorModalView.addHandlerConfirmConfiguration(
+    controlAddToCartMenuItem
+  );
+};
+
+const controlAddToCartMenuItem = async function (configuratorData) {
+  // close configurator modal
+  menuConfiguratorModalView.close();
+
+  // collect configured items
+  const headerItem = await model.getItemById(configuratorData.menuId);
+
+  const secondPositionItem = configuratorData.secondPosition
+    ? await model.getItemById(configuratorData.secondPosition)
+    : null;
+  const thirdPositionItem = configuratorData.thirdPosition
+    ? await model.getItemById(configuratorData.thirdPosition)
+    : null;
+  const fourthPositionItem = configuratorData.fourthPosition
+    ? await model.getItemById(configuratorData.fourthPosition)
+    : null;
+  const fifthPositionItem = configuratorData.fifthPosition
+    ? await model.getItemById(configuratorData.fifthPosition)
+    : null;
+
+  const childItems = [
+    ...(secondPositionItem ? [secondPositionItem] : []),
+    ...(thirdPositionItem ? [thirdPositionItem] : []),
+    ...(fourthPositionItem ? [fourthPositionItem] : []),
+    ...(fifthPositionItem ? [fifthPositionItem] : []),
+  ];
+
+  // add to cart
+  model.addToCart(headerItem, childItems);
+
+  // render cart panel
+  controlOpenMiniCartPanel();
 };
 
 const controlOpenSavedItemsPanel = async function () {

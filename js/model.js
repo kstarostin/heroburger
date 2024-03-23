@@ -31,10 +31,14 @@ export const createAddress = function (addressData) {
   };
 };
 
-export const addToCart = function (item) {
+export const addToCart = function (headerItem, childItems = []) {
   const cart = state.cart;
 
-  const cartEntry = _createCartEntry(item, cart.entries.length);
+  const cartEntry = _createCartEntry(
+    headerItem,
+    cart.entries.length,
+    childItems
+  );
   cart.entries.push(cartEntry);
 
   cart.totalPrice = calculateCartTotalPrice(cart);
@@ -219,7 +223,8 @@ const _createCartEntry = function (item, entryNumber, childItems = []) {
     price:
       childItems.length === 0
         ? item.price
-        : item.price + childEntries.reduce((sum, item) => sum + item.price, 0),
+        : item.price +
+          childItems.reduce((sum, item) => sum + item.menuPrice, 0),
   };
 };
 

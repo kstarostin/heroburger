@@ -92,6 +92,7 @@ const _getAllMenusFromData = function () {
       new: burger.new,
       tags: [...menu.tags, ...burger.tags],
       image: burger.image,
+      firstPosition: [burger],
       secondPosition: _mapPositionItems(menu.second_position),
       thirdPosition: _mapPositionItems(menu.third_position),
       fourthPosition: _mapPositionItems(menu.fourth_position),

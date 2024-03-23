@@ -8,36 +8,94 @@ import {
 } from "../helpers.js";
 
 class MenuConfiguratorModalView extends ModalView {
+  addListenerSelectPositionItem() {
+    [...document.querySelectorAll(".modal-configurator-section-item")].forEach(
+      function (itemEl) {
+        itemEl.addEventListener(
+          "click",
+          function () {
+            this.selectPositionItem(itemEl);
+          }.bind(this, false)
+        );
+      }.bind(this),
+      false
+    );
+  }
+
+  selectPositionItem(currentItemEl) {
+    const parentFieldSetEl = currentItemEl.closest(
+      ".modal-configurator-section-item-list"
+    );
+    const selectedItemEl = parentFieldSetEl.querySelector(".selected");
+    if (currentItemEl === selectedItemEl) {
+      return;
+    }
+
+    const currentItemRadioInputEl = document.querySelector(
+      `#${currentItemEl.dataset.inputId}`
+    );
+    const selectedItemRadioInputEl = document.querySelector(
+      `#${selectedItemEl.dataset.inputId}`
+    );
+
+    selectedItemRadioInputEl.checked = false;
+    currentItemRadioInputEl.checked = true;
+
+    selectedItemEl.classList.remove("selected");
+    currentItemEl.classList.add("selected");
+  }
+
+  addHandlerConfirmConfiguration(handler) {
+    document
+      .querySelector(".modal-configurator-form")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const dataArr = [...new FormData(this)];
+        const data = Object.fromEntries(dataArr);
+        handler(data);
+      });
+  }
+
   _generateMarkup() {
-    console.log(this._data);
-    const menuItem = this._data;
+    const form = this._data;
     return `
       <form class="modal-configurator-form">
+        <input
+         class="modal-configurator-header-input"
+         type="text"
+         name="menuId"
+         value="${form.menuId}"
+        />
         <section class="modal-section modal-section-grid">
           <div class="modal-section-icon">
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
             ${this.#generateSectionTitleMarkup()}
-            <ul class="modal-configurator-section-item-list">
-              ${this.#generateSectionItemMarkup(menuItem, "medium")}
-            </ul>
+            <fieldset class="modal-configurator-section-item-list">
+              ${this.#generateSectionItemMarkup(
+                form.firstPosition[0],
+                0,
+                "firstPosition",
+                "medium"
+              )}
+            </fieldset>
           </div>
         </section>
         ${this.#generatePositionSectionMarkup(
-          menuItem.secondPosition,
+          form.secondPosition,
           "secondPosition"
         )}
         ${this.#generatePositionSectionMarkup(
-          menuItem.thirdPosition,
+          form.thirdPosition,
           "thirdPosition"
         )}
         ${this.#generatePositionSectionMarkup(
-          menuItem.fourthPosition,
+          form.fourthPosition,
           "fourthPosition"
         )}
         ${this.#generatePositionSectionMarkup(
-          menuItem.fifthPosition,
+          form.fifthPosition,
           "fifthPosition"
         )}
 
@@ -52,7 +110,7 @@ class MenuConfiguratorModalView extends ModalView {
     `;
   }
 
-  #generatePositionSectionMarkup(positionItems, position) {
+  #generatePositionSectionMarkup(positionItems, positionName) {
     if (!positionItems || positionItems.length === 0) {
       return "";
     }
@@ -61,7 +119,7 @@ class MenuConfiguratorModalView extends ModalView {
         ? positionItems[0].type
         : extractUniquePositionsTypes(positionItems)[0];
     const iconName = getIconNameForItemType(type);
-    const positionName =
+    const title =
       positionItems.length === 1
         ? positionItems[0].name
         : getPositionNameForItemType(type);
@@ -72,23 +130,41 @@ class MenuConfiguratorModalView extends ModalView {
           <i class="ph ${iconName}"></i>
         </div>
         <div class="modal-section-content">
-          ${this.#generateSectionTitleMarkup(positionName)}
-          <ul class="modal-configurator-section-item-list children">
+          ${this.#generateSectionTitleMarkup(title)}
+          <fieldset class="modal-configurator-section-item-list children">
             ${positionItems
-              .map((item) => this.#generateSectionItemMarkup(item, "small"))
+              .map((item, index) =>
+                this.#generateSectionItemMarkup(
+                  item,
+                  index,
+                  positionName,
+                  "small"
+                )
+              )
               .join("")}
-          </ul>
+          </fieldset>
         </div>
       </section>
     `;
   }
 
-  #generateSectionItemMarkup(item, size) {
+  #generateSectionItemMarkup(item, index, position, size) {
     return `
-      <li class="modal-configurator-section-item ${size}">
+      <div
+       class="modal-configurator-section-item ${size} ${
+      index === 0 ? "selected" : ""
+    }"
+       data-input-id="radio-${item.id}">
         ${this.#generateMenuItemImageMarkup(item, size)}
         ${this.#generateMenuItemDescriptionMarkup(item, size)}
-      </li>
+      </div>
+      <input
+       type="radio"
+       id="radio-${item.id}"
+       name="${position}"
+       value="${item.id}"
+       ${index === 0 ? "checked" : ""}
+      />
     `;
   }
 
@@ -97,7 +173,7 @@ class MenuConfiguratorModalView extends ModalView {
       return "";
     }
     return `
-      <h1 class="modal-section-title">${sectionTitle}</h1>
+      <legend class="modal-section-title">${sectionTitle}</legend>
     `;
   }
 
@@ -134,7 +210,7 @@ class MenuConfiguratorModalView extends ModalView {
         </div>
         <div class="modal-configurator-item-textbox-right ${size}">
           <h1 class="modal-configurator-item-title ${size}">${formatPrice(
-      item.price
+      item.menuPrice
     )}</h1>
         </div>
       </div>
