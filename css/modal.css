@@ -133,25 +133,195 @@ body {
   width: 30%;
 }
 
+.modal-section-grid {
+  display: grid;
+  grid-template-columns: 4.8rem auto;
+  gap: 3.2rem;
+}
+
+.modal-section-icon {
+  font-size: 3.6rem;
+  color: #feb451;
+  justify-self: center;
+  background-color: #eee;
+  padding: 0.8rem;
+  border-radius: 3px;
+}
+
+.modal-section {
+  padding: 0 0 6.4rem 0;
+}
+
+.modal-section:last-child {
+  padding: 0;
+}
+
+.modal-section-title {
+  margin-bottom: 3.2rem;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 4.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/****************/
+/* CONFIGURATOR */
+/****************/
+.modal-configurator-form {
+  padding: 6rem;
+}
+
+.modal-configurator-section-item-list {
+  list-style: none;
+
+  display: grid;
+}
+
+.modal-configurator-section-item-list.children {
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.modal-configurator-section-item {
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+
+  display: grid;
+}
+
+.modal-configurator-section-item.medium {
+  border-radius: 7px;
+  grid-template-columns: 40rem auto;
+  gap: 3.2rem;
+}
+
+.modal-configurator-section-item.small {
+  border-radius: 5px;
+  grid-template-columns: 12.8rem auto;
+  gap: 3.2rem;
+}
+
+.modal-configurator-img {
+  object-fit: cover;
+  display: block;
+}
+
+.modal-configurator-img.medium {
+  width: 40rem;
+  height: 20rem;
+}
+
+.modal-configurator-img.small {
+  width: 12.8rem;
+  height: 12.8rem;
+}
+
+.modal-configurator-item-textbox {
+  display: grid;
+}
+
+.modal-configurator-item-textbox.medium {
+  grid-template-columns: auto 12.8rem;
+}
+
+.modal-configurator-item-textbox.small {
+  grid-template-columns: auto 8rem;
+}
+
+.modal-configurator-item-textbox-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-configurator-item-textbox-left.medium {
+  margin: 2.4rem 1.2rem;
+
+  gap: 2.4rem;
+}
+
+.modal-configurator-item-textbox-left.small {
+  margin: 1.6rem 0.8rem;
+
+  gap: 1.6rem;
+}
+
+.modal-configurator-item-textbox-right {
+  justify-self: center;
+}
+
+.modal-configurator-item-textbox-right.medium {
+  margin: 2.4rem 1.2rem;
+}
+
+.modal-configurator-item-textbox-right.small {
+  margin: 1.6rem 0.8rem;
+}
+
+.modal-configurator-item-title {
+  color: #333;
+  font-weight: 600;
+}
+
+.modal-configurator-item-title.medium {
+  font-size: 2.4rem;
+  line-height: 1.6;
+}
+
+.modal-configurator-item-title.small {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.modal-configurator-item-attributes {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.modal-configurator-item-attribute {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.modal-configurator-item-attribute .icon {
+  font-weight: 500;
+  color: #feb451;
+  justify-self: center;
+}
+
+.modal-configurator-item-attribute.medium {
+  font-size: 2rem;
+  line-height: 1.6;
+
+  grid-template-columns: 3.2rem 1fr;
+}
+
+.modal-configurator-item-attribute.medium .icon {
+  font-size: 3.2rem;
+}
+
+.modal-configurator-item-attribute.small {
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+  grid-template-columns: 2.4rem 1fr;
+}
+
+.modal-configurator-item-attribute.small .icon {
+  font-size: 2.4rem;
+}
+
 /************/
 /* CHECKOUT */
 /************/
 .modal-checkout-form {
   padding: 6rem;
-}
-
-.modal-checkout-section {
-  padding: 0 0 6.4rem 0;
-}
-
-.modal-checkout-section:last-child {
-  padding: 0;
-}
-
-.modal-checkout-section-title {
-  margin-bottom: 3.2rem;
-  font-size: 3rem;
-  font-weight: 700;
 }
 
 .checkout-address-grid {
@@ -283,11 +453,6 @@ body {
 .modal-checkout-price-text.total {
   margin-top: 1.2rem;
   font-weight: 600;
-}
-
-.checkout-actions {
-  display: flex;
-  justify-content: center;
 }
 
 .btn-place-order {

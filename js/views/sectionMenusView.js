@@ -3,6 +3,9 @@ import {
   formatPrice,
   joinCommaSeparated,
   extractMinimalItemPrice,
+  getIconNameForItemType,
+  getPositionNameForItemType,
+  extractUniquePositionsTypes,
 } from "../helpers.js";
 
 class SectionMenusView extends SectionItemsView {
@@ -94,47 +97,18 @@ class SectionMenusView extends SectionItemsView {
     const type =
       positionItems.length === 1
         ? positionItems[0].type
-        : this.#extractUniquePositionsTypes(positionItems)[0];
-    const iconName = this.#getIconNameForItemType(type);
+        : extractUniquePositionsTypes(positionItems)[0];
+    const iconName = getIconNameForItemType(type);
     const positionName =
       positionItems.length === 1
         ? positionItems[0].name
-        : this.#getPositionNameForItemType(type);
+        : getPositionNameForItemType(type);
     return `
       <li class="item-attribute">
         <i class="icon ph ${iconName}"></i>
         <span>${positionName}</span>
       </li>
     `;
-  }
-
-  #extractUniquePositionsTypes(positionItems) {
-    const allTypes = positionItems.map((positionItem) => positionItem.type);
-    return allTypes.filter(function (type, index) {
-      return allTypes.indexOf(type) === index;
-    });
-  }
-
-  #getIconNameForItemType(itemType) {
-    const typeIconMap = new Map();
-    typeIconMap.set("burger", "ph-hamburger");
-    typeIconMap.set("fingerfood", "ph-popcorn");
-    typeIconMap.set("salad", "ph-carrot");
-    typeIconMap.set("dessert", "ph-cookie");
-    typeIconMap.set("drink", "ph-beer-bottle");
-
-    return typeIconMap.get(itemType);
-  }
-
-  #getPositionNameForItemType(itemType) {
-    const typeNameMap = new Map();
-    typeNameMap.set("burger", "Hero Burger");
-    typeNameMap.set("fingerfood", "Sidekick Fingerfood");
-    typeNameMap.set("salad", "Salad");
-    typeNameMap.set("dessert", "Dessert");
-    typeNameMap.set("drink", "Drink");
-
-    return typeNameMap.get(itemType);
   }
 
   #calculateMinimalMenuPrice(item) {

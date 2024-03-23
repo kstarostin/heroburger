@@ -7,9 +7,6 @@ class ItemInfoModalView extends ModalView {
       ${this.#generateImageMarkup(this._data.image, this._data.name)}
       <div class="modal-text">
         <h1 class="modal-title">${this._data.name}</h1>
-        <p class="modal-description">
-          ${this._data.description}
-        </p>
         ${this.#generateAttributesMarkup(this._data.ingredients)}
         ${this.#generateNutritionsMarkup(this._data)}
       </div>

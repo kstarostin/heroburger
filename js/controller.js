@@ -8,6 +8,7 @@ import sectionDessertsView from "./views/sectionDessertsView.js";
 import sectionDrinksView from "./views/sectionDrinksView.js";
 import headerNavLinkView from "./views/headerNavLinkView.js";
 import itemInfoModalView from "./views/itemInfoModalView.js";
+import menuConfiguratorModalView from "./views/menuConfiguratorModalView.js";
 import checkoutModalView from "./views/checkoutModalView.js";
 import orderPlacedModalView from "./views/orderPlacedModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
@@ -148,6 +149,14 @@ const controlAddToCart = async function (itemId) {
   controlOpenMiniCartPanel();
 };
 
+const controlConfigureMenu = async function (itemId) {
+  const menuItem = await model.getItemById(itemId);
+  console.log(menuItem);
+
+  menuConfiguratorModalView.open();
+  menuConfiguratorModalView.render(menuItem);
+};
+
 const controlOpenSavedItemsPanel = async function () {
   savedItemsView.render(await model.getSavedItems());
 
@@ -252,6 +261,7 @@ const init = function () {
   // Menus section view
   sectionMenusView.addHandlerRender(controlSectionMenusRender);
   sectionMenusView.addHandlerSave(controlSaveItem);
+  sectionMenusView.addHandlerAddToCart(controlConfigureMenu);
   sectionMenusView.addHandlerOpenModalInfo(controlItemInfoModal);
 
   // Burgers section view

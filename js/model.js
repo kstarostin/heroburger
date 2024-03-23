@@ -206,11 +206,20 @@ const _updateItemSavedState = function (item) {
   return item;
 };
 
-const _createCartEntry = function (item, entryNumber) {
+const _createCartEntry = function (item, entryNumber, childItems = []) {
   return {
     entryNumber: entryNumber,
     item: item,
-    price: item.price,
+    childEntries:
+      childItems.length === 0
+        ? []
+        : childItems.map((childItem, index) =>
+            _createCartEntry(childItem, index)
+          ),
+    price:
+      childItems.length === 0
+        ? item.price
+        : item.price + childEntries.reduce((sum, item) => sum + item.price, 0),
   };
 };
 
