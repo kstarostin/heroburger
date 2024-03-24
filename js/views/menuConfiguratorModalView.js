@@ -2,19 +2,20 @@ import ModalView from "./modalView.js";
 import {
   joinCommaSeparated,
   formatPrice,
+  calculateMinimalMenuPrice,
   getIconNameForItemType,
   getPositionNameForItemType,
   extractUniquePositionsTypes,
 } from "../helpers.js";
 
 class MenuConfiguratorModalView extends ModalView {
-  addListenerSelectPositionItem() {
+  addListenerSelectPositionItem(handler) {
     [...document.querySelectorAll(".modal-configurator-section-item")].forEach(
       function (itemEl) {
         itemEl.addEventListener(
           "click",
           function () {
-            this.selectPositionItem(itemEl);
+            handler(itemEl.id);
           }.bind(this, false)
         );
       }.bind(this),
@@ -22,13 +23,15 @@ class MenuConfiguratorModalView extends ModalView {
     );
   }
 
-  selectPositionItem(currentItemEl) {
+  selectPositionItem(itemId) {
+    const currentItemEl = document.querySelector(`#${itemId}`);
+
     const parentFieldSetEl = currentItemEl.closest(
       ".modal-configurator-section-item-list"
     );
     const selectedItemEl = parentFieldSetEl.querySelector(".selected");
     if (currentItemEl === selectedItemEl) {
-      return;
+      return this.getFormData();
     }
 
     const currentItemRadioInputEl = document.querySelector(
@@ -43,6 +46,20 @@ class MenuConfiguratorModalView extends ModalView {
 
     selectedItemEl.classList.remove("selected");
     currentItemEl.classList.add("selected");
+
+    return this.getFormData();
+  }
+
+  getFormData() {
+    const formEl = document.querySelector(".modal-configurator-form");
+    const dataArr = [...new FormData(formEl)];
+    const data = Object.fromEntries(dataArr);
+    return data;
+  }
+
+  adjustConfigurationPrice(configurationPrice) {
+    const configurationPriceEl = document.querySelector(".configuration-price");
+    configurationPriceEl.innerHTML = formatPrice(configurationPrice);
   }
 
   addHandlerConfirmConfiguration(handler) {
@@ -64,14 +81,14 @@ class MenuConfiguratorModalView extends ModalView {
          class="modal-configurator-header-input"
          type="text"
          name="menuId"
-         value="${form.menuId}"
+         value="${form.menuItem.id}"
         />
         <section class="modal-section modal-section-grid">
           <div class="modal-section-icon">
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
-            ${this.#generateSectionTitleMarkup(form.menuName)}
+            ${this.#generateSectionTitleMarkup(form.menuItem.name)}
             <fieldset class="modal-configurator-section-item-list">
               ${this.#generateSectionItemMarkup(
                 form.firstPosition[0],
@@ -101,8 +118,10 @@ class MenuConfiguratorModalView extends ModalView {
 
         <section class="modal-section">
           <div class="modal-actions">
-            <button class="btn btn-primary btn-place-order">
-              <span>Confirm</span>
+            <button class="btn btn-primary btn-configure">
+              Confirm <span class="configuration-price">${formatPrice(
+                calculateMinimalMenuPrice(form.menuItem)
+              )}</span>
             </button>
           </div>
         </section>
@@ -154,6 +173,7 @@ class MenuConfiguratorModalView extends ModalView {
   #generateSectionItemMarkup(item, index, position, size) {
     return `
       <div
+       id="configurator-item-${item.id}"
        class="modal-configurator-section-item ${size} ${
       index === 0 ? "selected" : ""
     }"

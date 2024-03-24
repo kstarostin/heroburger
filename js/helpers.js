@@ -27,6 +27,23 @@ export const joinCommaSeparated = function (items) {
     .join(", ");
 };
 
+export const calculateMinimalMenuPrice = function (item) {
+  if (item.type !== "menu") {
+    return item.price;
+  }
+  return calculateSumPrice([
+    item.price,
+    extractMinimalItemPrice(item.secondPosition),
+    extractMinimalItemPrice(item.thirdPosition),
+    extractMinimalItemPrice(item.fourthPosition),
+    extractMinimalItemPrice(item.fifthPosition),
+  ]);
+};
+
+export const calculateSumPrice = function (prices) {
+  return prices.reduce((partialSum, price) => partialSum + price, 0);
+};
+
 export const extractMinimalItemPrice = function (items) {
   if (!items || items.length === 0) {
     return 0;

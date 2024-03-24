@@ -13,6 +13,7 @@ import checkoutModalView from "./views/checkoutModalView.js";
 import orderPlacedModalView from "./views/orderPlacedModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
+import { calculateSumPrice } from "./helpers.js";
 
 const sectionItemsViewList = [
   sectionMenusView,
@@ -151,21 +152,59 @@ const controlAddToCart = async function (itemId) {
 
 const controlConfigureMenu = async function (itemId) {
   const menuItem = await model.getItemById(itemId);
-  console.log(menuItem);
 
   menuConfiguratorModalView.open();
   menuConfiguratorModalView.render({
-    menuId: menuItem.id,
-    menuName: menuItem.name,
+    menuItem: menuItem,
     firstPosition: menuItem.firstPosition,
     secondPosition: menuItem.secondPosition,
     thirdPosition: menuItem.thirdPosition,
     fourthPosition: menuItem.fourthPosition,
     fifthPosition: menuItem.fifthPosition,
   });
-  menuConfiguratorModalView.addListenerSelectPositionItem();
+  menuConfiguratorModalView.addListenerSelectPositionItem(
+    controlSelectPositionItem
+  );
   menuConfiguratorModalView.addHandlerConfirmConfiguration(
     controlAddToCartMenuItem
+  );
+
+  // set total price for initial configuration
+  const menuPrices = [
+    menuItem.price,
+    menuItem.secondPosition && menuItem.secondPosition.length > 0
+      ? menuItem.secondPosition[0].menuPrice
+      : 0,
+    menuItem.thirdPosition && menuItem.thirdPosition.length > 0
+      ? menuItem.thirdPosition[0].menuPrice
+      : 0,
+    menuItem.fourthPosition && menuItem.fourthPosition.length > 0
+      ? menuItem.fourthPosition[0].menuPrice
+      : 0,
+    menuItem.fifthPosition && menuItem.fifthPosition.length > 0
+      ? menuItem.fifthPosition[0].menuPrice
+      : 0,
+  ];
+  menuConfiguratorModalView.adjustConfigurationPrice(
+    calculateSumPrice(menuPrices)
+  );
+};
+
+const controlSelectPositionItem = async function (itemId) {
+  const configuratorData = menuConfiguratorModalView.selectPositionItem(itemId);
+
+  // collect configured items
+  const headerItem = await model.getItemById(configuratorData.menuId);
+  const childItems = await getConfiguredChildItems(configuratorData);
+
+  // extract menu prices for configured items
+  const menuPrices = [
+    headerItem.price,
+    ...childItems.map((item) => item.menuPrice),
+  ];
+  // set total price for adjusted configuration
+  menuConfiguratorModalView.adjustConfigurationPrice(
+    calculateSumPrice(menuPrices)
   );
 };
 
@@ -175,7 +214,16 @@ const controlAddToCartMenuItem = async function (configuratorData) {
 
   // collect configured items
   const headerItem = await model.getItemById(configuratorData.menuId);
+  const childItems = await getConfiguredChildItems(configuratorData);
 
+  // add to cart
+  model.addToCart(headerItem, childItems);
+
+  // render cart panel
+  controlOpenMiniCartPanel();
+};
+
+const getConfiguredChildItems = async function (configuratorData) {
   const secondPositionItem = configuratorData.secondPosition
     ? await model.getItemById(configuratorData.secondPosition)
     : null;
@@ -189,18 +237,12 @@ const controlAddToCartMenuItem = async function (configuratorData) {
     ? await model.getItemById(configuratorData.fifthPosition)
     : null;
 
-  const childItems = [
+  return [
     ...(secondPositionItem ? [secondPositionItem] : []),
     ...(thirdPositionItem ? [thirdPositionItem] : []),
     ...(fourthPositionItem ? [fourthPositionItem] : []),
     ...(fifthPositionItem ? [fifthPositionItem] : []),
   ];
-
-  // add to cart
-  model.addToCart(headerItem, childItems);
-
-  // render cart panel
-  controlOpenMiniCartPanel();
 };
 
 const controlOpenSavedItemsPanel = async function () {

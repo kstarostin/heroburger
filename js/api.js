@@ -71,7 +71,6 @@ const _sleep = (ms) => {
   const min = ms - ms * 0.25;
   const max = ms + ms * 0.25;
   const randomDelayMs = Math.random() * (max - min) + min;
-  console.log(ms, min, max, randomDelayMs);
   return new Promise((resolve) => setTimeout(resolve, randomDelayMs));
 };
 

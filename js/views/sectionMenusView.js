@@ -2,7 +2,7 @@ import SectionItemsView from "./sectionItemsView.js";
 import {
   formatPrice,
   joinCommaSeparated,
-  extractMinimalItemPrice,
+  calculateMinimalMenuPrice,
   getIconNameForItemType,
   getPositionNameForItemType,
   extractUniquePositionsTypes,
@@ -61,9 +61,7 @@ class SectionMenusView extends SectionItemsView {
             <i class="icon ph-fill ph-heart"></i>
           </btn>
           <btn class="btn btn-primary">
-            <span>From ${formatPrice(
-              this.#calculateMinimalMenuPrice(item)
-            )}</span>
+            <span>From ${formatPrice(calculateMinimalMenuPrice(item))}</span>
           </btn>
         </div>
       </div>
@@ -109,16 +107,6 @@ class SectionMenusView extends SectionItemsView {
         <span>${positionName}</span>
       </li>
     `;
-  }
-
-  #calculateMinimalMenuPrice(item) {
-    return (
-      item.price +
-      extractMinimalItemPrice(item.secondPosition) +
-      extractMinimalItemPrice(item.thirdPosition) +
-      extractMinimalItemPrice(item.fourthPosition) +
-      extractMinimalItemPrice(item.fifthPosition)
-    );
   }
 }
 
