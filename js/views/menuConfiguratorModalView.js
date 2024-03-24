@@ -71,13 +71,13 @@ class MenuConfiguratorModalView extends ModalView {
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
-            ${this.#generateSectionTitleMarkup()}
+            ${this.#generateSectionTitleMarkup(form.menuName)}
             <fieldset class="modal-configurator-section-item-list">
               ${this.#generateSectionItemMarkup(
                 form.firstPosition[0],
                 0,
                 "firstPosition",
-                "medium"
+                "large"
               )}
             </fieldset>
           </div>
@@ -119,6 +119,7 @@ class MenuConfiguratorModalView extends ModalView {
         ? positionItems[0].type
         : extractUniquePositionsTypes(positionItems)[0];
     const iconName = getIconNameForItemType(type);
+    const titlePrefix = positionItems.length === 1 ? "" : "Choose Your ";
     const title =
       positionItems.length === 1
         ? positionItems[0].name
@@ -130,7 +131,7 @@ class MenuConfiguratorModalView extends ModalView {
           <i class="ph ${iconName}"></i>
         </div>
         <div class="modal-section-content">
-          ${this.#generateSectionTitleMarkup(title)}
+          ${this.#generateSectionTitleMarkup(`${titlePrefix}${title}`)}
           <fieldset class="modal-configurator-section-item-list children">
             ${positionItems
               .map((item, index) =>
@@ -138,7 +139,9 @@ class MenuConfiguratorModalView extends ModalView {
                   item,
                   index,
                   positionName,
-                  "small"
+                  item.ingredients && item.ingredients.length > 0
+                    ? "medium"
+                    : "small"
                 )
               )
               .join("")}

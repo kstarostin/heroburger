@@ -143,7 +143,7 @@ body {
   font-size: 3.6rem;
   color: #feb451;
   justify-self: center;
-  background-color: #eee;
+  background-color: #fff8ee;
   padding: 0.8rem;
   border-radius: 3px;
 }
@@ -198,13 +198,24 @@ body {
   box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.05);
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s;
 
   display: grid;
 }
 
-.modal-configurator-section-item.medium {
+.modal-configurator-section-item:hover {
+  background-color: #f6f6f6;
+}
+
+.modal-configurator-section-item.large {
   border-radius: 7px;
   grid-template-columns: 40rem auto;
+  gap: 3.2rem;
+}
+
+.modal-configurator-section-item.medium {
+  border-radius: 5px;
+  grid-template-columns: 12.8rem auto;
   gap: 3.2rem;
 }
 
@@ -214,33 +225,57 @@ body {
   gap: 3.2rem;
 }
 
+.modal-configurator-item-textbox-right {
+  transition: all 0.3s;
+}
+
 .modal-configurator-section-item.selected
   .modal-configurator-item-textbox-right {
   background-color: #feb451;
-  color: #fff;
 }
 
 .modal-configurator-img {
   object-fit: cover;
   display: block;
+
+  /* is bugged */
+  transition: filter 0.3s;
 }
 
-.modal-configurator-img.medium {
+.modal-configurator-section-item:hover .modal-configurator-img {
+  filter: brightness(90%);
+}
+
+.modal-configurator-section-item:hover.selected
+  .modal-configurator-item-textbox-right {
+  background-color: #e5a249;
+}
+
+.modal-configurator-img.large {
   width: 40rem;
   height: 20rem;
 }
 
-.modal-configurator-img.small {
+.modal-configurator-img.medium {
   width: 12.8rem;
   height: 12.8rem;
+}
+
+.modal-configurator-img.small {
+  width: 12.8rem;
+  height: 6.4rem;
 }
 
 .modal-configurator-item-textbox {
   display: grid;
 }
 
-.modal-configurator-item-textbox.medium {
+.modal-configurator-item-textbox.large {
   grid-template-columns: auto 8.5rem;
+}
+
+.modal-configurator-item-textbox.medium {
+  grid-template-columns: auto 6.8rem;
 }
 
 .modal-configurator-item-textbox.small {
@@ -252,15 +287,18 @@ body {
   flex-direction: column;
 }
 
-.modal-configurator-item-textbox-left.medium {
+.modal-configurator-item-textbox-left.large {
   padding: 2.4rem 1.2rem;
-
   gap: 2.4rem;
 }
 
-.modal-configurator-item-textbox-left.small {
-  padding: 1.6rem 0.8rem;
+.modal-configurator-item-textbox-left.medium {
+  padding: 1.6rem 0.8rem 1.2rem 0.8rem;
+  gap: 1.6rem;
+}
 
+.modal-configurator-item-textbox-left.small {
+  padding: 1.6rem 0.8rem 1.2rem 0.8rem;
   gap: 1.6rem;
 }
 
@@ -268,21 +306,30 @@ body {
   justify-self: center;
 }
 
-.modal-configurator-item-textbox-right.medium {
+.modal-configurator-item-textbox-right.large {
   padding: 2.4rem 1.2rem;
 }
 
+.modal-configurator-item-textbox-right.medium {
+  padding: 1.6rem 1rem;
+}
+
 .modal-configurator-item-textbox-right.small {
-  padding: 1.6rem 0.8rem;
+  padding: 1.6rem 1rem;
 }
 
 .modal-configurator-item-title {
   font-weight: 600;
 }
 
-.modal-configurator-item-title.medium {
+.modal-configurator-item-title.large {
   font-size: 2.4rem;
   line-height: 1.6;
+}
+
+.modal-configurator-item-title.medium {
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .modal-configurator-item-title.small {
@@ -309,25 +356,25 @@ body {
   justify-self: center;
 }
 
-.modal-configurator-item-attribute.medium {
+.modal-configurator-item-attribute.large {
   font-size: 2rem;
   line-height: 1.6;
 
   grid-template-columns: 3.2rem 1fr;
 }
 
-.modal-configurator-item-attribute.medium .icon {
+.modal-configurator-item-attribute.large .icon {
   font-size: 3.2rem;
 }
 
-.modal-configurator-item-attribute.small {
+.modal-configurator-item-attribute.medium {
   font-size: 1.6rem;
   line-height: 1.2;
 
   grid-template-columns: 2.4rem 1fr;
 }
 
-.modal-configurator-item-attribute.small .icon {
+.modal-configurator-item-attribute.medium .icon {
   font-size: 2.4rem;
 }
 
@@ -423,12 +470,13 @@ body {
 
   display: grid;
   grid-template-columns: 12rem auto 8rem;
+  height: 12rem;
   gap: 2.4rem;
 }
 
 .modal-checkout-item-img {
   width: 12rem;
-  height: 10rem;
+  height: 12rem;
   object-fit: cover;
   display: block;
 }
@@ -440,6 +488,18 @@ body {
 
 .modal-checkout-item-name {
   font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.modal-checkout-item-children {
+  list-style: none;
+}
+
+.modal-checkout-item-child {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  color: #767676;
+  line-height: 1.6rem;
 }
 
 .modal-checkout-item-price {
@@ -523,6 +583,10 @@ body {
 @media (max-width: 120em) {
   .modal-checkout-entries-list {
     grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    min-width: 60vw;
   }
 }
 

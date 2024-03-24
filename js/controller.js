@@ -155,7 +155,8 @@ const controlConfigureMenu = async function (itemId) {
 
   menuConfiguratorModalView.open();
   menuConfiguratorModalView.render({
-    menuId: itemId,
+    menuId: menuItem.id,
+    menuName: menuItem.name,
     firstPosition: menuItem.firstPosition,
     secondPosition: menuItem.secondPosition,
     thirdPosition: menuItem.thirdPosition,

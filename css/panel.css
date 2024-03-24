@@ -22,26 +22,9 @@
 
 .side-panel-headerbox {
   padding: 1.6rem;
-  margin-bottom: 1.2rem;
 
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-}
-
-.side-panel-header-icon {
-  font-size: 7.4rem;
-  color: #fecb85;
-  align-self: center;
-
-  background-color: #fff8ee;
-  padding: 1.8rem;
-  border-radius: 50%;
-  box-shadow: 0 0.4rem 2.4rem rgba(0, 0, 0, 0.05);
-}
-
-.side-panel-header-icon i {
-  display: block;
 }
 
 .side-panel-list {
@@ -77,6 +60,10 @@
   align-items: center;
 }
 
+.side-panel-list-item-nav-link {
+  transition: all 0.3s;
+}
+
 .side-panel-list-item-nav-link:hover,
 .side-panel-list-item-nav-link:active {
   cursor: pointer;
@@ -89,7 +76,7 @@
 }
 
 .side-panel-list-item.large .side-panel-list-item-content picture {
-  height: 10rem;
+  height: 14rem;
 }
 
 .side-panel-item-img {
@@ -97,22 +84,46 @@
   height: 6rem;
   display: block;
   object-fit: cover;
+
+  transition: filter 0.3s;
+}
+
+.side-panel-list-item-nav-link:hover .side-panel-item-img,
+.side-panel-list-item-nav-link:active .side-panel-item-img {
+  filter: brightness(90%);
 }
 
 .side-panel-list-item.large .side-panel-list-item-content .side-panel-item-img {
   width: 12rem;
-  height: 10rem;
+  height: 14rem;
 }
 
 .side-panel-item-textbox {
+  margin: 0.8rem 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.side-panel-item-textbox-entry {
-  padding: 0 1.2rem;
+.side-panel-item-text {
+  font-weight: 500;
   line-height: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.side-panel-item-children {
+  list-style: none;
+  margin-bottom: 1.2rem;
+}
+
+.side-panel-item-child {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  color: #767676;
+}
+
+.side-panel-item-price {
+  font-weight: 500;
 }
 
 .side-panel-list .btn {
@@ -136,10 +147,33 @@
 
 .side-panel-textbox {
   padding: 4.8rem 2.4rem 2.4rem 2.4rem;
+  position: relative;
 
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+}
+
+.side-panel-header-icon {
+  font-size: 8.6rem;
+  color: #fecb85;
+  align-self: center;
+
+  /* background-color: #fff; */
+  padding: 1.4rem;
+  border-radius: 50%;
+  /* box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05); */
+  border: 0.8rem solid #fff8ee;
+}
+
+.side-panel-header-icon.background {
+  position: absolute;
+  z-index: -1;
+  color: #fff8ee;
+}
+
+.side-panel-header-icon i {
+  display: block;
 }
 
 .side-panel-price-text {

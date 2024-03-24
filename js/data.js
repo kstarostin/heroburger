@@ -1091,7 +1091,7 @@ export const data = {
     {
       id: "water",
       type: "drink",
-      name: "Sparkling water",
+      name: "Sparkling Water",
       description: "Rejuvenate with the Bubbly Vitality Elixir!",
       ingredients: [],
       price: 2.59,

@@ -198,11 +198,28 @@ class CheckoutModalView extends ModalView {
         </picture>
         <div class="modal-checkout-item-text">
           <p class="modal-checkout-item-name">${entry.item.name}</p>
+          ${this.#generateChildEntriesListMarkup(entry.childEntries)}
         </div>
         <div class="modal-checkout-item-price">
           ${formatPrice(entry.price)}
         </div>
       </li>
+    `;
+  }
+
+  #generateChildEntriesListMarkup(childEntries) {
+    return `
+      <ul class="modal-checkout-item-children">
+        ${childEntries
+          .map((childEntry) => {
+            return `
+            <li class="modal-checkout-item-child">
+              &ndash;&nbsp;${childEntry.item.name}
+            </li>
+          `;
+          })
+          .join("")}
+      </ul>
     `;
   }
 

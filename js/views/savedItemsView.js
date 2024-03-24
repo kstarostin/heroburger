@@ -34,16 +34,6 @@ class SavedItemsView extends SidePanelView {
     return data ? data : [];
   }
 
-  _generatePanelHeader() {
-    return `
-      <div class="side-panel-headerbox">
-        <div class="side-panel-header-icon">
-          <i class="ph ph-heart"></i>
-        </div>
-      </div>
-    `;
-  }
-
   _generateItemMarkup(item) {
     return `
       <li class="side-panel-list-item small">
@@ -64,7 +54,7 @@ class SavedItemsView extends SidePanelView {
             />
           </picture>
           <div class="side-panel-item-textbox">
-            <p class="side-panel-item-textbox-entry">${item.name}</p>
+            <p class="side-panel-item-text">${item.name}</p>
           </div>
         </div>
         <button class="btn btn-panel-remove" data-item-id="${item.id}">
@@ -77,6 +67,9 @@ class SavedItemsView extends SidePanelView {
   _generateEmptyListMarkup() {
     return `
       <div class="side-panel-textbox">
+        <div class="side-panel-header-icon">
+          <i class="ph ph-shopping-cart-simple"></i>
+        </div>
         <p class="side-panel-empty-text">
           Save your <span class="side-panel-text-emphasize saved">Favorites</span> here!
         </p>

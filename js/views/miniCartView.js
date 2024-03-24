@@ -25,16 +25,6 @@ class MiniCartView extends SidePanelView {
     return data.entries;
   }
 
-  _generatePanelHeader() {
-    return `
-      <div class="side-panel-headerbox">
-        <div class="side-panel-header-icon">
-          <i class="ph ph-shopping-cart-simple"></i>
-        </div>
-      </div>
-    `;
-  }
-
   _generateItemMarkup(entry) {
     const item = entry.item;
     return `
@@ -56,8 +46,9 @@ class MiniCartView extends SidePanelView {
             />
           </picture>
           <div class="side-panel-item-textbox">
-            <p class="side-panel-item-textbox-entry">${item.name}</p>
-            <p class="side-panel-item-textbox-entry">
+            <p class="side-panel-item-text">${item.name}</p>
+            ${this.#generateChildEntriesListMarkup(entry.childEntries)}
+            <p class="side-panel-item-price">
               ${formatPrice(entry.price)}
             </p>
           </div>
@@ -71,12 +62,31 @@ class MiniCartView extends SidePanelView {
     `;
   }
 
+  #generateChildEntriesListMarkup(childEntries) {
+    return `
+      <ul class="side-panel-item-children">
+        ${childEntries
+          .map((childEntry) => {
+            return `
+            <li class="side-panel-item-child">
+              &ndash;&nbsp;${childEntry.item.name}
+            </li>
+          `;
+          })
+          .join("")}
+      </ul>
+    `;
+  }
+
   _generatePanelBottomMarkup(cart) {
     if (cart.totalPrice === 0) {
       return "";
     }
     return `
       <div class="side-panel-textbox">
+        <div class="side-panel-header-icon background">
+          <i class="ph ph-shopping-cart-simple"></i>
+        </div>
         <p class="side-panel-price-text">
           <span>Total price:</span>
           <span>${formatPrice(cart.totalPrice)}</span>
@@ -112,6 +122,9 @@ class MiniCartView extends SidePanelView {
   _generateEmptyListMarkup() {
     return `
       <div class="side-panel-textbox">
+        <div class="side-panel-header-icon">
+          <i class="ph ph-shopping-cart-simple"></i>
+        </div>
         <p class="side-panel-empty-text">
           Add your <span class="side-panel-text-emphasize cart">Hero</span> meal!
         </p>
