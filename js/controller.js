@@ -7,6 +7,7 @@ import sectionSaladsView from "./views/sectionSaladsView.js";
 import sectionDessertsView from "./views/sectionDessertsView.js";
 import sectionDrinksView from "./views/sectionDrinksView.js";
 import headerNavLinkView from "./views/headerNavLinkView.js";
+import footerView from "./views/footerView.js";
 import itemInfoModalView from "./views/itemInfoModalView.js";
 import menuConfiguratorModalView from "./views/menuConfiguratorModalView.js";
 import checkoutModalView from "./views/checkoutModalView.js";
@@ -15,6 +16,7 @@ import loaderModalView from "./views/loaderModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
 import { calculateSumPrice } from "./helpers.js";
+import { GITHUB_URL } from "./config.js";
 
 const sectionItemsViewList = [
   sectionMenusView,
@@ -73,6 +75,15 @@ const controlSectionDessertsRender = async function () {
 
 const controlSectionDrinksRender = async function () {
   sectionDrinksView.render(await model.getDrinks());
+};
+
+const controlFooterRender = function () {
+  const currentYear = new Date().getFullYear();
+
+  footerView.render({
+    currentYear: currentYear,
+    linkUrl: GITHUB_URL,
+  });
 };
 
 const controlNavLinks = function (link, headerEl, event) {
@@ -394,6 +405,9 @@ const init = function () {
   sectionDrinksView.addHandlerSave(controlSaveItem);
   sectionDrinksView.addHandlerAddToCart(controlAddToCart);
   sectionDrinksView.addHandlerOpenModalInfo(controlItemInfoModal);
+
+  // Footer view
+  footerView.addHandlerRender(controlFooterRender);
 
   // Modal view
   itemInfoModalView.addHandlerCloseModal(controlModalClose);

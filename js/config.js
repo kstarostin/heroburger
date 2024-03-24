@@ -12,3 +12,5 @@ export const FORM_PATTERN_APARTMENT = "[a-zA-Z0-9\\s\\-\\/\\.]{0,16}";
 export const FORM_PATTERN_ZIP = "\\d{5}";
 export const FORM_PATTERN_TOWN =
   "^([\\Da-zA-Z\\u0080-\\u024F]+(?:. |-| |'))*[\\Da-zA-Z\\u0080-\\u024F]{2,32}$";
+
+export const GITHUB_URL = "https://github.com/kstarostin/heroburger";
