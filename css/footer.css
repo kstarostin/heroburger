@@ -87,6 +87,14 @@
   gap: 3.2rem;
 }
 
+.footer-author-text,
+.footer-author-text .footer-link:link,
+.footer-author-text .footer-link:visited {
+  font-size: 1.4rem;
+  padding-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
 /*****************/
 /* MEDIA QUERIES */
 /*****************/
