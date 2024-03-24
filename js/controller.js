@@ -11,6 +11,7 @@ import itemInfoModalView from "./views/itemInfoModalView.js";
 import menuConfiguratorModalView from "./views/menuConfiguratorModalView.js";
 import checkoutModalView from "./views/checkoutModalView.js";
 import orderPlacedModalView from "./views/orderPlacedModalView.js";
+import loaderModalView from "./views/loaderModalView.js";
 import savedItemsView from "./views/savedItemsView.js";
 import miniCartView from "./views/miniCartView.js";
 import { calculateSumPrice } from "./helpers.js";
@@ -212,12 +213,18 @@ const controlAddToCartMenuItem = async function (configuratorData) {
   // close configurator modal
   menuConfiguratorModalView.close();
 
+  // show loading spinner
+  loaderModalView.render();
+
   // collect configured items
   const headerItem = await model.getItemById(configuratorData.menuId);
   const childItems = await getConfiguredChildItems(configuratorData);
 
   // add to cart
   model.addToCart(headerItem, childItems);
+
+  // hide loading spinner
+  loaderModalView.clear();
 
   // render cart panel
   controlOpenMiniCartPanel();
@@ -303,6 +310,9 @@ const controlPlaceOrder = async function (addressData) {
   // close checkout modal
   checkoutModalView.close();
 
+  // show loading spinner
+  loaderModalView.render();
+
   // populate submitted address
   const cart = model.getCart();
   const deliveryAddress = model.createAddress(addressData);
@@ -322,6 +332,9 @@ const controlPlaceOrder = async function (addressData) {
 
   // place order
   const order = await model.placeOrder(cart);
+
+  // hide loading spinner
+  loaderModalView.clear();
 
   // show order placed modal
   orderPlacedModalView.open();
