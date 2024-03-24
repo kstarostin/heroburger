@@ -68,7 +68,7 @@ class SavedItemsView extends SidePanelView {
     return `
       <div class="side-panel-textbox">
         <div class="side-panel-header-icon">
-          <i class="ph ph-shopping-cart-simple"></i>
+          <i class="ph ph-heart"></i>
         </div>
         <p class="side-panel-empty-text">
           Save your <span class="side-panel-text-emphasize saved">Favorites</span> here!

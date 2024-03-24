@@ -126,7 +126,7 @@ class MiniCartView extends SidePanelView {
           <i class="ph ph-shopping-cart-simple"></i>
         </div>
         <p class="side-panel-empty-text">
-          Add your <span class="side-panel-text-emphasize cart">Hero</span> meal!
+          Add your <span class="side-panel-text-emphasize cart">Hero</span> meal here!
         </p>
       </div>
     `;

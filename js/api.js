@@ -10,28 +10,28 @@ import * as validator from "./validator.js";
 // **********************
 export const getAllMenus = async function () {
   // imitate response time
-  await _sleep(200);
+  await _sleep(300);
   // execute request
   return _getAllMenusFromData();
 };
 
 export const getAllSingleItems = async function () {
   // imitate response time
-  await _sleep(300);
+  await _sleep(400);
   // execute request
   return _getAllSingleItemsFromData();
 };
 
 export const getSingleItemsByType = async function (type) {
   // imitate response time
-  await _sleep(200);
+  await _sleep(300);
   // execute request
   return _getAllSingleItemsFromData().filter((item) => item.type === type);
 };
 
 export const getAllItems = async function () {
   // imitate response time
-  await _sleep(350);
+  await _sleep(450);
   // execute request
   return _getAllItemsFromData();
 };
@@ -45,21 +45,21 @@ export const getItemById = async function (id) {
 
 export const validateDeliveryAddress = async function (deliveryAddress) {
   // imitate response time
-  await _sleep(100);
+  await _sleep(400);
   // execute request
   return validator.validateDeliveryAddress(deliveryAddress);
 };
 
 export const getDeliveryTime = async function (deliveryAddress) {
   // imitate response time
-  await _sleep(200);
+  await _sleep(500);
   // execute request
   return _getDeliveryTime();
 };
 
 export const placeOrder = async function (cart) {
   // imitate response time
-  await _sleep(500);
+  await _sleep(800);
   // return order
   return cart;
 };
@@ -67,7 +67,13 @@ export const placeOrder = async function (cart) {
 // ***********************************
 // API response placeholder functions:
 // ***********************************
-const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const _sleep = (ms) => {
+  const min = ms - ms * 0.25;
+  const max = ms + ms * 0.25;
+  const randomDelayMs = Math.random() * (max - min) + min;
+  console.log(ms, min, max, randomDelayMs);
+  return new Promise((resolve) => setTimeout(resolve, randomDelayMs));
+};
 
 const _getAllItemsFromData = function () {
   return [..._getAllMenusFromData(), ..._getAllSingleItemsFromData()];
