@@ -417,4 +417,14 @@ section {
   .heading-primary {
     font-size: 6.2rem;
   }
+
+  .grid-2-cols .item-new::after {
+    top: 3%;
+    right: -16%;
+  }
+
+  .grid-3-cols .item-new::after {
+    top: 3%;
+    right: -16%;
+  }
 }

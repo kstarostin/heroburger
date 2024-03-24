@@ -4,7 +4,7 @@ import {
   joinCommaSeparated,
   calculateMinimalMenuPrice,
   getIconNameForItemType,
-  getPositionNameForItemType,
+  getPositionNamesForItemTypes,
   extractUniquePositionsTypes,
 } from "../helpers.js";
 
@@ -92,19 +92,21 @@ class SectionMenusView extends SectionItemsView {
     if (!positionItems || positionItems.length === 0) {
       return "";
     }
-    const type =
+    const types =
       positionItems.length === 1
         ? positionItems[0].type
-        : extractUniquePositionsTypes(positionItems)[0];
-    const iconName = getIconNameForItemType(type);
-    const positionName =
+        : extractUniquePositionsTypes(positionItems);
+    const iconName = getIconNameForItemType(types[0]);
+    const positionNames =
       positionItems.length === 1
         ? positionItems[0].name
-        : getPositionNameForItemType(type);
+        : getPositionNamesForItemTypes(types);
+    const positionNameString =
+      positionNames.length > 1 ? positionNames.join(" or ") : positionNames[0];
     return `
       <li class="item-attribute">
         <i class="icon ph ${iconName}"></i>
-        <span>${positionName}</span>
+        <span>${positionNameString}</span>
       </li>
     `;
   }

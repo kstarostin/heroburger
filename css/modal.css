@@ -673,6 +673,11 @@ body {
     max-width: 90vw;
     min-width: 90vw;
   }
+
+  .close-modal {
+    top: 2.4rem;
+    right: 2.4rem;
+  }
 }
 
 /***********************************/

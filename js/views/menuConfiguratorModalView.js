@@ -4,7 +4,7 @@ import {
   formatPrice,
   calculateMinimalMenuPrice,
   getIconNameForItemType,
-  getPositionNameForItemType,
+  getPositionNamesForItemTypes,
   extractUniquePositionsTypes,
 } from "../helpers.js";
 
@@ -133,16 +133,17 @@ class MenuConfiguratorModalView extends ModalView {
     if (!positionItems || positionItems.length === 0) {
       return "";
     }
-    const type =
+    const types =
       positionItems.length === 1
         ? positionItems[0].type
-        : extractUniquePositionsTypes(positionItems)[0];
-    const iconName = getIconNameForItemType(type);
+        : extractUniquePositionsTypes(positionItems);
+    const iconName = getIconNameForItemType(types[0]);
     const titlePrefix = positionItems.length === 1 ? "" : "Choose Your ";
-    const title =
+    const titles =
       positionItems.length === 1
         ? positionItems[0].name
-        : getPositionNameForItemType(type);
+        : getPositionNamesForItemTypes(types);
+    const titlesString = titles.length > 1 ? titles.join(" or ") : titles[0];
 
     return `
       <section class="modal-section modal-section-grid">
@@ -150,7 +151,7 @@ class MenuConfiguratorModalView extends ModalView {
           <i class="ph ${iconName}"></i>
         </div>
         <div class="modal-section-content">
-          ${this.#generateSectionTitleMarkup(`${titlePrefix}${title}`)}
+          ${this.#generateSectionTitleMarkup(`${titlePrefix}${titlesString}`)}
           <fieldset class="modal-configurator-section-item-list children">
             ${positionItems
               .map((item, index) =>
