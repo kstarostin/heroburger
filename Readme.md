@@ -2,7 +2,7 @@
 
 **Hero Burger** is a demo project of a small single-page online shop.
 
-The menu of the shop contains several types of burgers sold both separately and as part of the menu, as well as salads, desserts and drinks. The names and descriptions of the items are stylised with superhero themes to make it more fun! :)
+The menu of the shop contains several types of burgers sold both separately and as part of the configurable menu, as well as salads, desserts and drinks. The names and descriptions of the items are stylised with superhero themes to make it more fun! :)
 
 ## Shop features
 
@@ -11,7 +11,8 @@ The menu of the shop contains several types of burgers sold both separately and 
 3. Single items can be added to cart.
 4. The menu items contain burger as the main item and additional items. They can be configured and added to cart.
 5. The list and the cart are not cleared after reopening the tab/browser.
-6. The shop design is responsive and adapted for smaller screens, tablets and phones.
+6. You can place an order from the cart.
+7. The shop design is responsive and adapted for smaller screens, tablets and phones.
 
 ## Project structure
 
