@@ -13,6 +13,30 @@
   transition: all 0.5s 0.2s;
 }
 
+.close-side-panel {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  font-size: 3.6rem;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10rem;
+  width: 4rem;
+  height: 4rem;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-side-panel:hover,
+.close-side-panel:active {
+  color: #e5a249;
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .side-panel-content {
   max-width: 25vw;
   min-width: 15vw;
@@ -256,21 +280,9 @@
 /* BELOW 944 px (Portrait tablets) */
 /***********************************/
 @media (max-width: 59em) {
-  .side-panel-body {
-    margin: 0;
-    border-radius: 0;
-    background-color: #fff;
-  }
-
   .side-panel-content {
-    max-width: 100vw;
-    min-width: 100vw;
-    min-height: calc(100vh - 9.6rem);
-    max-height: calc(100vh - 9.6rem);
-  }
-
-  .side-panel-list-item {
-    grid-template-columns: 1fr 6rem;
+    max-width: 50vw;
+    min-width: 50vw;
   }
 }
 
@@ -278,10 +290,29 @@
 /* BELOW 704px (Smaller tablets) */
 /*********************************/
 @media (max-width: 44em) {
-}
+  .side-panel-body {
+    margin: 0;
+    border-radius: 0;
+    background-color: #fff;
+    top: 0;
+    z-index: 999;
+    position: fixed;
+  }
 
-/************************/
-/* BELOW 544px (Phones) */
-/************************/
-@media (max-width: 34em) {
+  .close-side-panel {
+    display: flex;
+  }
+
+  .side-panel-content {
+    padding-top: 9.6rem;
+
+    max-width: 100vw;
+    min-width: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+
+  .side-panel-list-item {
+    grid-template-columns: 1fr 6rem;
+  }
 }

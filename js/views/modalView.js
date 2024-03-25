@@ -14,6 +14,12 @@ export default class ModalView extends View {
         handler();
       });
     });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        handler();
+      }
+    });
   }
 
   open() {

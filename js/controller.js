@@ -266,6 +266,8 @@ const getConfiguredChildItems = async function (configuratorData) {
 const controlOpenSavedItemsPanel = async function () {
   savedItemsView.render(await model.getSavedItems());
 
+  savedItemsView.addHandlerClose(controlCloseSavedItemsPanel);
+
   savedItemsView.addHandlerNavigateItem(controlNavigateSavedItem);
   savedItemsView.addHandlerRemoveItem(controlRemoveSavedItem);
 };
@@ -294,6 +296,8 @@ const controlRemoveSavedItem = async function (id) {
 
 const controlOpenMiniCartPanel = function () {
   miniCartView.render(model.getCart());
+
+  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 
   miniCartView.addHandlerRemoveCartEntry(controlRemoveCartEntry);
   miniCartView.addHandlerCheckoutModal(controlCheckoutModal);
@@ -414,10 +418,8 @@ const init = function () {
 
   // Saved items panel view
   savedItemsView.addHandlerRender(controlOpenSavedItemsPanel);
-  savedItemsView.addHandlerClose(controlCloseSavedItemsPanel);
 
   // Cart panel view
   miniCartView.addHandlerRender(controlOpenMiniCartPanel);
-  miniCartView.addHandlerClose(controlCloseMiniCartPanel);
 };
 init();

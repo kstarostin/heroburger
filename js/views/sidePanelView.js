@@ -11,6 +11,19 @@ export default class SidePanelView extends View {
   }
 
   addHandlerClose(handler) {
+    // close on close button click
+    const sidePanelCloseBtn =
+      this._parentElement.querySelector(".close-side-panel");
+    sidePanelCloseBtn.addEventListener("click", function () {
+      handler();
+    });
+    // close on Esc keyboard press
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        handler();
+      }
+    });
+    // close on outside click
     document.body.addEventListener(
       "click",
       function (e) {
@@ -44,6 +57,9 @@ export default class SidePanelView extends View {
     const items = this._extractItems(this._data);
     return `
       <div class="side-panel-body hidden">
+        <button class="close-side-panel">
+          <i class="ph ph-x"></i>
+        </button>
         <div class="side-panel-content">
           ${this._generatePanelHeader()}
           ${this.#generateListMarkup(items)}

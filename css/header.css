@@ -146,7 +146,7 @@
 @media (max-width: 75em) {
   .btn-mobile-nav {
     display: block;
-    z-index: 9999;
+    z-index: 900;
   }
 
   .main-nav {
