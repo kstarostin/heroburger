@@ -8,21 +8,21 @@ Visit the shop at [heroburger.netlify.app](https://heroburger.netlify.app/).
 
 ## Shop features
 
-1. You can see full description and a nutrition table of each item in a modal window.
-2. Items can be saved in the favorite list.
-3. Single items can be added to cart.
+1. In the modal window, you can see the full description and nutrition table of each product.
+2. Items can be saved in the favourites list.
+3. You can add single items to your basket.
 4. The menu items contain burger as the main item and additional items. They can be configured and added to cart.
 5. The list and the cart are not cleared after reopening the tab/browser.
-6. You can place an order from the cart.
-7. The shop design is responsive and adapted for smaller screens, tablets and phones.
+6. You can place an order from the shopping cart.
+7. The shop design is responsive and adapted for small screens, tablets and phones.
 
 ## Project structure
 
-The main goal of this project was to build a small single page web site using only HTML, CSS and JavaScript.
+The main goal of this project was to build a small single page website using only HTML, CSS and JavaScript.
 
-The JavaScript code is written in OOP and MVC style. It consists of the controller, model and multiple views for each significant element of the shop front end.
+The JavaScript code is written in OOP and MVC style. It consists of a controller, a model and several views for each significant element of the shop front-end.
 
-The back end requests for fetching the menu items for the store are simulated in the `api.js`. The single and menu items are configured in the `data.js`.
+The back-end requests to retrieve shop menu items are simulated in the `api.js`. The single and the menu items are configured in the `data.js`.
 
 `npm` and `Parcel` were used addtionally and for develpment purpose only, to maintain the OOP style for JavaScript code.
 
