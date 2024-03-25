@@ -150,7 +150,6 @@ const controlSaveItem = async function (view, itemId) {
   } else {
     await model.unsaveItem(itemId);
   }
-
   // update view
   view.update(await model.getItemList());
 };
@@ -158,7 +157,7 @@ const controlSaveItem = async function (view, itemId) {
 const controlAddToCart = async function (itemId) {
   const item = await model.getItemById(itemId);
   model.addToCart(item);
-  // render cart panel
+
   controlOpenMiniCartPanel();
 };
 
@@ -277,9 +276,7 @@ const controlCloseSavedItemsPanel = function () {
 };
 
 const controlNavigateSavedItem = function (id) {
-  // close panel
   controlCloseSavedItemsPanel();
-  // scroll to the item
   scrollToElement(`#${id}`);
 };
 

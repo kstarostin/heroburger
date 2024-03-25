@@ -1,7 +1,7 @@
 {
   "name": "heroburger",
   "version": "1.0.0",
-  "description": "Burger web-shop showcase",
+  "description": "Burger web shop demo project",
   "default": "index.html",
   "scripts": {
     "clean-dist": "rm -rf dist && mkdir dist",
