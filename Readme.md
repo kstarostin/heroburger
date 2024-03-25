@@ -4,6 +4,8 @@
 
 The menu of the shop contains several types of burgers sold both separately and as part of the configurable menu, as well as salads, desserts and drinks. The names and descriptions of the items are stylised with superhero themes to make it more fun! :)
 
+Visit the shop at [heroburger.netlify.app](https://heroburger.netlify.app/).
+
 ## Shop features
 
 1. You can see full description and a nutrition table of each item in a modal window.
