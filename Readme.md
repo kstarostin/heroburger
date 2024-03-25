@@ -1,6 +1,6 @@
-# HeroBurger
+![Hero Burger logo](/img/hero-burger-logo.png "Hero Burger logo")
 
-HeroBurger is a demo project of a small single-page online shop.
+**Hero Burger** is a demo project of a small single-page online shop.
 
 The menu of the shop contains several types of burgers sold both separately and as part of the menu, as well as salads, desserts and drinks. The names and descriptions of the items are stylised with superhero themes to make it more fun! :)
 
