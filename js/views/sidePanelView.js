@@ -38,13 +38,6 @@ export default class SidePanelView extends View {
       }.bind(this),
       false
     );
-    // close on Android back button press
-    document.addEventListener("backbutton", function (e) {
-      if (this.#isOpen()) {
-        e.preventDefault();
-        handler();
-      }
-    }.bind(this), false);
   }
 
   render(data) {
@@ -102,9 +95,5 @@ export default class SidePanelView extends View {
 
   #getSidePanelBody() {
     return this._parentElement.querySelector(".side-panel-body");
-  }
-
-  #isOpen() {
-    return !this.#getSidePanelBody().classList.contains("hidden");
   }
 }

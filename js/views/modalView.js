@@ -20,17 +20,6 @@ export default class ModalView extends View {
         handler();
       }
     });
-    // close on Android back button press
-    document.addEventListener("deviceready", function () {
-      document.addEventListener("backbutton", function (e) {
-        window.alert("backbutton");
-        if (this.#isOpen()) {
-          window.alert("open");
-          e.preventDefault();
-          handler();
-        }
-      }.bind(this), false);
-    }.bind(this), false);
   }
 
   open() {
@@ -41,9 +30,5 @@ export default class ModalView extends View {
   close() {
     this._modal.classList.add("hidden");
     this._overlay.classList.add("hidden");
-  }
-
-  #isOpen() {
-    return !this._modal.classList.contains("hidden");
   }
 }
