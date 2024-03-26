@@ -8,18 +8,25 @@ export default class ModalView extends View {
 
   addHandlerCloseModal(handler) {
     const modalCloseBtn = this._modal.querySelector(".close-modal");
-
+    // close on button or overlay click
     [modalCloseBtn, this._overlay].forEach((element) => {
       element.addEventListener("click", function () {
         handler();
       });
     });
-
+    // close on Esc keyboard press
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
         handler();
       }
     });
+    // close on Android back button press
+    document.addEventListener("backbutton", function (e) {
+      if (this.#isOpen()) {
+        e.preventDefault();
+        handler();
+      }
+    }.bind(this), false);
   }
 
   open() {
@@ -30,5 +37,9 @@ export default class ModalView extends View {
   close() {
     this._modal.classList.add("hidden");
     this._overlay.classList.add("hidden");
+  }
+
+  #isOpen() {
+    return !this._modal.classList.contains("hidden");
   }
 }

@@ -40,6 +40,9 @@ To build the code and prepare for deployment, use:
  npm run build
 ```
 
+> #### Note
+> To run both `start` and `build` commands on Windows, you will need some command line with bash feature installed.
+
 After that, the ready-for-deployment code is available in the folder `./dist`.
 
 ### Assets:
