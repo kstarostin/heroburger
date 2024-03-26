@@ -27,6 +27,11 @@ The back-end requests to retrieve shop menu items are simulated in the `api.js`.
 `npm` and `Parcel` were used addtionally and for develpment purpose only, to maintain the OOP style for JavaScript code.
 
 ### Build
+Navigate to the project root and install the project dependencies with the command:
+
+```
+ npm install
+```
 
 To start the app, use:
 

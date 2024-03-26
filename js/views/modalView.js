@@ -22,7 +22,9 @@ export default class ModalView extends View {
     });
     // close on Android back button press
     document.addEventListener("backbutton", function (e) {
+      window.alert("backbutton");
       if (this.#isOpen()) {
+        window.alert("open");
         e.preventDefault();
         handler();
       }
