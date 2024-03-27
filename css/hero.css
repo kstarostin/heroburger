@@ -79,6 +79,7 @@
 @media (max-width: 84em) {
   .hero {
     grid-template-columns: 3fr 2fr;
+    margin: 9.6rem auto;
   }
 }
 
