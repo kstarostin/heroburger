@@ -382,12 +382,12 @@ section {
 
   .grid-2-cols .item-new::after {
     top: 3%;
-    right: -6%;
+    right: -7%;
   }
 
   .grid-3-cols .item-new::after {
     top: 3%;
-    right: -15%;
+    right: -16%;
   }
 }
 
