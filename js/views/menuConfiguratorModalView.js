@@ -145,6 +145,12 @@ class MenuConfiguratorModalView extends ModalView {
         : getPositionNamesForItemTypes(types);
     const titlesString = titles.length > 1 ? titles.join(" or ") : titles[0];
 
+    const size = positionItems.some(
+      (item) => item.ingredients && item.ingredients.length > 0
+    )
+      ? "medium"
+      : "small";
+
     return `
       <section class="modal-section modal-section-grid">
         <div class="modal-section-icon">
@@ -155,14 +161,7 @@ class MenuConfiguratorModalView extends ModalView {
           <fieldset class="modal-configurator-section-item-list children">
             ${positionItems
               .map((item, index) =>
-                this.#generateSectionItemMarkup(
-                  item,
-                  index,
-                  positionName,
-                  item.ingredients && item.ingredients.length > 0
-                    ? "medium"
-                    : "small"
-                )
+                this.#generateSectionItemMarkup(item, index, positionName, size)
               )
               .join("")}
           </fieldset>

@@ -26,7 +26,7 @@ export const data = {
       name: "Team Incredible Vegan Vigilante",
       burger_included: true,
       burger_id: "vigilante",
-      second_position: ["harvest", "nugget"],
+      second_position: ["harvest", "pal", "nugget"],
       third_position: ["water", "soda", "juice", "beer"],
       fourth_position: [],
       fifth_position: [],
@@ -599,7 +599,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: [],
+      tags: ["vegan"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/crispy-potato-pal-256-c.jpg",
@@ -639,7 +639,7 @@ export const data = {
       price: 6.85,
       menu_price: 5.85,
       new: false,
-      tags: [],
+      tags: ["chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/winged-master-256-c.jpg",
@@ -679,7 +679,7 @@ export const data = {
       price: 5.89,
       menu_price: 4.89,
       new: false,
-      tags: [],
+      tags: ["chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/nugget-companion-256-c.jpg",
@@ -898,7 +898,7 @@ export const data = {
       price: 5.95,
       menu_price: 4.95,
       new: false,
-      tags: [],
+      tags: ["chicken"],
       image: {
         small: {
           jpg: "/img/salads/256/chicken-stamina-salad-256-c.jpg",

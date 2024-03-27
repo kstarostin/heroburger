@@ -215,9 +215,8 @@ body {
 
 .modal-configurator-section-item.medium {
   border-radius: 5px;
-  /* grid-template-columns: 12.8rem auto;
-  gap: 2.4rem; */
   grid-template-columns: 1fr;
+  grid-template-rows: 16rem auto;
   gap: 0;
 }
 
@@ -612,6 +611,7 @@ body {
 
   .modal-configurator-section-item.medium {
     grid-template-columns: 12.8rem auto;
+    grid-template-rows: auto;
     gap: 2.4rem;
   }
 
