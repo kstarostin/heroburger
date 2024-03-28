@@ -152,13 +152,20 @@ const controlSaveItem = async function (view, itemId) {
   }
   // update view
   view.update(await model.getItemList());
+  // update favorites list icon
+  headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
 };
 
 const controlAddToCart = async function (itemId) {
+  // fetch the item
   const item = await model.getItemById(itemId);
+  // perform add to cart operation
   model.addToCart(item);
-
+  // open cart panel
   controlOpenMiniCartPanel();
+  // update cart icon
+  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
 const controlConfigureMenu = async function (itemId) {
@@ -222,22 +229,20 @@ const controlSelectPositionItem = async function (itemId) {
 const controlAddToCartMenuItem = async function (configuratorData) {
   // close configurator modal
   menuConfiguratorModalView.close();
-
   // show loading spinner
   loaderModalView.render();
-
   // collect configured items
   const headerItem = await model.getItemById(configuratorData.menuId);
   const childItems = await getConfiguredChildItems(configuratorData);
-
-  // add to cart
+  // perform add to cart operation
   model.addToCart(headerItem, childItems);
-
   // hide loading spinner
   loaderModalView.clear();
-
   // render cart panel
   controlOpenMiniCartPanel();
+  // update cart icon
+  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
 const getConfiguredChildItems = async function (configuratorData) {
@@ -289,6 +294,8 @@ const controlRemoveSavedItem = async function (id) {
   controlOpenSavedItemsPanel();
   // update sections view
   getSectionItemsViewByType(item.type).update(await model.getItemList());
+  // update favorites list icon
+  headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
 };
 
 const controlOpenMiniCartPanel = function () {
@@ -309,6 +316,9 @@ const controlRemoveCartEntry = function (entryNumber) {
   model.removeCartEntry(entryNumber);
   // re-render cart panel
   controlOpenMiniCartPanel();
+  // update cart icon
+  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
 const controlCheckoutModal = function () {
@@ -321,15 +331,12 @@ const controlCheckoutModal = function () {
 const controlPlaceOrder = async function (addressData) {
   // close checkout modal
   checkoutModalView.close();
-
   // show loading spinner
   loaderModalView.render();
-
   // populate submitted address
   const cart = model.getCart();
   const deliveryAddress = model.createAddress(addressData);
   cart.deliveryAddress = deliveryAddress;
-
   // validate address
   const invalidFields = await model.validateDeliveryAddress(deliveryAddress);
   if (invalidFields && invalidFields.length > 0) {
@@ -338,24 +345,22 @@ const controlPlaceOrder = async function (addressData) {
     checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
     return;
   }
-
   // calculate delivery time
   cart.deliveryTime = await model.calculateDeliveryTimeMinutes(deliveryAddress);
-
   // place order
   const order = await model.placeOrder(cart);
-
   // hide loading spinner
   loaderModalView.clear();
-
   // show order placed modal
   orderPlacedModalView.open();
   orderPlacedModalView.render(order);
-
   // create new empty cart
   model.createCart(
     cart.deliveryAddress.saved ? cart.deliveryAddress : undefined
   );
+  // update cart icon
+  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
 const getSectionItemsViewByType = function (type) {
@@ -366,6 +371,9 @@ const init = function () {
   // Header view
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
   headerNavLinkView.addHandlerMobileNav(controlMobileNavToggle);
+  headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
+  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 
   // Hero view
   sectionHeroView.addHandlerRender(controlSectionHeroRender);

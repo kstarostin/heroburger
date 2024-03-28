@@ -63,6 +63,7 @@
   color: #feb451;
   transition: all 0.3s;
   font-size: 3rem;
+  position: relative;
 
   /* approximate, to not overflow header's top and bottom borders */
   padding: 3.3rem 3.2rem 3rem 3.2rem;
@@ -72,6 +73,18 @@
 .btn-header:active {
   background-color: #cb9041;
   color: #1e1e20;
+}
+
+.header-icon-cart-counter {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  background: #d24347;
+  border-radius: 9px;
+  padding: 0.2rem 0.6rem;
+  position: absolute;
+  top: 2rem;
+  left: 5.8rem;
 }
 
 /**************/
