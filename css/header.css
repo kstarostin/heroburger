@@ -77,11 +77,12 @@
 
 .header-icon-cart-counter {
   font-size: 1.2rem;
+  line-height: 1;
   font-weight: 500;
   color: #fff;
   background: #d24347;
   border-radius: 9px;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   position: absolute;
   top: 2rem;
   left: 5.8rem;
