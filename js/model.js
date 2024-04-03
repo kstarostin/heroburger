@@ -70,7 +70,7 @@ export const validateDeliveryAddress = async function (deliveryAddress) {
   try {
     return await api.validateDeliveryAddress(deliveryAddress);
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Error on delivery address validation: ${error}`);
   }
   return [];
 };
@@ -79,7 +79,7 @@ export const calculateDeliveryTimeMinutes = async function (deliveryAddress) {
   try {
     return await api.getDeliveryTime(deliveryAddress);
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Can't calculate delivery time: ${error}`);
   }
   return -1;
 };
@@ -88,7 +88,7 @@ export const placeOrder = async function (cart) {
   try {
     return await api.placeOrder(cart);
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Can't place order: ${error}`);
   }
   return {};
 };
@@ -107,7 +107,7 @@ export const saveItem = async function (itemId) {
     const item = _updateItemSavedState(await api.getItemById(itemId));
     item.saved = true;
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Can't save item with id: ${itemId}`);
   }
   _persistSavedItems();
 };
@@ -120,7 +120,7 @@ export const unsaveItem = async function (itemId) {
     const item = _updateItemSavedState(await api.getItemById(itemId));
     item.saved = false;
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Can't unsave item with id: ${itemId}`);
   }
   _persistSavedItems();
 };
@@ -129,7 +129,7 @@ export const getMenus = async function () {
   try {
     return _updateItemsSavedState(await api.getAllMenus());
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error("Can't fetch all menus");
   }
   return [];
 };
@@ -138,36 +138,61 @@ export const getAllSingleItems = async function () {
   try {
     return _updateItemsSavedState(await api.getAllSingleItems());
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error("Can't fetch all single items");
   }
   return [];
 };
 
 export const getBurgers = async function () {
-  return _updateItemsSavedState(await api.getSingleItemsByType("burger"));
+  try {
+    return _updateItemsSavedState(await api.getSingleItemsByType("burger"));
+  } catch (error) {
+    console.error("Can't fetch burger items");
+  }
+  return [];
 };
 
 export const getFingerfood = async function () {
-  return _updateItemsSavedState(await api.getSingleItemsByType("fingerfood"));
+  try {
+    return _updateItemsSavedState(await api.getSingleItemsByType("fingerfood"));
+  } catch (error) {
+    console.error("Can't fetch fingerfood items");
+  }
+  return [];
 };
 
 export const getSalads = async function () {
-  return _updateItemsSavedState(await api.getSingleItemsByType("salad"));
+  try {
+    return _updateItemsSavedState(await api.getSingleItemsByType("salad"));
+  } catch (error) {
+    console.error("Can't fetch salad items");
+  }
+  return [];
 };
 
 export const getDesserts = async function () {
-  return _updateItemsSavedState(await api.getSingleItemsByType("dessert"));
+  try {
+    return _updateItemsSavedState(await api.getSingleItemsByType("dessert"));
+  } catch (error) {
+    console.error("Can't fetch dessert items");
+  }
+  return [];
 };
 
 export const getDrinks = async function () {
-  return _updateItemsSavedState(await api.getSingleItemsByType("drink"));
+  try {
+    return _updateItemsSavedState(await api.getSingleItemsByType("drink"));
+  } catch (error) {
+    console.error("Can't fetch drinks");
+  }
+  return [];
 };
 
 export const getItemList = async function () {
   try {
     return _updateItemsSavedState(await api.getAllItems());
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error("Can't fetch all items");
   }
   return [];
 };
@@ -180,7 +205,7 @@ export const getSavedItems = async function () {
       )
     );
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error("Can't fetch saved items");
   }
   return [];
 };
@@ -193,7 +218,7 @@ export const getItemById = async function (id) {
   try {
     return _updateItemSavedState(await api.getItemById(id));
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`Can't fetch an item by id: ${id}`);
   }
   return [];
 };

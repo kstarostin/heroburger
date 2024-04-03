@@ -10,56 +10,96 @@ import * as validator from "./validator.js";
 // **********************
 export const getAllMenus = async function () {
   // imitate response time
-  await _sleep(300);
+  try {
+    await _sleep(300);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getAllMenusFromData();
 };
 
 export const getAllSingleItems = async function () {
   // imitate response time
-  await _sleep(400);
+  try {
+    await _sleep(400);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getAllSingleItemsFromData();
 };
 
 export const getSingleItemsByType = async function (type) {
   // imitate response time
-  await _sleep(300);
+  try {
+    await _sleep(300);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getAllSingleItemsFromData().filter((item) => item.type === type);
 };
 
 export const getAllItems = async function () {
   // imitate response time
-  await _sleep(450);
+  try {
+    await _sleep(450);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getAllItemsFromData();
 };
 
 export const getItemById = async function (id) {
   // imitate response time
-  await _sleep(100);
+  try {
+    await _sleep(100);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getAllItemsFromData().find((item) => item.id === id);
 };
 
 export const validateDeliveryAddress = async function (deliveryAddress) {
   // imitate response time
-  await _sleep(400);
+  try {
+    await _sleep(400);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return validator.validateDeliveryAddress(deliveryAddress);
 };
 
 export const getDeliveryTime = async function (deliveryAddress) {
   // imitate response time
-  await _sleep(500);
+  try {
+    await _sleep(500);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // execute request
   return _getDeliveryTime();
 };
 
 export const placeOrder = async function (cart) {
   // imitate response time
-  await _sleep(800);
+  try {
+    await _sleep(800);
+  } catch (error) {
+    console.error(`Error while waiting for the response: ${error}`);
+    throw error;
+  }
   // return order
   return cart;
 };

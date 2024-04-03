@@ -20,13 +20,14 @@ Visit the shop at [heroburger.netlify.app](https://heroburger.netlify.app/).
 
 The main goal of this project was to build a small single page website using only HTML, CSS and JavaScript.
 
-The JavaScript code is written in OOP and MVC style. It consists of a controller, a model and several views for each significant element of the shop page.
+The JavaScript code is written in OOP and MVC architecture. It consists of a controller, a model and several views for each significant element of the shop page.
 
 The back-end requests to retrieve shop menu items are simulated in the `api.js`. The single and the menu items are configured in the `data.js`.
 
 `npm` and `Parcel` were used addtionally and for develpment purpose only, to maintain the OOP style for JavaScript code.
 
 ### Build
+
 Navigate to the project root and install the project dependencies with the command:
 
 ```
@@ -46,6 +47,7 @@ To build the code and prepare for deployment, use:
 ```
 
 > #### Note
+>
 > To run both `start` and `build` commands on Windows, you will need some command line with bash feature installed.
 
 After that, the ready-for-deployment code is available in the folder `./dist`.

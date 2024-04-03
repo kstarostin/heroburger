@@ -48,35 +48,83 @@ const observer = new IntersectionObserver(
 );
 observer.observe(sectionHeroElement);
 
+/**
+ * Controls rendering of the hero section.
+ */
 const controlSectionHeroRender = function () {
   const currentMonth = new Date().toLocaleString("en", { month: "long" });
   sectionHeroView.render(currentMonth);
 };
 
+/**
+ * Controls rendering of the menus section.
+ */
 const controlSectionMenusRender = async function () {
-  sectionMenusView.render(await model.getMenus());
+  try {
+    sectionMenusView.render(await model.getMenus());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the burgers section.
+ */
 const controlSectionBurgersRender = async function () {
-  sectionBurgersView.render(await model.getBurgers());
+  try {
+    sectionBurgersView.render(await model.getBurgers());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the fingerfood section.
+ */
 const controlSectionFingerfoodRender = async function () {
-  sectionFingerfoodView.render(await model.getFingerfood());
+  try {
+    sectionFingerfoodView.render(await model.getFingerfood());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the salads section.
+ */
 const controlSectionSaladsRender = async function () {
-  sectionSaladsView.render(await model.getSalads());
+  try {
+    sectionSaladsView.render(await model.getSalads());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the desserts section.
+ */
 const controlSectionDessertsRender = async function () {
-  sectionDessertsView.render(await model.getDesserts());
+  try {
+    sectionDessertsView.render(await model.getDesserts());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the drinks section.
+ */
 const controlSectionDrinksRender = async function () {
-  sectionDrinksView.render(await model.getDrinks());
+  try {
+    sectionDrinksView.render(await model.getDrinks());
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls rendering of the footer.
+ */
 const controlFooterRender = function () {
   const currentYear = new Date().getFullYear();
 
@@ -86,6 +134,9 @@ const controlFooterRender = function () {
   });
 };
 
+/**
+ * Controls scrolling for the navigation links.
+ */
 const controlNavLinks = function (link, headerEl, event) {
   event.preventDefault();
   const href = link.getAttribute("href");
@@ -126,178 +177,254 @@ const scrollToElement = function (id) {
   });
 };
 
+/**
+ * Controls displaying of the mobile navigation menu.
+ */
 const controlMobileNavToggle = function (headerEl) {
   headerEl.classList.toggle("nav-open");
 };
 
+/**
+ * Controls closing of the modal window.
+ */
 const controlModalClose = function () {
   itemInfoModalView.close();
 };
 
+/**
+ * Controls opening of the item info modal window.
+ */
 const controlItemInfoModal = async function (itemId) {
-  const item = await model.getItemById(itemId);
-  itemInfoModalView.open();
-  itemInfoModalView.render(item);
-};
-
-const controlSaveItem = async function (view, itemId) {
-  // save/unsave item
-  if (
-    model.state.saved.length === 0 ||
-    !model.state.saved.some((id) => itemId === id)
-  ) {
-    await model.saveItem(itemId);
-  } else {
-    await model.unsaveItem(itemId);
+  try {
+    const item = await model.getItemById(itemId);
+    itemInfoModalView.open();
+    itemInfoModalView.render(item);
+  } catch (error) {
+    console.error(`Error: ${error}`);
   }
-  // update view
-  view.update(await model.getItemList());
-  // update favorites list icon
-  headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
 };
 
+/**
+ * Controls saving an item.
+ */
+const controlSaveItem = async function (view, itemId) {
+  try {
+    // save/unsave item
+    if (
+      model.state.saved.length === 0 ||
+      !model.state.saved.some((id) => itemId === id)
+    ) {
+      await model.saveItem(itemId);
+    } else {
+      await model.unsaveItem(itemId);
+    }
+    // update view
+    view.update(await model.getItemList());
+    // update favorites list icon
+    headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+};
+
+/**
+ * Controls add to cart operation.
+ */
 const controlAddToCart = async function (itemId) {
-  // fetch the item
-  const item = await model.getItemById(itemId);
-  // perform add to cart operation
-  model.addToCart(item);
-  // open cart panel
-  controlOpenMiniCartPanel();
-  // update cart icon
-  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
-  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
+  try {
+    // fetch the item
+    const item = await model.getItemById(itemId);
+    // perform add to cart operation
+    model.addToCart(item);
+    // open cart panel
+    controlOpenMiniCartPanel();
+    // update cart icon
+    headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+    headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls opening of the menu configurator modal window.
+ */
 const controlConfigureMenu = async function (itemId) {
-  const menuItem = await model.getItemById(itemId);
+  try {
+    const menuItem = await model.getItemById(itemId);
 
-  menuConfiguratorModalView.open();
-  menuConfiguratorModalView.render({
-    menuItem: menuItem,
-    firstPosition: menuItem.firstPosition,
-    secondPosition: menuItem.secondPosition,
-    thirdPosition: menuItem.thirdPosition,
-    fourthPosition: menuItem.fourthPosition,
-    fifthPosition: menuItem.fifthPosition,
-  });
-  menuConfiguratorModalView.addListenerSelectPositionItem(
-    controlSelectPositionItem
-  );
-  menuConfiguratorModalView.addHandlerConfirmConfiguration(
-    controlAddToCartMenuItem
-  );
+    menuConfiguratorModalView.open();
+    menuConfiguratorModalView.render({
+      menuItem: menuItem,
+      firstPosition: menuItem.firstPosition,
+      secondPosition: menuItem.secondPosition,
+      thirdPosition: menuItem.thirdPosition,
+      fourthPosition: menuItem.fourthPosition,
+      fifthPosition: menuItem.fifthPosition,
+    });
+    menuConfiguratorModalView.addListenerSelectPositionItem(
+      controlSelectPositionItem
+    );
+    menuConfiguratorModalView.addHandlerConfirmConfiguration(
+      controlAddToCartMenuItem
+    );
 
-  // set total price for initial configuration
-  const menuPrices = [
-    menuItem.price,
-    menuItem.secondPosition && menuItem.secondPosition.length > 0
-      ? menuItem.secondPosition[0].menuPrice
-      : 0,
-    menuItem.thirdPosition && menuItem.thirdPosition.length > 0
-      ? menuItem.thirdPosition[0].menuPrice
-      : 0,
-    menuItem.fourthPosition && menuItem.fourthPosition.length > 0
-      ? menuItem.fourthPosition[0].menuPrice
-      : 0,
-    menuItem.fifthPosition && menuItem.fifthPosition.length > 0
-      ? menuItem.fifthPosition[0].menuPrice
-      : 0,
-  ];
-  menuConfiguratorModalView.adjustConfigurationPrice(
-    calculateSumPrice(menuPrices)
-  );
+    // set total price for initial configuration
+    const menuPrices = [
+      menuItem.price,
+      menuItem.secondPosition && menuItem.secondPosition.length > 0
+        ? menuItem.secondPosition[0].menuPrice
+        : 0,
+      menuItem.thirdPosition && menuItem.thirdPosition.length > 0
+        ? menuItem.thirdPosition[0].menuPrice
+        : 0,
+      menuItem.fourthPosition && menuItem.fourthPosition.length > 0
+        ? menuItem.fourthPosition[0].menuPrice
+        : 0,
+      menuItem.fifthPosition && menuItem.fifthPosition.length > 0
+        ? menuItem.fifthPosition[0].menuPrice
+        : 0,
+    ];
+    menuConfiguratorModalView.adjustConfigurationPrice(
+      calculateSumPrice(menuPrices)
+    );
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls recalculation of the total price for configured menu item.
+ */
 const controlSelectPositionItem = async function (itemId) {
-  const configuratorData = menuConfiguratorModalView.selectPositionItem(itemId);
+  try {
+    const configuratorData =
+      menuConfiguratorModalView.selectPositionItem(itemId);
 
-  // collect configured items
-  const headerItem = await model.getItemById(configuratorData.menuId);
-  const childItems = await getConfiguredChildItems(configuratorData);
+    // collect configured items
+    const headerItem = await model.getItemById(configuratorData.menuId);
+    const childItems = await getConfiguredChildItems(configuratorData);
 
-  // extract menu prices for configured items
-  const menuPrices = [
-    headerItem.price,
-    ...childItems.map((item) => item.menuPrice),
-  ];
-  // set total price for adjusted configuration
-  menuConfiguratorModalView.adjustConfigurationPrice(
-    calculateSumPrice(menuPrices)
-  );
+    // extract menu prices for configured items
+    const menuPrices = [
+      headerItem.price,
+      ...childItems.map((item) => item.menuPrice),
+    ];
+    // set total price for adjusted configuration
+    menuConfiguratorModalView.adjustConfigurationPrice(
+      calculateSumPrice(menuPrices)
+    );
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls adding configured menu item to the cart.
+ */
 const controlAddToCartMenuItem = async function (configuratorData) {
-  // close configurator modal
-  menuConfiguratorModalView.close();
-  // show loading spinner
-  loaderModalView.render();
-  // collect configured items
-  const headerItem = await model.getItemById(configuratorData.menuId);
-  const childItems = await getConfiguredChildItems(configuratorData);
-  // perform add to cart operation
-  model.addToCart(headerItem, childItems);
-  // hide loading spinner
-  loaderModalView.clear();
-  // render cart panel
-  controlOpenMiniCartPanel();
-  // update cart icon
-  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
-  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
+  try {
+    // close configurator modal
+    menuConfiguratorModalView.close();
+    // show loading spinner
+    loaderModalView.render();
+    // collect configured items
+    const headerItem = await model.getItemById(configuratorData.menuId);
+    const childItems = await getConfiguredChildItems(configuratorData);
+    // perform add to cart operation
+    model.addToCart(headerItem, childItems);
+    // hide loading spinner
+    loaderModalView.clear();
+    // render cart panel
+    controlOpenMiniCartPanel();
+    // update cart icon
+    headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+    headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
 const getConfiguredChildItems = async function (configuratorData) {
-  const secondPositionItem = configuratorData.secondPosition
-    ? await model.getItemById(configuratorData.secondPosition)
-    : null;
-  const thirdPositionItem = configuratorData.thirdPosition
-    ? await model.getItemById(configuratorData.thirdPosition)
-    : null;
-  const fourthPositionItem = configuratorData.fourthPosition
-    ? await model.getItemById(configuratorData.fourthPosition)
-    : null;
-  const fifthPositionItem = configuratorData.fifthPosition
-    ? await model.getItemById(configuratorData.fifthPosition)
-    : null;
+  try {
+    const secondPositionItem = configuratorData.secondPosition
+      ? await model.getItemById(configuratorData.secondPosition)
+      : null;
+    const thirdPositionItem = configuratorData.thirdPosition
+      ? await model.getItemById(configuratorData.thirdPosition)
+      : null;
+    const fourthPositionItem = configuratorData.fourthPosition
+      ? await model.getItemById(configuratorData.fourthPosition)
+      : null;
+    const fifthPositionItem = configuratorData.fifthPosition
+      ? await model.getItemById(configuratorData.fifthPosition)
+      : null;
 
-  return [
-    ...(secondPositionItem ? [secondPositionItem] : []),
-    ...(thirdPositionItem ? [thirdPositionItem] : []),
-    ...(fourthPositionItem ? [fourthPositionItem] : []),
-    ...(fifthPositionItem ? [fifthPositionItem] : []),
-  ];
+    return [
+      ...(secondPositionItem ? [secondPositionItem] : []),
+      ...(thirdPositionItem ? [thirdPositionItem] : []),
+      ...(fourthPositionItem ? [fourthPositionItem] : []),
+      ...(fifthPositionItem ? [fifthPositionItem] : []),
+    ];
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls opening of the saved items modal window.
+ */
 const controlOpenSavedItemsPanel = async function () {
-  savedItemsView.render(await model.getSavedItems());
+  try {
+    savedItemsView.render(await model.getSavedItems());
 
-  savedItemsView.addHandlerClose(controlCloseSavedItemsPanel);
+    savedItemsView.addHandlerClose(controlCloseSavedItemsPanel);
 
-  savedItemsView.addHandlerNavigateItem(controlNavigateSavedItem);
-  savedItemsView.addHandlerRemoveItem(controlRemoveSavedItem);
+    savedItemsView.addHandlerNavigateItem(controlNavigateSavedItem);
+    savedItemsView.addHandlerRemoveItem(controlRemoveSavedItem);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls closing saved items modal window.
+ */
 const controlCloseSavedItemsPanel = function () {
   savedItemsView.hide();
 };
 
+/**
+ * Controls auto-scrolling to the saved item.
+ */
 const controlNavigateSavedItem = function (id) {
   controlCloseSavedItemsPanel();
   scrollToElement(`#${id}`);
 };
 
+/**
+ * Controls removing item from the saved list.
+ */
 const controlRemoveSavedItem = async function (id) {
-  // load item
-  const item = await model.getItemById(id);
-  // remove item from saved list
-  await model.unsaveItem(item.id);
-  // re-render saved items panel
-  controlOpenSavedItemsPanel();
-  // update sections view
-  getSectionItemsViewByType(item.type).update(await model.getItemList());
-  // update favorites list icon
-  headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
+  try {
+    // load item
+    const item = await model.getItemById(id);
+    // remove item from saved list
+    await model.unsaveItem(item.id);
+    // re-render saved items panel
+    controlOpenSavedItemsPanel();
+    // update sections view
+    getSectionItemsViewByType(item.type).update(await model.getItemList());
+    // update favorites list icon
+    headerNavLinkView.changeSavedItemsIcon(model.state.saved.length !== 0);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 };
 
+/**
+ * Controls opening of the cart modal window.
+ */
 const controlOpenMiniCartPanel = function () {
   miniCartView.render(model.getCart());
 
@@ -307,10 +434,16 @@ const controlOpenMiniCartPanel = function () {
   miniCartView.addHandlerCheckoutModal(controlCheckoutModal);
 };
 
+/**
+ * Controls closing cart modal window.
+ */
 const controlCloseMiniCartPanel = function () {
   miniCartView.hide();
 };
 
+/**
+ * Controls removing cart entry.
+ */
 const controlRemoveCartEntry = function (entryNumber) {
   // remove entry from the state
   model.removeCartEntry(entryNumber);
@@ -321,6 +454,9 @@ const controlRemoveCartEntry = function (entryNumber) {
   headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
+/**
+ * Controls opening of the checkout modal window.
+ */
 const controlCheckoutModal = function () {
   miniCartView.hide();
   checkoutModalView.open();
@@ -328,45 +464,57 @@ const controlCheckoutModal = function () {
   checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
 };
 
+/**
+ * Controls placing order. Additionally, performs validation and re-creates an empty cart.
+ */
 const controlPlaceOrder = async function (addressData) {
-  // close checkout modal
-  checkoutModalView.close();
-  // show loading spinner
-  loaderModalView.render();
-  // populate submitted address
-  const cart = model.getCart();
-  const deliveryAddress = model.createAddress(addressData);
-  cart.deliveryAddress = deliveryAddress;
-  // validate address
-  const invalidFields = await model.validateDeliveryAddress(deliveryAddress);
-  if (invalidFields && invalidFields.length > 0) {
-    checkoutModalView.open();
-    checkoutModalView.render({ cart: cart, invalidFields: invalidFields });
-    checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
-    return;
+  try {
+    // close checkout modal
+    checkoutModalView.close();
+    // show loading spinner
+    loaderModalView.render();
+    // populate submitted address
+    const cart = model.getCart();
+    const deliveryAddress = model.createAddress(addressData);
+    cart.deliveryAddress = deliveryAddress;
+    // validate address
+    const invalidFields = await model.validateDeliveryAddress(deliveryAddress);
+    if (invalidFields && invalidFields.length > 0) {
+      checkoutModalView.open();
+      checkoutModalView.render({ cart: cart, invalidFields: invalidFields });
+      checkoutModalView.addHandlerPlaceOrder(controlPlaceOrder);
+      return;
+    }
+    // calculate delivery time
+    cart.deliveryTime = await model.calculateDeliveryTimeMinutes(
+      deliveryAddress
+    );
+    // place order
+    const order = await model.placeOrder(cart);
+    // hide loading spinner
+    loaderModalView.clear();
+    // show order placed modal
+    orderPlacedModalView.open();
+    orderPlacedModalView.render(order);
+    // create new empty cart
+    model.createCart(
+      cart.deliveryAddress.saved ? cart.deliveryAddress : undefined
+    );
+    // update cart icon
+    headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
+    headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
+  } catch (error) {
+    console.error(`Error: ${error}`);
   }
-  // calculate delivery time
-  cart.deliveryTime = await model.calculateDeliveryTimeMinutes(deliveryAddress);
-  // place order
-  const order = await model.placeOrder(cart);
-  // hide loading spinner
-  loaderModalView.clear();
-  // show order placed modal
-  orderPlacedModalView.open();
-  orderPlacedModalView.render(order);
-  // create new empty cart
-  model.createCart(
-    cart.deliveryAddress.saved ? cart.deliveryAddress : undefined
-  );
-  // update cart icon
-  headerNavLinkView.changeCartIcon(model.state.cart.entries.length !== 0);
-  headerNavLinkView.setCartIconCounter(model.state.cart.entries.length);
 };
 
 const getSectionItemsViewByType = function (type) {
   return sectionItemsViewList.find((view) => view._itemType === type);
 };
 
+/**
+ * The main function for populating the page content and assigning additional handlers.
+ */
 const init = function () {
   // Header view
   headerNavLinkView.addHandlerNavigateToSections(controlNavLinks);
