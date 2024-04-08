@@ -135,7 +135,7 @@ const _getAllMenusFromData = function () {
       ingredients: burger.ingredients,
       price: burger.menuPrice,
       new: burger.new,
-      tags: [...menu.tags, ...burger.tags],
+      tags: [...menu.tags, ...burger.tags.filter((tag) => tag !== "burger")],
       image: burger.image,
       firstPosition: [burger],
       secondPosition: _mapPositionItems(menu.second_position),

@@ -84,7 +84,7 @@ class MenuConfiguratorModalView extends ModalView {
          value="${form.menuItem.id}"
         />
         <section class="modal-section modal-section-grid">
-          <div class="modal-section-icon">
+          <div class="modal-section-icon modal-section-${form.menuItem.type}">
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
@@ -153,7 +153,7 @@ class MenuConfiguratorModalView extends ModalView {
 
     return `
       <section class="modal-section modal-section-grid">
-        <div class="modal-section-icon">
+        <div class="modal-section-icon modal-section-${types[0]}">
           <i class="ph ${iconName}"></i>
         </div>
         <div class="modal-section-content">

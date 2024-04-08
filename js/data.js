@@ -128,7 +128,7 @@ export const data = {
       price: 9.95,
       menu_price: 8.95,
       new: false,
-      tags: ["chicken"],
+      tags: ["burger", "chicken"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-mighty-chickenator-256-c.jpg",
@@ -177,7 +177,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["beef"],
+      tags: ["burger", "beef"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-legendary-hamburger-protector-256-c.jpg",
@@ -226,7 +226,7 @@ export const data = {
       price: 11.95,
       menu_price: 10.95,
       new: false,
-      tags: ["vegan"],
+      tags: ["burger", "vegan"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-incredible-vegan-vigilante-256-c.jpg",
@@ -274,7 +274,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["beef"],
+      tags: ["burger", "beef"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-classic-cheese-defender-256-c.jpg",
@@ -322,7 +322,7 @@ export const data = {
       price: 12.95,
       menu_price: 11.95,
       new: false,
-      tags: ["beef"],
+      tags: ["burger", "beef"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-epic-angus-titan-256-c.jpg",
@@ -369,7 +369,7 @@ export const data = {
       price: 10.55,
       menu_price: 9.55,
       new: false,
-      tags: ["chicken"],
+      tags: ["burger", "chicken"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-supreme-chicken-fighter-256-c.jpg",
@@ -418,7 +418,7 @@ export const data = {
       price: 10.89,
       menu_price: 9.89,
       new: false,
-      tags: ["beef"],
+      tags: ["burger", "beef"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-amazing-burger-man-256-c.jpg",
@@ -465,7 +465,7 @@ export const data = {
       price: 11.85,
       menu_price: 10.85,
       new: true,
-      tags: ["beef", "spicy"],
+      tags: ["burger", "beef", "spicy"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-fiery-bbq-bringer-256-c.jpg",
@@ -512,7 +512,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["beef"],
+      tags: ["burger", "beef"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-supreme-baconator-knight-256-c.jpg",
@@ -559,7 +559,7 @@ export const data = {
       price: 11.85,
       menu_price: 10.85,
       new: false,
-      tags: ["beef", "spicy"],
+      tags: ["burger", "beef", "spicy"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-infernal-chili-avenger-256-c.jpg",
@@ -599,7 +599,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: ["vegan"],
+      tags: ["sidekick", "vegan"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/crispy-potato-pal-256-c.jpg",
@@ -639,7 +639,7 @@ export const data = {
       price: 6.85,
       menu_price: 5.85,
       new: false,
-      tags: ["chicken"],
+      tags: ["sidekick", "chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/winged-master-256-c.jpg",
@@ -679,7 +679,7 @@ export const data = {
       price: 5.89,
       menu_price: 4.89,
       new: false,
-      tags: ["chicken"],
+      tags: ["sidekick", "chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/nugget-companion-256-c.jpg",
@@ -719,7 +719,7 @@ export const data = {
       price: 6.89,
       menu_price: 5.89,
       new: false,
-      tags: ["vegan"],
+      tags: ["sidekick", "vegan"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/cruelty-free-nugget-256-c.jpg",
@@ -759,7 +759,7 @@ export const data = {
       price: 4.55,
       menu_price: 3.55,
       new: false,
-      tags: [],
+      tags: ["sidekick"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/ringed-renegate-256-c.jpg",
@@ -806,7 +806,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: ["vegan"],
+      tags: ["salad", "vegan"],
       image: {
         small: {
           jpg: "/img/salads/256/plant-powered-harvest-256-c.jpg",
@@ -852,7 +852,7 @@ export const data = {
       price: 5.65,
       menu_price: 4.65,
       new: false,
-      tags: [],
+      tags: ["salad"],
       image: {
         small: {
           jpg: "/img/salads/256/caesars-conqueror-crisp-256-c.jpg",
@@ -898,7 +898,7 @@ export const data = {
       price: 5.95,
       menu_price: 4.95,
       new: false,
-      tags: ["chicken"],
+      tags: ["salad", "chicken"],
       image: {
         small: {
           jpg: "/img/salads/256/chicken-stamina-salad-256-c.jpg",
@@ -938,7 +938,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: [],
+      tags: ["dessert"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-fudgy-power-bolt-256-c.jpg",
@@ -978,7 +978,7 @@ export const data = {
       price: 5.38,
       menu_price: 4.38,
       new: false,
-      tags: [],
+      tags: ["dessert"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-creamy-fortress-guardian-256-c.jpg",
@@ -1018,7 +1018,7 @@ export const data = {
       price: 2.89,
       menu_price: 1.89,
       new: false,
-      tags: [],
+      tags: ["dessert"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-choco-chip-dynamo-256-c.jpg",
@@ -1058,7 +1058,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: [],
+      tags: ["dessert"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-mighty-berry-burst-256-c.jpg",
@@ -1097,7 +1097,7 @@ export const data = {
       price: 2.59,
       menu_price: 1.59,
       new: false,
-      tags: [],
+      tags: ["drink"],
       image: {
         small: {
           jpg: "/img/drinks/256/sparkling-water-256-c.jpg",
@@ -1136,7 +1136,7 @@ export const data = {
       price: 3.55,
       menu_price: 2.55,
       new: false,
-      tags: [],
+      tags: ["drink"],
       image: {
         small: {
           jpg: "/img/drinks/256/soda-256-c.jpg",
@@ -1175,7 +1175,7 @@ export const data = {
       price: 3.89,
       menu_price: 2.89,
       new: false,
-      tags: [],
+      tags: ["drink"],
       image: {
         small: {
           jpg: "/img/drinks/256/juice-256-c.jpg",
@@ -1214,7 +1214,7 @@ export const data = {
       price: 5.59,
       menu_price: 4.59,
       new: false,
-      tags: [],
+      tags: ["drink"],
       image: {
         small: {
           jpg: "/img/drinks/256/beer-256-c.jpg",
@@ -1253,7 +1253,7 @@ export const data = {
       price: 4.99,
       menu_price: 3.99,
       new: false,
-      tags: [],
+      tags: ["drink"],
       image: {
         small: {
           jpg: "/img/drinks/256/milkshake-256-c.jpg",

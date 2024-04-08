@@ -145,6 +145,26 @@ section {
   background-color: #9c36b5;
 }
 
+.tag-burger {
+  background-color: #d24347;
+}
+
+.tag-sidekick {
+  background-color: #feb451;
+}
+
+.tag-salad {
+  background-color: #2b8a3e;
+}
+
+.tag-dessert {
+  background-color: #e64980;
+}
+
+.tag-drink {
+  background-color: #15aabf;
+}
+
 .tag-chicken {
   background-color: #fcc419;
 }
@@ -154,11 +174,11 @@ section {
 }
 
 .tag-vegan {
-  background-color: #277c38;
+  background-color: #66a80f;
 }
 
 .tag-spicy {
-  background-color: #c92a2a;
+  background-color: #ff1a00;
 }
 
 .item-tags .tag:not(:first-child) {
