@@ -37,7 +37,7 @@ Navigate to the project root and install the project dependencies with the comma
 To start the app, use:
 
 ```
- npm run start
+ npm start
 ```
 
 To build the code and prepare for deployment, use:
