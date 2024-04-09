@@ -88,7 +88,7 @@ class MenuConfiguratorModalView extends ModalView {
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
-            ${this.#generateSectionTitleMarkup(form.menuItem.name)}
+            ${this.#generateSectionTitleMarkup("Your Hero Burger")}
             <fieldset class="modal-configurator-section-item-list">
               ${this.#generateSectionItemMarkup(
                 form.firstPosition[0],

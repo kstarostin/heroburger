@@ -66,7 +66,7 @@ export const getIconNameForItemType = function (itemType) {
 export const getPositionNamesForItemTypes = function (itemTypes) {
   const typeNameMap = new Map();
   typeNameMap.set("burger", "Hero Burger");
-  typeNameMap.set("fingerfood", "Sidekick Fingerfood");
+  typeNameMap.set("fingerfood", "Sidekick");
   typeNameMap.set("salad", "Salad");
   typeNameMap.set("dessert", "Dessert");
   typeNameMap.set("drink", "Drink");
