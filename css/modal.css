@@ -149,8 +149,10 @@ body {
 }
 
 .modal-section-menu {
-  color: #9c36b5;
-  background-color: #f8f0fc;
+  /* color: #9c36b5;
+  background-color: #f8f0fc; */
+  color: #d24347;
+  background-color: #fbeced;
 }
 
 .modal-section-burger {

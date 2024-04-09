@@ -128,7 +128,7 @@ export const data = {
       price: 9.95,
       menu_price: 8.95,
       new: false,
-      tags: ["burger", "chicken"],
+      tags: ["burger", "chicken", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-mighty-chickenator-256-c.jpg",
@@ -177,7 +177,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["burger", "beef"],
+      tags: ["burger", "beef", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-legendary-hamburger-protector-256-c.jpg",
@@ -215,6 +215,7 @@ export const data = {
         "Unleash your inner hero with the Incredible Vegan Vigilante, a plant-powered burger that champions flavor and compassion. This burger fights for justice on your plate, proving that saving the world can be deliciously cruelty-free! Btw, haven't you heard yet? It's VEGAN!",
       ingredients: [
         "Vegan patty",
+        "Lactose-free cheese",
         "Onions",
         "Pickles",
         "Tomatoes",
@@ -274,7 +275,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["burger", "beef"],
+      tags: ["burger", "beef", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-classic-cheese-defender-256-c.jpg",
@@ -322,7 +323,7 @@ export const data = {
       price: 12.95,
       menu_price: 11.95,
       new: false,
-      tags: ["burger", "beef"],
+      tags: ["burger", "beef", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-epic-angus-titan-256-c.jpg",
@@ -369,7 +370,7 @@ export const data = {
       price: 10.55,
       menu_price: 9.55,
       new: false,
-      tags: ["burger", "chicken"],
+      tags: ["burger", "chicken", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-supreme-chicken-fighter-256-c.jpg",
@@ -418,7 +419,7 @@ export const data = {
       price: 10.89,
       menu_price: 9.89,
       new: false,
-      tags: ["burger", "beef"],
+      tags: ["burger", "beef", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-amazing-burger-man-256-c.jpg",
@@ -512,7 +513,7 @@ export const data = {
       price: 10.95,
       menu_price: 9.95,
       new: false,
-      tags: ["burger", "beef"],
+      tags: ["burger", "beef", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-supreme-baconator-knight-256-c.jpg",
@@ -559,7 +560,7 @@ export const data = {
       price: 11.85,
       menu_price: 10.85,
       new: false,
-      tags: ["burger", "beef", "spicy"],
+      tags: ["burger", "beef", "spicy", "lactose"],
       image: {
         small: {
           jpg: "/img/burgers/256/the-infernal-chili-avenger-256-c.jpg",
@@ -599,7 +600,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: ["sidekick", "vegan"],
+      tags: ["fingerfood", "vegan"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/crispy-potato-pal-256-c.jpg",
@@ -639,7 +640,7 @@ export const data = {
       price: 6.85,
       menu_price: 5.85,
       new: false,
-      tags: ["sidekick", "chicken"],
+      tags: ["fingerfood", "chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/winged-master-256-c.jpg",
@@ -679,7 +680,7 @@ export const data = {
       price: 5.89,
       menu_price: 4.89,
       new: false,
-      tags: ["sidekick", "chicken"],
+      tags: ["fingerfood", "chicken"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/nugget-companion-256-c.jpg",
@@ -719,7 +720,7 @@ export const data = {
       price: 6.89,
       menu_price: 5.89,
       new: false,
-      tags: ["sidekick", "vegan"],
+      tags: ["fingerfood", "vegan"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/cruelty-free-nugget-256-c.jpg",
@@ -759,7 +760,7 @@ export const data = {
       price: 4.55,
       menu_price: 3.55,
       new: false,
-      tags: ["sidekick"],
+      tags: ["fingerfood"],
       image: {
         small: {
           jpg: "/img/fingerfood/256/ringed-renegate-256-c.jpg",
@@ -852,7 +853,7 @@ export const data = {
       price: 5.65,
       menu_price: 4.65,
       new: false,
-      tags: ["salad"],
+      tags: ["salad", "lactose"],
       image: {
         small: {
           jpg: "/img/salads/256/caesars-conqueror-crisp-256-c.jpg",
@@ -978,7 +979,7 @@ export const data = {
       price: 5.38,
       menu_price: 4.38,
       new: false,
-      tags: ["dessert"],
+      tags: ["dessert", "lactose"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-creamy-fortress-guardian-256-c.jpg",
@@ -1058,7 +1059,7 @@ export const data = {
       price: 4.89,
       menu_price: 3.89,
       new: false,
-      tags: ["dessert"],
+      tags: ["dessert", "lactose"],
       image: {
         small: {
           jpg: "/img/desserts/256/the-mighty-berry-burst-256-c.jpg",
@@ -1214,7 +1215,7 @@ export const data = {
       price: 5.59,
       menu_price: 4.59,
       new: false,
-      tags: ["drink"],
+      tags: ["drink", "alcoholic"],
       image: {
         small: {
           jpg: "/img/drinks/256/beer-256-c.jpg",
@@ -1253,7 +1254,7 @@ export const data = {
       price: 4.99,
       menu_price: 3.99,
       new: false,
-      tags: ["drink"],
+      tags: ["drink", "lactose"],
       image: {
         small: {
           jpg: "/img/drinks/256/milkshake-256-c.jpg",

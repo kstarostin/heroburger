@@ -149,7 +149,7 @@ section {
   background-color: #d24347;
 }
 
-.tag-sidekick {
+.tag-fingerfood {
   background-color: #feb451;
 }
 
@@ -179,6 +179,14 @@ section {
 
 .tag-spicy {
   background-color: #ff1a00;
+}
+
+.tag-alcoholic {
+  background-color: #f28e1c;
+}
+
+.tag-lactose {
+  background-color: #e9cca4;
 }
 
 .item-tags .tag:not(:first-child) {
