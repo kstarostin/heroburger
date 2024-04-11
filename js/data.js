@@ -55,7 +55,7 @@ export const data = {
         items: ["pal", "nugget", "harvest"],
       },
       third_position: {
-        optional: false,
+        optional: true,
         items: ["bolt", "guardian", "dynamo", "burst"],
       },
       fourth_position: {
