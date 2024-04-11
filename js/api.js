@@ -138,10 +138,10 @@ const _getAllMenusFromData = function () {
       tags: [...menu.tags, ...burger.tags.filter((tag) => tag !== "burger")],
       image: burger.image,
       firstPosition: [burger],
-      secondPosition: _mapPositionItems(menu.second_position),
-      thirdPosition: _mapPositionItems(menu.third_position),
-      fourthPosition: _mapPositionItems(menu.fourth_position),
-      fifthPosition: _mapPositionItems(menu.fifth_position),
+      secondPosition: _mapPosition(menu.second_position),
+      thirdPosition: _mapPosition(menu.third_position),
+      fourthPosition: _mapPosition(menu.fourth_position),
+      fifthPosition: _mapPosition(menu.fifth_position),
     };
   });
 };
@@ -167,13 +167,16 @@ const _getAllSingleItemsFromData = function () {
   });
 };
 
-const _mapPositionItems = function (positionItemIds) {
-  if (!positionItemIds && positionItemIds.length === 0) {
-    return [];
+const _mapPosition = function (position) {
+  if (!position || !position.items || position.items.length === 0) {
+    return undefined;
   }
-  return positionItemIds.map((id) => {
-    return _getSingleItemById(id);
-  });
+  return {
+    optional: position.optional,
+    items: position.items.map((id) => {
+      return _getSingleItemById(id);
+    }),
+  };
 };
 
 const _getSingleItemById = function (id) {

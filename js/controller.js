@@ -254,14 +254,20 @@ const controlConfigureMenu = async function (itemId) {
     const menuItem = await model.getItemById(itemId);
 
     menuConfiguratorModalView.open();
-    menuConfiguratorModalView.render({
+
+    const form = {
       menuItem: menuItem,
       firstPosition: menuItem.firstPosition,
-      secondPosition: menuItem.secondPosition,
-      thirdPosition: menuItem.thirdPosition,
-      fourthPosition: menuItem.fourthPosition,
-      fifthPosition: menuItem.fifthPosition,
-    });
+      secondPosition: menuItem.secondPosition?.items,
+      secondPositionOptional: menuItem.secondPosition?.optional,
+      thirdPosition: menuItem.thirdPosition?.items,
+      thirdPositionOptional: menuItem.thirdPosition?.optional,
+      fourthPosition: menuItem.fourthPosition?.items,
+      fourthPositionOptional: menuItem.fourthPosition?.optional,
+      fifthPosition: menuItem.fifthPosition?.items,
+      fifthPositionOptional: menuItem.fifthPosition?.optional,
+    };
+    menuConfiguratorModalView.render(form);
     menuConfiguratorModalView.addListenerSelectPositionItem(
       controlSelectPositionItem
     );
@@ -272,18 +278,10 @@ const controlConfigureMenu = async function (itemId) {
     // set total price for initial configuration
     const menuPrices = [
       menuItem.price,
-      menuItem.secondPosition && menuItem.secondPosition.length > 0
-        ? menuItem.secondPosition[0].menuPrice
-        : 0,
-      menuItem.thirdPosition && menuItem.thirdPosition.length > 0
-        ? menuItem.thirdPosition[0].menuPrice
-        : 0,
-      menuItem.fourthPosition && menuItem.fourthPosition.length > 0
-        ? menuItem.fourthPosition[0].menuPrice
-        : 0,
-      menuItem.fifthPosition && menuItem.fifthPosition.length > 0
-        ? menuItem.fifthPosition[0].menuPrice
-        : 0,
+      getMinimalMenuPositionPrice(menuItem.secondPosition),
+      getMinimalMenuPositionPrice(menuItem.thirdPosition),
+      getMinimalMenuPositionPrice(menuItem.fourthPosition),
+      getMinimalMenuPositionPrice(menuItem.fifthPosition),
     ];
     menuConfiguratorModalView.adjustConfigurationPrice(
       calculateSumPrice(menuPrices)
@@ -291,6 +289,15 @@ const controlConfigureMenu = async function (itemId) {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
+};
+
+const getMinimalMenuPositionPrice = function (position) {
+  return position &&
+    !position.optional &&
+    position.items &&
+    position.items.length > 0
+    ? position.items[0].menuPrice
+    : 0;
 };
 
 /**
@@ -304,6 +311,8 @@ const controlSelectPositionItem = async function (itemId) {
     // collect configured items
     const headerItem = await model.getItemById(configuratorData.menuId);
     const childItems = await getConfiguredChildItems(configuratorData);
+    console.log(configuratorData);
+    console.log(childItems);
 
     // extract menu prices for configured items
     const menuPrices = [

@@ -30,23 +30,33 @@ class MenuConfiguratorModalView extends ModalView {
       ".modal-configurator-section-item-list"
     );
     const selectedItemEl = parentFieldSetEl.querySelector(".selected");
+    const optionalFieldSet = parentFieldSetEl.dataset.optional;
+    console.log(optionalFieldSet);
+
     if (currentItemEl === selectedItemEl) {
+      if (optionalFieldSet === "true") {
+        const selectedItemRadioInputEl = document.querySelector(
+          `#${selectedItemEl.dataset.inputId}`
+        );
+        selectedItemRadioInputEl.checked = false;
+        selectedItemEl.classList.remove("selected");
+      }
       return this.getFormData();
     }
 
     const currentItemRadioInputEl = document.querySelector(
       `#${currentItemEl.dataset.inputId}`
     );
-    const selectedItemRadioInputEl = document.querySelector(
-      `#${selectedItemEl.dataset.inputId}`
-    );
-
-    selectedItemRadioInputEl.checked = false;
     currentItemRadioInputEl.checked = true;
-
-    selectedItemEl.classList.remove("selected");
     currentItemEl.classList.add("selected");
 
+    if (selectedItemEl) {
+      const selectedItemRadioInputEl = document.querySelector(
+        `#${selectedItemEl.dataset.inputId}`
+      );
+      selectedItemRadioInputEl.checked = false;
+      selectedItemEl.classList.remove("selected");
+    }
     return this.getFormData();
   }
 
@@ -88,11 +98,12 @@ class MenuConfiguratorModalView extends ModalView {
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
-            ${this.#generateSectionTitleMarkup("Your Hero Burger")}
+            ${this.#generateSectionTitleMarkup("Your", "Hero Burger")}
             <fieldset class="modal-configurator-section-item-list">
               ${this.#generateSectionItemMarkup(
                 form.firstPosition[0],
                 0,
+                false,
                 "firstPosition",
                 "large"
               )}
@@ -101,18 +112,22 @@ class MenuConfiguratorModalView extends ModalView {
         </section>
         ${this.#generatePositionSectionMarkup(
           form.secondPosition,
+          form.secondPositionOptional,
           "secondPosition"
         )}
         ${this.#generatePositionSectionMarkup(
           form.thirdPosition,
+          form.thirdPositionOptional,
           "thirdPosition"
         )}
         ${this.#generatePositionSectionMarkup(
           form.fourthPosition,
+          form.fourthPositionOptional,
           "fourthPosition"
         )}
         ${this.#generatePositionSectionMarkup(
           form.fifthPosition,
+          form.fifthPositionOptional,
           "fifthPosition"
         )}
 
@@ -129,7 +144,7 @@ class MenuConfiguratorModalView extends ModalView {
     `;
   }
 
-  #generatePositionSectionMarkup(positionItems, positionName) {
+  #generatePositionSectionMarkup(positionItems, optional, positionName) {
     if (!positionItems || positionItems.length === 0) {
       return "";
     }
@@ -138,7 +153,13 @@ class MenuConfiguratorModalView extends ModalView {
         ? positionItems[0].type
         : extractUniquePositionsTypes(positionItems);
     const iconName = getIconNameForItemType(types[0]);
-    const titlePrefix = positionItems.length === 1 ? "" : "Choose Your ";
+
+    let titlePrefix = "";
+    if (!optional) {
+      titlePrefix = positionItems.length === 1 ? "" : "Choose Your";
+    } else {
+      titlePrefix = "Add Your";
+    }
     const titles =
       positionItems.length === 1
         ? positionItems[0].name
@@ -152,16 +173,22 @@ class MenuConfiguratorModalView extends ModalView {
       : "small";
 
     return `
-      <section class="modal-section modal-section-grid">
+      <section class="modal-section modal-section-grid"">
         <div class="modal-section-icon modal-section-${types[0]}">
           <i class="ph ${iconName}"></i>
         </div>
         <div class="modal-section-content">
-          ${this.#generateSectionTitleMarkup(`${titlePrefix}${titlesString}`)}
-          <fieldset class="modal-configurator-section-item-list children">
+          ${this.#generateSectionTitleMarkup(titlePrefix, titlesString)}
+          <fieldset class="modal-configurator-section-item-list children" data-optional="${optional}">
             ${positionItems
               .map((item, index) =>
-                this.#generateSectionItemMarkup(item, index, positionName, size)
+                this.#generateSectionItemMarkup(
+                  item,
+                  index,
+                  optional,
+                  positionName,
+                  size
+                )
               )
               .join("")}
           </fieldset>
@@ -170,12 +197,13 @@ class MenuConfiguratorModalView extends ModalView {
     `;
   }
 
-  #generateSectionItemMarkup(item, index, position, size) {
+  #generateSectionItemMarkup(item, index, optional, position, size) {
+    const selected = optional ? false : index === 0;
     return `
       <div
        id="configurator-item-${item.id}"
        class="modal-configurator-section-item ${size} ${
-      index === 0 ? "selected" : ""
+      selected ? "selected" : ""
     }"
        data-input-id="radio-${item.id}">
         ${this.#generateMenuItemImageMarkup(item, size)}
@@ -186,17 +214,17 @@ class MenuConfiguratorModalView extends ModalView {
        id="radio-${item.id}"
        name="${position}"
        value="${item.id}"
-       ${index === 0 ? "checked" : ""}
+       ${selected ? "checked" : ""}
       />
     `;
   }
 
-  #generateSectionTitleMarkup(sectionTitle) {
-    if (!sectionTitle) {
+  #generateSectionTitleMarkup(prefix, title) {
+    if (!title) {
       return "";
     }
     return `
-      <legend class="modal-section-title">${sectionTitle}</legend>
+      <legend class="modal-section-title">${prefix} ${title}</legend>
     `;
   }
 

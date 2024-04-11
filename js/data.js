@@ -4,10 +4,22 @@ export const data = {
       id: "chickenator-team",
       name: "Team Mighty Chickenator",
       burger_id: "chickenator",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -15,10 +27,22 @@ export const data = {
       name: "Team Legendary Hamburger Protector",
       burger_included: true,
       burger_id: "protector",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -26,10 +50,18 @@ export const data = {
       name: "Team Incredible Vegan Vigilante",
       burger_included: true,
       burger_id: "vigilante",
-      second_position: ["harvest", "pal", "nugget"],
-      third_position: ["water", "soda", "juice", "beer"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "nugget", "harvest"],
+      },
+      third_position: {
+        optional: false,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fourth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer"],
+      },
       tags: ["menu"],
     },
     {
@@ -37,10 +69,22 @@ export const data = {
       name: "Team Classic Cheese Defender",
       burger_included: true,
       burger_id: "defender",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -48,10 +92,26 @@ export const data = {
       name: "Team Epic Angus Titan",
       burger_included: true,
       burger_id: "titan",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -59,10 +119,22 @@ export const data = {
       name: "Team Supreme Chicken Fighter",
       burger_included: true,
       burger_id: "fighter",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -70,10 +142,22 @@ export const data = {
       name: "Team Amazing Burger-Man",
       burger_included: true,
       burger_id: "burgerman",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -81,10 +165,22 @@ export const data = {
       name: "Team Fiery BBQ Bringer",
       burger_included: true,
       burger_id: "bringer",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -92,10 +188,22 @@ export const data = {
       name: "Team Supreme Baconator Knight",
       burger_included: true,
       burger_id: "knight",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
     {
@@ -103,10 +211,22 @@ export const data = {
       name: "Team Infernal Chili Avenger",
       burger_included: true,
       burger_id: "avenger",
-      second_position: ["pal", "master", "companion", "nugget", "renegate"],
-      third_position: ["water", "soda", "juice", "beer", "milkshake"],
-      fourth_position: [],
-      fifth_position: [],
+      second_position: {
+        optional: false,
+        items: ["pal", "master", "companion", "nugget", "renegate"],
+      },
+      third_position: {
+        optional: true,
+        items: ["harvest", "caesar", "stamina"],
+      },
+      fourth_position: {
+        optional: true,
+        items: ["bolt", "guardian", "dynamo", "burst"],
+      },
+      fifth_position: {
+        optional: false,
+        items: ["water", "soda", "juice", "beer", "milkshake"],
+      },
       tags: ["menu"],
     },
   ],

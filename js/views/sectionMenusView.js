@@ -88,18 +88,23 @@ class SectionMenusView extends SectionItemsView {
     return "";
   }
 
-  #generatePositionMarkup(positionItems) {
-    if (!positionItems || positionItems.length === 0) {
+  #generatePositionMarkup(position) {
+    if (
+      !position ||
+      !position.items ||
+      position.items.length === 0 ||
+      position.optional
+    ) {
       return "";
     }
     const types =
-      positionItems.length === 1
-        ? positionItems[0].type
-        : extractUniquePositionsTypes(positionItems);
+      position.items.length === 1
+        ? [position.items[0].type]
+        : extractUniquePositionsTypes(position.items);
     const iconName = getIconNameForItemType(types[0]);
     const positionNames =
-      positionItems.length === 1
-        ? positionItems[0].name
+      position.items.length === 1
+        ? [position.items[0].name]
         : getPositionNamesForItemTypes(types);
     const positionNameString =
       positionNames.length > 1 ? positionNames.join(" or ") : positionNames[0];

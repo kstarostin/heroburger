@@ -44,11 +44,18 @@ export const calculateSumPrice = function (prices) {
   return prices.reduce((partialSum, price) => partialSum + price, 0);
 };
 
-export const extractMinimalItemPrice = function (items) {
-  if (!items || items.length === 0) {
+export const extractMinimalItemPrice = function (position) {
+  if (
+    !position ||
+    !position.items ||
+    position.items.length === 0 ||
+    position.optional
+  ) {
     return 0;
   }
-  const allPrices = items.map((positionItem) => positionItem.menuPrice);
+  const allPrices = position.items.map(
+    (positionItem) => positionItem.menuPrice
+  );
   return +Math.min(...allPrices);
 };
 
