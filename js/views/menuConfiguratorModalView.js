@@ -233,7 +233,7 @@ class MenuConfiguratorModalView extends ModalView {
       return "";
     }
     return `
-      <legend class="modal-section-title">${prefix} ${title}</legend>
+      <legend class="modal-section-title italic">${prefix} ${title}</legend>
     `;
   }
 
