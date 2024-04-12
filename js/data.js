@@ -6,11 +6,11 @@ export const data = {
       burger_id: "chickenator",
       second_position: {
         optional: false,
-        items: ["pal", "master", "companion", "nugget", "renegate"],
+        items: ["harvest", "caesar", "stamina"],
       },
       third_position: {
         optional: true,
-        items: ["harvest", "caesar", "stamina"],
+        items: ["pal", "master", "companion", "nugget", "renegate"],
       },
       fourth_position: {
         optional: true,

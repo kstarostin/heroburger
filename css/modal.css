@@ -190,9 +190,17 @@ body {
 
 .modal-section-title {
   margin-bottom: 3.2rem;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-style: italic;
   line-height: 4.8rem;
+  color: #767676;
+}
+
+.modal-section-title strong {
+  font-size: 3rem;
+  font-weight: 800;
+  font-style: normal;
+  margin-left: 0.4rem;
 }
 
 .modal-actions {
@@ -205,6 +213,40 @@ body {
 /****************/
 .modal-configurator-form {
   padding: 6rem;
+}
+
+.modal-configurator-form-title {
+  margin-bottom: 2.4rem;
+  font-size: 4.4rem;
+  font-weight: 700;
+}
+
+.modal-configurator-form-title strong {
+  font-weight: 800;
+}
+
+.emph-team {
+  color: #9c36b5;
+}
+
+.emph-burger {
+  color: #d24347;
+}
+
+.emph-fingerfood {
+  color: #feb451;
+}
+
+.emph-salad {
+  color: #2b8a3e;
+}
+
+.emph-dessert {
+  color: #e64980;
+}
+
+.emph-drink {
+  color: #74ccf4;
 }
 
 .modal-configurator-header-input {
@@ -262,7 +304,8 @@ body {
   transition: all 0.3s;
 }
 
-.modal-configurator-section-item.selected .modal-configurator-item-textbox-right {
+.modal-configurator-section-item.selected
+  .modal-configurator-item-textbox-right {
   background-color: #feb451;
 }
 
@@ -278,7 +321,8 @@ body {
   filter: brightness(90%);
 }
 
-.modal-configurator-section-item:hover.selected .modal-configurator-item-textbox-right {
+.modal-configurator-section-item:hover.selected
+  .modal-configurator-item-textbox-right {
   background-color: #e5a249;
 }
 
@@ -524,7 +568,7 @@ body {
 
 .modal-checkout-item-name {
   font-weight: 500;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.4rem;
 }
 
 .modal-checkout-item-children {
@@ -533,9 +577,9 @@ body {
 
 .modal-checkout-item-child {
   margin-bottom: 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #767676;
-  line-height: 1.6rem;
+  line-height: 0.8rem;
 }
 
 .modal-checkout-item-price {

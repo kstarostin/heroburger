@@ -4,7 +4,7 @@ import {
   formatPrice,
   calculateMinimalMenuPrice,
   getIconNameForItemType,
-  getPositionNamesForItemTypes,
+  getPositionNameForItemType,
   extractUniquePositionsTypes,
 } from "../helpers.js";
 
@@ -87,6 +87,7 @@ class MenuConfiguratorModalView extends ModalView {
     const form = this._data;
     return `
       <form class="modal-configurator-form">
+        <h1 class="modal-configurator-form-title">Assemble Your <strong class="emph-team">Team</strong></h1>
         <input
          class="modal-configurator-header-input"
          type="text"
@@ -98,7 +99,10 @@ class MenuConfiguratorModalView extends ModalView {
             <i class="ph ph-hamburger"></i>
           </div>
           <div class="modal-section-content">
-            ${this.#generateSectionTitleMarkup("Your", "Hero Burger")}
+            ${this.#generateSectionTitleMarkup(
+              "Your",
+              "<strong class='emph-burger'>Hero Burger</strong>"
+            )}
             <fieldset class="modal-configurator-section-item-list">
               ${this.#generateSectionItemMarkup(
                 form.firstPosition[0],
@@ -163,7 +167,12 @@ class MenuConfiguratorModalView extends ModalView {
     const titles =
       positionItems.length === 1
         ? positionItems[0].name
-        : getPositionNamesForItemTypes(types);
+        : types.map(
+            (type) =>
+              `<strong class='emph-${type}'>${getPositionNameForItemType(
+                type
+              )}</strong>`
+          );
     const titlesString = titles.length > 1 ? titles.join(" or ") : titles[0];
 
     const size = positionItems.some(

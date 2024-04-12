@@ -4,7 +4,7 @@ import {
   joinCommaSeparated,
   calculateMinimalMenuPrice,
   getIconNameForItemType,
-  getPositionNamesForItemTypes,
+  getPositionNameForItemType,
   extractUniquePositionsTypes,
 } from "../helpers.js";
 
@@ -105,7 +105,7 @@ class SectionMenusView extends SectionItemsView {
     const positionNames =
       position.items.length === 1
         ? [position.items[0].name]
-        : getPositionNamesForItemTypes(types);
+        : types.map((type) => getPositionNameForItemType(type));
     const positionNameString =
       positionNames.length > 1 ? positionNames.join(" or ") : positionNames[0];
     return `

@@ -70,7 +70,7 @@ export const getIconNameForItemType = function (itemType) {
   return typeIconMap.get(itemType);
 };
 
-export const getPositionNamesForItemTypes = function (itemTypes) {
+export const getPositionNameForItemType = function (itemType) {
   const typeNameMap = new Map();
   typeNameMap.set("burger", "Hero Burger");
   typeNameMap.set("fingerfood", "Sidekick");
@@ -78,7 +78,7 @@ export const getPositionNamesForItemTypes = function (itemTypes) {
   typeNameMap.set("dessert", "Dessert");
   typeNameMap.set("drink", "Drink");
 
-  return itemTypes.map((itemType) => typeNameMap.get(itemType));
+  return typeNameMap.get(itemType);
 };
 
 export const extractUniquePositionsTypes = function (positionItems) {
