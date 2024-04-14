@@ -133,6 +133,11 @@
   font-weight: 500;
   line-height: 2.4rem;
   margin-bottom: 0.4rem;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 28rem;
 }
 
 .side-panel-item-children {
@@ -250,6 +255,15 @@
 /*****************/
 /* 1rem = 1em = 16px */
 
+/************************************/
+/* BELOW 1920 px (Full HD desktops) */
+/************************************/
+@media (max-width: 120em) {
+  .side-panel-item-text {
+    max-width: 25rem;
+  }
+}
+
 /***********************/
 /* BELOW 1600 px (HD+) */
 /***********************/
@@ -258,12 +272,19 @@
     max-width: 35vw;
     min-width: 30vw;
   }
+
+  .side-panel-item-text {
+    max-width: 30rem;
+  }
 }
 
 /************************************/
 /* BELOW 1344 px (Smaller desktops) */
 /************************************/
 @media (max-width: 84em) {
+  .side-panel-item-text {
+    max-width: 25rem;
+  }
 }
 
 /*************************************/
@@ -274,6 +295,10 @@
     max-width: 45vw;
     min-width: 40vw;
   }
+
+  .side-panel-item-text {
+    max-width: 30rem;
+  }
 }
 
 /***********************************/
@@ -283,6 +308,10 @@
   .side-panel-content {
     max-width: 50vw;
     min-width: 50vw;
+  }
+
+  .side-panel-item-text {
+    max-width: 25rem;
   }
 }
 
@@ -312,7 +341,20 @@
     max-height: 100vh;
   }
 
+  .side-panel-item-text {
+    max-width: 100%;
+  }
+
   .side-panel-list-item {
     grid-template-columns: 1fr 6rem;
+  }
+}
+
+/************************/
+/* BELOW 544px (Phones) */
+/************************/
+@media (max-width: 34em) {
+  .side-panel-item-text {
+    max-width: 31rem;
   }
 }
