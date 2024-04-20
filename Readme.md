@@ -1,4 +1,6 @@
-![Hero Burger logo](/img/hero-burger-logo.png "Hero Burger logo")
+<p align="center">
+  <img src="/img/hero-burger-logo.png" alt="Hero Burger logo"/>
+</p>
 
 **Hero Burger** is a demo project of a small single-page online shop.
 
@@ -18,7 +20,7 @@ Visit the shop at [heroburger.netlify.app](https://heroburger.netlify.app/).
 
 ## Project structure
 
-The main goal of this project was to build a small single page website using only HTML, CSS and JavaScript.
+The main goal of this project was to build a small single page website using only **HTML**, **CSS** and **JavaScript**.
 
 The JavaScript code is written in OOP style and using MVC architecture. It consists of a controller, a model and several views for each significant element of the shop page.
 
@@ -52,7 +54,7 @@ To build the code and prepare for deployment, use:
 
 After that, the ready-for-deployment code is available in the folder `./dist`.
 
-### Assets:
+### Assets
 
 1. The prime font of the website is [DM Sans](https://fonts.google.com/specimen/DM+Sans).
 2. For the site icons, I used [Phosphor Icons](https://phosphoricons.com).
