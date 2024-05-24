@@ -139,6 +139,7 @@ section {
   border-radius: 3px;
   font-weight: 700;
   position: relative;
+  text-shadow: 1px 1px 3px #aaa;
 }
 
 .tag-menu {

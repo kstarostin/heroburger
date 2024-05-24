@@ -311,8 +311,6 @@ const controlSelectPositionItem = async function (itemId) {
     // collect configured items
     const headerItem = await model.getItemById(configuratorData.menuId);
     const childItems = await getConfiguredChildItems(configuratorData);
-    console.log(configuratorData);
-    console.log(childItems);
 
     // extract menu prices for configured items
     const menuPrices = [

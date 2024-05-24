@@ -31,7 +31,6 @@ class MenuConfiguratorModalView extends ModalView {
     );
     const selectedItemEl = parentFieldSetEl.querySelector(".selected");
     const optionalFieldSet = parentFieldSetEl.dataset.optional;
-    console.log(optionalFieldSet);
 
     if (currentItemEl === selectedItemEl) {
       if (optionalFieldSet === "true") {
